@@ -9,9 +9,9 @@ print(screen_1)
 
 screen = pygame.display.set_mode(SCREEN_SIZE,0,32)
 #screen = pygame.display.set_mode((640, 480), 0, 32)
-# 创建了一个窗口
+# create window
 pygame.display.set_caption("Hello, World!")
-# 设置窗口标题
+# set title
 
 while True:
     for event in pygame.event.get():
