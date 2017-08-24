@@ -1,11 +1,12 @@
 import pygame
+from pygame.locals import *
 
 pygame.init()
-SCREEN_SIZE = (1024,1024)
-from pygame.locals import *
+SCREEN_SIZE = (800,600)
+
 #import local parameters or QUIT will not work..
-screen_1 = [0]*6
-print(screen_1)
+#screen_1 = [0]*6
+#print(screen_1)
 
 screen = pygame.display.set_mode(SCREEN_SIZE,0)
 #The resolution argument is a pair of numbers representing the width and height.
