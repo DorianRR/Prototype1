@@ -1,15 +1,18 @@
-import pygame
-import sys
-import Player
+import pygame, math, sys
+from Player import *
 
 pygame.init()
 screen = pygame.display.set_mode((1024, 768))
 pygame.display.set_caption("Destructo-Spin!")
 
-player = Player()
+player = Player("TempPlayer.png")
 
 while True:
     for event in pygame.event.get():
          if event.type == pygame.QUIT:
              pygame.quit()
              sys.exit()
+
+    player.update()
+    player.draw(screen)
+    pygame.display.flip()

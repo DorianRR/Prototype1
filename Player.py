@@ -3,21 +3,22 @@ import pygame
 import math
 
 class Player:
-    def __init__(self):
+    def __init__(self, filename):
 
         self.rotationalSpeed = 0
-        self.direction
-        self.image = pygame.image.load("TempPlayer.png")
+        self.location = (500, 500)
+        #self.direction
+        self.image = pygame.image.load(filename)
         self.rect = self.image.get_rect()
 
 
 
     def draw(self, screen):
-        screen.blit(self.image,self.rect)
+        screen.blit(self.image, self.rect)
 
 
 
-    def update(self, width):
+    def update(self):
         self.rotationalSpeed *= .95
         keys = pygame.key.get_pressed()
         #if keys[pygame.K_SPACE]:
@@ -26,4 +27,5 @@ class Player:
             if self.rotationalSpeed == 0:
                 self.rotationalSpeed =+ 1
             self.rotationalSpeed *= 1.2
-        pygame.transform.rotate(self, 10 * (math.pi/180))
+        #self.image = pygame.transform.rotate(self, 10 * (math.pi/180))
+
