@@ -2,13 +2,6 @@ import pygame, math
 from Vector import *
 
 def rotateCenter(image, angle):
-    orig_rect = image.get_rect()
-    rot_image = pygame.transform.rotate(image, angle)
-    rot_rect = orig_rect.copy()
-    rot_rect.center = rot_image.get_rect().center
-    rot_image = rot_image.subsurface(rot_rect).copy()
-    #return rot_image
-
     loc = image.get_rect().center  #rot_image is not defined
     rot_sprite = pygame.transform.rotate(image, angle)
     rot_sprite.get_rect().center = loc
@@ -41,12 +34,16 @@ class Player:
             self.kickCounter = 30
             self.lateralSpeed += 10
         self.rect.center = ((self.rect.centerx+(self.lateralSpeed*self.direction.x)), (self.rect.centery+(self.lateralSpeed*self.direction.y)))
+
+
         if keys[pygame.K_SPACE]:
-            self.image = rotateCenter(self.image, (5 * (math.pi / 180)))
+            self.image = pygame.transform.rotate(self.image, 90)
 
             if self.rotationalSpeed == 0:
                 self.rotationalSpeed =+ .001
             self.rotationalSpeed *= 1.2
-        self.image = rotateCenter(self.image, (self.rotationalSpeed*(10*(math.pi/180))))
+
+
+
         self.kickCounter -= 1
         self.lateralSpeed *= .9
