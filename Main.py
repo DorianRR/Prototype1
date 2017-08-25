@@ -1,9 +1,12 @@
 import pygame
 import sys
+import Player
 
 pygame.init()
 screen = pygame.display.set_mode((1024, 768))
 pygame.display.set_caption("Destructo-Spin!")
+
+player = Player()
 
 while True:
     for event in pygame.event.get():

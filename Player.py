@@ -1,9 +1,11 @@
 import pygame
+#import Vector
+import math
 
 class Player:
     def __init__(self):
 
-        self.rotationalSpeed
+        self.rotationalSpeed = 0
         self.direction
         self.image = pygame.image.load("TempPlayer.png")
         self.rect = self.image.get_rect()
@@ -16,9 +18,12 @@ class Player:
 
 
     def update(self, width):
-        self.rotationalSpeed *= .9
+        self.rotationalSpeed *= .95
         keys = pygame.key.get_pressed()
-        if keys[pygrame.K_SPACE]:
-            self.rect
+        #if keys[pygame.K_SPACE]:
+            #self.rect
         if keys[pygame.K_LSHIFT]:
-            self.rotationalSpeed *= 1.4
+            if self.rotationalSpeed == 0:
+                self.rotationalSpeed =+ 1
+            self.rotationalSpeed *= 1.2
+        pygame.transform.rotate(self, 10 * (math.pi/180))
