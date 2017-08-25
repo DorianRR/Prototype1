@@ -1,6 +1,14 @@
 import pygame, math
 from Vector import *
 
+def rotateCenter(image, angle):
+    orig_rect = image.get_rect()
+    rot_image = pygame.transform.rotate(image, angle)
+    rot_rect = orig_rect.copy()
+    rot_rect.center = rot_image.get_rect().center
+    rot_image = rot_image.subsurface(rot_rect).copy()
+    return rot_image
+
 class Player:
     def __init__(self, filename):
 
@@ -18,13 +26,14 @@ class Player:
 
 
     def update(self):
-        self.rotationalSpeed *= .95
+        #self.rotationalSpeed *= .5
         keys = pygame.key.get_pressed()
         #if keys[pygame.K_SPACE]:
             #self.rect
         if keys[pygame.K_LSHIFT]:
-            if self.rotationalSpeed == 0:
-                self.rotationalSpeed =+ .01
-            self.rotationalSpeed *= 1.2
-        self.image = pygame.transform.rotate(self.image, (self.rotationalSpeed*(10 * (math.pi/180))))
+            self.image = rotateCenter(self.image, (5 * (math.pi / 180)))
 
+            #if self.rotationalSpeed == 0:
+            #    self.rotationalSpeed =+ .001
+            #self.rotationalSpeed *= 1.2
+        #self.image = rotateCenter(self.image, (self.rotationalSpeed*(10*(math.pi/180))))

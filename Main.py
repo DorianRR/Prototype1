@@ -4,6 +4,8 @@ from Player import *
 pygame.init()
 screen = pygame.display.set_mode((1024, 768))
 pygame.display.set_caption("Destructo-Spin!")
+clock = pygame.time.Clock()
+FPS = 60
 
 player = Player("TempPlayer.png")
 
@@ -14,5 +16,7 @@ while True:
              sys.exit()
 
     player.update()
+    screen.fill((0, 0, 0))
     player.draw(screen)
+    clock.tick(FPS)
     pygame.display.flip()
