@@ -9,9 +9,17 @@ class Vector:
 
 
     def normalize(self):
+        magnitude = math.sqrt((self.x ** 2) + (self.y ** 2))
+        self.x = ((self.x**2)/magnitude)
+        self.y = ((self.y**2)/magnitude)
 
 
-    def dot(self, value):
+    def multiply(self, value):
+        self.x = self.x * value
+        self.y = self.y * value
+
+    def dot(self, Vector):
+
 
 
     def cross(self, vector):
