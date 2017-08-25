@@ -24,7 +24,7 @@ class Player:
             #self.rect
         if keys[pygame.K_LSHIFT]:
             if self.rotationalSpeed == 0:
-                self.rotationalSpeed =+ 1
+                self.rotationalSpeed =+ .01
             self.rotationalSpeed *= 1.2
-        self.image = pygame.transform.rotate(self, 10 * (math.pi/180))
+        self.image = pygame.transform.rotate(self.image, (self.rotationalSpeed*(10 * (math.pi/180))))
 
