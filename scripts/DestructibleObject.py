@@ -2,6 +2,7 @@ import pygame
 
 class DestructibleObject(pygame.sprite.Sprite):
     def __init__(self, image, position):
+        pygame.sprite.Sprite.__init__(self) #When subclassing the Sprite, be sure to call the base initializer before adding the Sprite to Groups
         self.image =  pygame.image.load("../images/" + image + ".png").convert_alpha()
         self.destroyed = pygame.image.load("../images/" + image + "Destroyed.png").convert_alpha()
         
