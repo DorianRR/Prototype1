@@ -1,5 +1,7 @@
 import pygame, math
+import PyIgnition_new.PyIgnition,PyIgnition_new.particles, PyIgnition_new.gravity, PyIgnition_new.obstacles, PyIgnition_new.constants
 from Vector import *
+
 
 def rotateCenter(image, angle):
     loc = image.get_rect().center  #rot_image is not defined
@@ -40,5 +42,6 @@ class Player:
         if keys[pygame.K_SPACE] and self.fuelLevel > 0:
             self.image = pygame.transform.rotate(self.image, 90)
             self.fuelLevel -= 10
+
         self.kickCounter -= 1
         self.lateralSpeed *= .9
