@@ -20,6 +20,7 @@ class Player:
         self.kickCounter = 0
         self.rotateCounter = 0
         self.fuelLevel = 1000
+        self.MoneyDamage = 0
 
 
     def draw(self, screen):
