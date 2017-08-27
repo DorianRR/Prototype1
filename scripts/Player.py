@@ -1,5 +1,5 @@
 import pygame, math
-import PyIgnition_new.PyIgnition,PyIgnition_new.particles, PyIgnition_new.gravity, PyIgnition_new.obstacles, PyIgnition_new.constants
+from PyIgnition import *
 from Vector import *
 
 
@@ -23,6 +23,8 @@ class Player:
         self.rotateCounter = 0
         self.fuelLevel = 1000
         self.MoneyDamage = 0
+
+        fire = PyIgnition.ParticleEffect(screen, (0, 0), (800, 600))
 
 
     def draw(self, screen):
