@@ -24,7 +24,7 @@ class Player:
         self.fuelLevel = 1000
         self.MoneyDamage = 0
 
-        fire = PyIgnition.ParticleEffect(screen, (0, 0), (800, 600))
+        #fire = PyIgnition.ParticleEffect(screen, (0, 0), (800, 600))
 
 
     def draw(self, screen):
