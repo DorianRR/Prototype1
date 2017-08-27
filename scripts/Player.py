@@ -1,5 +1,4 @@
 import pygame, math
-from PyIgnition import *
 from Vector import *
 
 
@@ -23,9 +22,6 @@ class Player:
         self.rotateCounter = 0
         self.fuelLevel = 1000
         self.MoneyDamage = 0
-
-        #fire = PyIgnition.ParticleEffect(screen, (0, 0), (800, 600))
-
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
