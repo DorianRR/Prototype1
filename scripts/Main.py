@@ -21,7 +21,7 @@ source.CreateParticleKeyframe(80, colour = (0, 0, 0), radius = 50.0)
 #rect = fire.CreateRectangle((400, 100), (200, 100, 100), bounce = 0.2, width = 100, height = 20)
 #rect.CreateKeyframe(frame = 500, pos = (400, 250), width = 200, height = 30)
 
-fire.SaveToFile("Fire.ppe")
+#fire.SaveToFile("Fire.ppe")
 #------------------
 
 
