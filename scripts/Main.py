@@ -15,8 +15,8 @@ gravity = fire.CreateDirectedGravity(strength = 0.07, direction = [player.direct
 wind = fire.CreateDirectedGravity(strength = 0.00, direction = [1, 0])
 source = fire.CreateSource((300, 500), initspeed = 2.0, initdirection = 0.0, initspeedrandrange = 0.5, initdirectionrandrange = 0.5, particlesperframe = 10, particlelife = 100, drawtype = PyIgnition.DRAWTYPE_CIRCLE, colour = (255, 255, 255), radius = 3.0)
 source.CreateParticleKeyframe(10, colour = (200, 200, 220), radius = 4.0)
-source.CreateParticleKeyframe(30, colour = (150, 150, 200), radius = 6.0)
-source.CreateParticleKeyframe(60, colour = (50, 50, 150), radius = 20.0)
+source.CreateParticleKeyframe(30, colour = (190, 190, 200), radius = 6.0)
+source.CreateParticleKeyframe(60, colour = (100, 100, 150), radius = 20.0)
 source.CreateParticleKeyframe(80, colour = (0, 0, 0), radius = 50.0)
 rect = fire.CreateRectangle((400, 100), (200, 100, 100), bounce = 0.2, width = 100, height = 20)
 rect.CreateKeyframe(frame = 500, pos = (400, 250), width = 200, height = 30)
@@ -33,7 +33,7 @@ while True:
 
     player.update()
     screen.fill((0, 0, 0))
-    source.SetPos(pygame.mouse.get_pos())
+    source.SetPos(player.location)
     #keep these two lines of code after any screen.blit() bacause we want texts appear above everything#
     screen.blit(uicreate(player)[0], [20, 20])                                                          #
     screen.blit(uicreate(player)[1], [654, 20])                                                         #
