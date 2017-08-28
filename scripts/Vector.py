@@ -19,6 +19,7 @@ class Vector:
         self.x =+ otherVector.x
         self.y =+ otherVector.y
 
+<<<<<<< HEAD
     def rotate(self, angle):
         oldX = self.x
         oldY = self.y
@@ -28,5 +29,12 @@ class Vector:
 =======
 
 >>>>>>> Partical-implementation
+=======
+    #def rotate(self, angle):
+     #   oldX = self.x
+      #  oldY = self.y
+       # self.x = (oldX*math.cos(angle))-(oldY*math.sin(angle))
+        #self.y = (oldX*math.sin(angle))+(oldY*(math.cos(angle)))
+>>>>>>> 5721d767854510da4fa1c2330d2dfc9174f67f3e
 
 
