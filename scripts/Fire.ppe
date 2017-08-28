@@ -20,36 +20,36 @@
 		</keyframes>
 		<particlekeyframes>
 			<keyframe frame = "10">
-				<colour_b>220</colour_b>
-				<colour_r>200</colour_r>
-				<interpolationtype>linear</interpolationtype>
 				<radius>4.0</radius>
-				<length>None</length>
+				<interpolationtype>linear</interpolationtype>
+				<colour_r>200</colour_r>
 				<colour_g>200</colour_g>
+				<length>None</length>
+				<colour_b>220</colour_b>
 			</keyframe>
 			<keyframe frame = "30">
-				<colour_b>200</colour_b>
-				<colour_r>190</colour_r>
-				<interpolationtype>linear</interpolationtype>
 				<radius>6.0</radius>
-				<length>None</length>
+				<interpolationtype>linear</interpolationtype>
+				<colour_r>190</colour_r>
 				<colour_g>190</colour_g>
+				<length>None</length>
+				<colour_b>200</colour_b>
 			</keyframe>
 			<keyframe frame = "60">
-				<colour_b>150</colour_b>
-				<colour_r>100</colour_r>
-				<interpolationtype>linear</interpolationtype>
 				<radius>20.0</radius>
-				<length>None</length>
+				<interpolationtype>linear</interpolationtype>
+				<colour_r>100</colour_r>
 				<colour_g>100</colour_g>
+				<length>None</length>
+				<colour_b>150</colour_b>
 			</keyframe>
 			<keyframe frame = "80">
-				<colour_b>0</colour_b>
-				<colour_r>0</colour_r>
-				<interpolationtype>linear</interpolationtype>
 				<radius>50.0</radius>
-				<length>None</length>
+				<interpolationtype>linear</interpolationtype>
+				<colour_r>0</colour_r>
 				<colour_g>0</colour_g>
+				<length>None</length>
+				<colour_b>0</colour_b>
 			</keyframe>
 		</particlekeyframes>
 	</source>
@@ -78,15 +78,15 @@
 		<height>20</height>
 		<keyframes>
 			<keyframe frame = "500">
-				<pos_x>400</pos_x>
-				<colour_b>None</colour_b>
-				<pos_y>250</pos_y>
-				<width>200</width>
+				<height>30</height>
 				<bounce>None</bounce>
 				<interpolationtype>linear</interpolationtype>
-				<height>30</height>
+				<pos_x>400</pos_x>
+				<pos_y>250</pos_y>
 				<colour_r>None</colour_r>
 				<colour_g>None</colour_g>
+				<width>200</width>
+				<colour_b>None</colour_b>
 			</keyframe>
 		</keyframes>
 	</rectangle>
