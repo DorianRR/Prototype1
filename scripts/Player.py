@@ -16,6 +16,7 @@ class Player:
         self.rotationList = [(0,-1),(sqrt2,-sqrt2),(1,0),(sqrt2,sqrt2),(0,1),(-sqrt2,sqrt2),(-1,0),(-sqrt2,-sqrt2)]
         self.temp_X = 0
         self.temp_Y = 0
+        
         self.imageRotated = 0
         self.rect.center = (512, 384)
         self.kickCounter = 0
