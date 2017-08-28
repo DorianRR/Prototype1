@@ -39,6 +39,7 @@ class Player:
             else:
                 self.imageRotated =0
             self.fuelLevel -= 10
+            Vector.rotate(self.direction, 45)
 
         self.kickCounter -= 1
         self.lateralSpeed *= .9
