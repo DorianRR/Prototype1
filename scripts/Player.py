@@ -12,6 +12,8 @@ class Player:
         self.image = pygame.image.load(filename)
         self.image = spriteSheetToList(self.image, 8)
         self.rect = self.image[0].get_rect()
+        sqrt2 = math.sqrt(2)/2
+        self.rotationList = [(0,-1),(sqrt2,-sqrt2),(1,0),(sqrt2,sqrt2),(0,1),(-sqrt2,sqrt2),(-1,0),(-sqrt2,-sqrt2)]
 
         self.imageRotated = 0
         self.rect.center = (512, 384)
@@ -31,15 +33,19 @@ class Player:
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LSHIFT] and self.kickCounter <= 0:
             self.kickCounter = 30
-            self.lateralSpeed += 10
+            self.lateralSpeed += 12
+        if self.lateralSpeed < 1.5:
+            self.lateralSpeed = 0
         self.rect.center = ((self.rect.centerx+(self.lateralSpeed*self.direction.x)), (self.rect.centery+(self.lateralSpeed*self.direction.y)))
 
         if keys[pygame.K_SPACE] and self.fuelLevel > 0:
             if self.imageRotated < 7:
                 self.imageRotated += 1
+                self.direction.setDirection(self.rotationList[self.imageRotated])
             else:
                 self.imageRotated =0
+                self.direction.setDirection(self.rotationList[self.imageRotated])
             self.fuelLevel -= 10
 
         self.kickCounter -= 1
-        self.lateralSpeed *= .9
+        self.lateralSpeed *= .95

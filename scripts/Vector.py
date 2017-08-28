@@ -19,6 +19,14 @@ class Vector:
         self.x =+ otherVector.x
         self.y =+ otherVector.y
 
+    def rotate(self, angle):
+        oldX = self.x
+        oldY = self.y
+        self.x = (oldX*(math.cos(angle)))-(oldY*math.sin(angle))
+        self.y = (oldX*(math.sin(angle)))+(oldY*(math.cos(angle)))
 
+    def setDirection(self, nextDirection):
+        self.x = nextDirection[0]
+        self.y = nextDirection[1]
 
 
