@@ -17,11 +17,10 @@ source = fire.CreateSource((300, 500), initspeed = 2.0, initdirection = 0.0, ini
 source.CreateParticleKeyframe(10, colour = (200, 200, 220), radius = 4.0)
 source.CreateParticleKeyframe(30, colour = (190, 190, 200), radius = 6.0)
 source.CreateParticleKeyframe(60, colour = (100, 100, 150), radius = 20.0)
-source.CreateParticleKeyframe(80, colour = (0, 0, 0), radius = 50.0)
-wall_north = fire.CreateBoundaryLine((100, 10), (200, 200, 200), bounce = 0.1)
-#wall.CreateKeyframe(frame = 500, pos = (100, 250))
+source.CreateParticleKeyframe(80, colour = (255, 0, 0), radius = 50.0)
+wall_north = fire.CreateBoundaryLine((100, 50), (200, 200, 200), bounce = 0.1)
 
-fire.SaveToFile("Fire.ppe")
+#fire.SaveToFile("Fire.ppe")
 #------------------
 
 
