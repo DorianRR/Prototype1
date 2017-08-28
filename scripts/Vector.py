@@ -20,11 +20,11 @@ class Vector:
         self.y =+ otherVector.y
 
 <<<<<<< HEAD
-    def rotate(self, angle):
-        oldX = self.x
-        oldY = self.y
-        self.x = (oldX*math.cos(angle))-(oldY*math.sin(angle))
-        self.y = (oldX*math.sin(angle))+(oldY*(math.cos(angle)))
+    #def rotate(self, angle):
+      # oldX = self.x
+       #oldY = self.y
+       # self.x = (oldX*math.cos(angle))-(oldY*math.sin(angle))
+       # self.y = (oldX*math.sin(angle))+(oldY*(math.cos(angle)))
 <<<<<<< HEAD
 =======
 
