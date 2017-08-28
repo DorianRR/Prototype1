@@ -7,7 +7,7 @@ pygame.display.set_caption("Destructo-Spin!")
 clock = pygame.time.Clock()
 FPS = 60
 
-player = Player("Temp.png")
+player = Player("PlayerCharacterTemp.png")
 
 while True:
     for event in pygame.event.get():
