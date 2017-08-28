@@ -1,11 +1,6 @@
 import pygame, math
 from Vector import *
 
-def rotateCenter(image, angle):
-    loc = image.get_rect().center  #rot_image is not defined
-    rot_sprite = pygame.transform.rotate(image, angle)
-    rot_sprite.get_rect().center = loc
-    return rot_sprite
 
 class Player:
     def __init__(self, filename):
