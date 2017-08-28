@@ -7,7 +7,7 @@ class Player:
 
         self.lateralSpeed = 0
         self.location = (512-32, 384-32)
-        self.direction = Vector(0, 1)
+        self.direction = Vector(0, -1)
         self.image = pygame.image.load(filename)
         self.image = spriteSheetToList(self.image, 8)
         self.rect = self.image[0].get_rect()

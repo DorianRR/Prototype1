@@ -24,5 +24,9 @@ class Vector:
         oldY = self.y
         self.x = (oldX*math.cos(angle))-(oldY*math.sin(angle))
         self.y = (oldX*math.sin(angle))+(oldY*(math.cos(angle)))
+<<<<<<< HEAD
+=======
+
+>>>>>>> Partical-implementation
 
 
