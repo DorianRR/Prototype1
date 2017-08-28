@@ -26,8 +26,6 @@ class Player:
     def draw(self, screen):
         screen.blit(self.image, self.rect)
 
-
-
     def update(self):
 
         #self.rotationalSpeed *= .5
@@ -35,11 +33,19 @@ class Player:
         if keys[pygame.K_LSHIFT] and self.kickCounter <= 0:
             self.kickCounter = 30
             self.lateralSpeed += 10
+            self.location = [self.location[0] +100, self.location[1]+100]
         self.rect.center = ((self.rect.centerx+(self.lateralSpeed*self.direction.x)), (self.rect.centery+(self.lateralSpeed*self.direction.y)))
 
         if keys[pygame.K_SPACE] and self.fuelLevel > 0:
             self.image = pygame.transform.rotate(self.image, 90)
             self.fuelLevel -= 10
+            self.direction = Vector(1,-1)
 
         self.kickCounter -= 1
         self.lateralSpeed *= .9
+
+    def get_location(self):
+        return self.location
+
+    def get_direction(self):
+        return self.direction
