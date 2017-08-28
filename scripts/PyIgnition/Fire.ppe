@@ -20,36 +20,36 @@
 		</keyframes>
 		<particlekeyframes>
 			<keyframe frame = "10">
-				<length>None</length>
-				<colour_b>20</colour_b>
-				<interpolationtype>linear</interpolationtype>
-				<radius>4.0</radius>
-				<colour_g>50</colour_g>
 				<colour_r>200</colour_r>
+				<radius>4.0</radius>
+				<interpolationtype>linear</interpolationtype>
+				<colour_g>50</colour_g>
+				<colour_b>20</colour_b>
+				<length>None</length>
 			</keyframe>
 			<keyframe frame = "30">
-				<length>None</length>
-				<colour_b>0</colour_b>
-				<interpolationtype>linear</interpolationtype>
-				<radius>6.0</radius>
-				<colour_g>0</colour_g>
 				<colour_r>150</colour_r>
+				<radius>6.0</radius>
+				<interpolationtype>linear</interpolationtype>
+				<colour_g>0</colour_g>
+				<colour_b>0</colour_b>
+				<length>None</length>
 			</keyframe>
 			<keyframe frame = "60">
-				<length>None</length>
-				<colour_b>20</colour_b>
-				<interpolationtype>linear</interpolationtype>
-				<radius>20.0</radius>
-				<colour_g>20</colour_g>
 				<colour_r>50</colour_r>
+				<radius>20.0</radius>
+				<interpolationtype>linear</interpolationtype>
+				<colour_g>20</colour_g>
+				<colour_b>20</colour_b>
+				<length>None</length>
 			</keyframe>
 			<keyframe frame = "80">
-				<length>None</length>
-				<colour_b>0</colour_b>
-				<interpolationtype>linear</interpolationtype>
-				<radius>50.0</radius>
-				<colour_g>0</colour_g>
 				<colour_r>0</colour_r>
+				<radius>50.0</radius>
+				<interpolationtype>linear</interpolationtype>
+				<colour_g>0</colour_g>
+				<colour_b>0</colour_b>
+				<length>None</length>
 			</keyframe>
 		</particlekeyframes>
 	</source>
@@ -79,14 +79,14 @@
 		<keyframes>
 			<keyframe frame = "500">
 				<pos_y>250</pos_y>
-				<colour_b>None</colour_b>
+				<colour_r>None</colour_r>
 				<height>30</height>
 				<width>200</width>
-				<pos_x>400</pos_x>
-				<interpolationtype>linear</interpolationtype>
 				<bounce>None</bounce>
+				<interpolationtype>linear</interpolationtype>
 				<colour_g>None</colour_g>
-				<colour_r>None</colour_r>
+				<colour_b>None</colour_b>
+				<pos_x>400</pos_x>
 			</keyframe>
 		</keyframes>
 	</rectangle>
