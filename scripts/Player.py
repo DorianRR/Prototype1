@@ -14,7 +14,9 @@ class Player:
         self.rect = self.image[0].get_rect()
         sqrt2 = math.sqrt(2)/2
         self.rotationList = [(0,-1),(sqrt2,-sqrt2),(1,0),(sqrt2,sqrt2),(0,1),(-sqrt2,sqrt2),(-1,0),(-sqrt2,-sqrt2)]
-
+        self.temp_X = 0
+        self.temp_Y = 0
+        
         self.imageRotated = 0
         self.rect.center = (512, 384)
         self.kickCounter = 0
@@ -29,14 +31,15 @@ class Player:
 
     def update(self):
 
-        #self.rotationalSpeed *= .5
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LSHIFT] and self.kickCounter <= 0:
             self.kickCounter = 30
             self.lateralSpeed += 12
+            self.temp_X = self.direction.x
+            self.temp_Y = self.direction.y
         if self.lateralSpeed < 1.5:
             self.lateralSpeed = 0
-        self.rect.center = ((self.rect.centerx+(self.lateralSpeed*self.direction.x)), (self.rect.centery+(self.lateralSpeed*self.direction.y)))
+        self.rect.center = ((self.rect.centerx+(self.lateralSpeed*self.temp_X)), (self.rect.centery+(self.lateralSpeed*self.temp_Y)))
 
         if keys[pygame.K_SPACE] and self.fuelLevel > 0:
             if self.imageRotated < 7:

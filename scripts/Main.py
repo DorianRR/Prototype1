@@ -20,7 +20,7 @@ source.CreateParticleKeyframe(60, colour = (100, 100, 150), radius = 20.0)
 source.CreateParticleKeyframe(80, colour = (0, 0, 0), radius = 50.0)
 wall_north = fire.CreateBoundaryLine((100, 10), (200, 200, 200), bounce = 0.1)
 
-fire.SaveToFile("Fire.ppe")
+#fire.SaveToFile("Fire.ppe")
 #------------------
 
 
