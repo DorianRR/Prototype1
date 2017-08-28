@@ -6,7 +6,7 @@ class Player:
     def __init__(self, filename):
 
         self.lateralSpeed = 0
-        self.rotationSpeed = 0
+        self.rotationSpeed = 100
         self.location = (512-32, 384-32)
         self.direction = Vector(0, -1)
         self.image = pygame.image.load(filename)
@@ -21,7 +21,7 @@ class Player:
         self.rect.center = (512, 384)
         self.kickCounter = 0
         self.rotateCounter = 0
-        self.fuelLevel = 1000
+        self.fuelLevel = 3000
         self.MoneyDamage = 0
 
     def draw(self, screen):
@@ -42,6 +42,7 @@ class Player:
         self.rect.center = ((self.rect.centerx+(self.lateralSpeed*self.temp_X)), (self.rect.centery+(self.lateralSpeed*self.temp_Y)))
 
         if keys[pygame.K_SPACE] and self.fuelLevel > 0:
+            pygame.time.delay (int(self.rotationSpeed))
             if self.imageRotated < 7:
                 self.imageRotated += 1
                 self.direction.setDirection(self.rotationList[self.imageRotated])
@@ -49,6 +50,8 @@ class Player:
                 self.imageRotated =0
                 self.direction.setDirection(self.rotationList[self.imageRotated])
             self.fuelLevel -= 10
-
+            self.rotationSpeed *= .9
+        else:
+            self.rotationSpeed = 100
         self.kickCounter -= 1
         self.lateralSpeed *= .95
