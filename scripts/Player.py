@@ -6,6 +6,7 @@ class Player:
     def __init__(self, filename):
 
         self.lateralSpeed = 0
+        self.rotationSpeed = 0
         self.location = (512-32, 384-32)
         self.direction = Vector(0, 1)
         self.image = pygame.image.load(filename)
@@ -39,7 +40,6 @@ class Player:
             else:
                 self.imageRotated =0
             self.fuelLevel -= 10
-            Vector.rotate(self.direction, 45)
 
         self.kickCounter -= 1
         self.lateralSpeed *= .9
