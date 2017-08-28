@@ -43,6 +43,8 @@ class Player:
 
         if keys[pygame.K_SPACE] and self.fuelLevel > 0:
             pygame.time.delay (int(self.rotationSpeed))
+
+            #pygame.time.set_timer(spin, self.rotationSpeed)
             if self.imageRotated < 7:
                 self.imageRotated += 1
                 self.direction.setDirection(self.rotationList[self.imageRotated])
@@ -50,7 +52,7 @@ class Player:
                 self.imageRotated =0
                 self.direction.setDirection(self.rotationList[self.imageRotated])
             self.fuelLevel -= 10
-            self.rotationSpeed *= .9
+            self.rotationSpeed *= .95
         else:
             self.rotationSpeed = 100
         self.kickCounter -= 1
