@@ -12,8 +12,8 @@ player = Player("Temp.png")
 #------------------
 fire = PyIgnition.ParticleEffect(screen, (0, 0), (800, 600))
 gravity = fire.CreateDirectedGravity(strength = 0.07, direction = [player.direction.x,player.direction.y]) #here to change gravity direction should be the same as player facing direction
-wind = fire.CreateDirectedGravity(strength = 0.05, direction = [1, 0])
-source = fire.CreateSource((300, 500), initspeed = 2.0, initdirection = 0.0, initspeedrandrange = 1.0, initdirectionrandrange = 0.5, particlesperframe = 10, particlelife = 100, drawtype = PyIgnition.DRAWTYPE_CIRCLE, colour = (255, 255, 255), radius = 3.0)
+wind = fire.CreateDirectedGravity(strength = 0.00, direction = [1, 0])
+source = fire.CreateSource((300, 500), initspeed = 2.0, initdirection = 0.0, initspeedrandrange = 0.5, initdirectionrandrange = 0.5, particlesperframe = 10, particlelife = 100, drawtype = PyIgnition.DRAWTYPE_CIRCLE, colour = (255, 255, 255), radius = 3.0)
 source.CreateParticleKeyframe(10, colour = (200, 200, 220), radius = 4.0)
 source.CreateParticleKeyframe(30, colour = (150, 150, 200), radius = 6.0)
 source.CreateParticleKeyframe(60, colour = (50, 50, 150), radius = 20.0)

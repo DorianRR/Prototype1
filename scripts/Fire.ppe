@@ -6,7 +6,7 @@
 		<pos>(300, 500)</pos>
 		<initspeed>2.000000</initspeed>
 		<initdirection>0.000000</initdirection>
-		<initspeedrandrange>1.000000</initspeedrandrange>
+		<initspeedrandrange>0.500000</initspeedrandrange>
 		<initdirectionrandrange>0.500000</initdirectionrandrange>
 		<particlesperframe>10</particlesperframe>
 		<particlelife>100</particlelife>
@@ -20,36 +20,36 @@
 		</keyframes>
 		<particlekeyframes>
 			<keyframe frame = "10">
-				<radius>4.0</radius>
-				<colour_b>220</colour_b>
+				<colour_g>200</colour_g>
 				<colour_r>200</colour_r>
+				<colour_b>220</colour_b>
+				<radius>4.0</radius>
 				<interpolationtype>linear</interpolationtype>
 				<length>None</length>
-				<colour_g>200</colour_g>
 			</keyframe>
 			<keyframe frame = "30">
-				<radius>6.0</radius>
-				<colour_b>200</colour_b>
+				<colour_g>150</colour_g>
 				<colour_r>150</colour_r>
+				<colour_b>200</colour_b>
+				<radius>6.0</radius>
 				<interpolationtype>linear</interpolationtype>
 				<length>None</length>
-				<colour_g>150</colour_g>
 			</keyframe>
 			<keyframe frame = "60">
-				<radius>20.0</radius>
-				<colour_b>150</colour_b>
+				<colour_g>50</colour_g>
 				<colour_r>50</colour_r>
+				<colour_b>150</colour_b>
+				<radius>20.0</radius>
 				<interpolationtype>linear</interpolationtype>
 				<length>None</length>
-				<colour_g>50</colour_g>
 			</keyframe>
 			<keyframe frame = "80">
-				<radius>50.0</radius>
-				<colour_b>0</colour_b>
+				<colour_g>0</colour_g>
 				<colour_r>0</colour_r>
+				<colour_b>0</colour_b>
+				<radius>50.0</radius>
 				<interpolationtype>linear</interpolationtype>
 				<length>None</length>
-				<colour_g>0</colour_g>
 			</keyframe>
 		</particlekeyframes>
 	</source>
@@ -63,7 +63,7 @@
 	</directedgravity>
 
 	<directedgravity>
-		<strength>0.050000</strength>
+		<strength>0.000000</strength>
 		<strengthrandrange>0.000000</strengthrandrange>
 		<direction>(1.000000, 0.000000)</direction>
 		<keyframes>
@@ -78,15 +78,15 @@
 		<height>20</height>
 		<keyframes>
 			<keyframe frame = "500">
-				<bounce>None</bounce>
-				<width>200</width>
-				<colour_b>None</colour_b>
-				<colour_r>None</colour_r>
-				<height>30</height>
 				<pos_y>250</pos_y>
 				<pos_x>400</pos_x>
-				<interpolationtype>linear</interpolationtype>
+				<colour_r>None</colour_r>
+				<colour_b>None</colour_b>
 				<colour_g>None</colour_g>
+				<height>30</height>
+				<width>200</width>
+				<bounce>None</bounce>
+				<interpolationtype>linear</interpolationtype>
 			</keyframe>
 		</keyframes>
 	</rectangle>
