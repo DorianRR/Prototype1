@@ -52,7 +52,7 @@ class Player:
         self.rect.center = ((self.rect.centerx+(self.lateralSpeed*self.temp_X)), (self.rect.centery+(self.lateralSpeed*self.temp_Y)))
 
         if keys[pygame.K_SPACE] and self.fuelLevel > 0:
-<<<<<<< HEAD
+
             self.delayTimer += .5
             if self.delayTimer%self.delay == 0:
                 self.delayTimer = 0
@@ -67,8 +67,6 @@ class Player:
                 if self.delay <= 1:
                     self.delay = 1
                 self.rotationSpeed *= .9
-=======
-            pygame.time.delay(int(self.rotationSpeed))
 
             #pygame.time.set_timer(spin, self.rotationSpeed)
             if self.imageRotated < 7:
@@ -79,7 +77,7 @@ class Player:
                 self.direction.setDirection(self.rotationList[self.imageRotated])
             self.fuelLevel -= 10
             self.rotationSpeed *= .95
->>>>>>> Dorian
+
         else:
             self.rotationSpeed = 100
             self.delay = 6
