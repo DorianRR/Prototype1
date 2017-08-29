@@ -10,11 +10,10 @@ pygame.display.set_caption("Destructo-Spin!")
 clock = pygame.time.Clock()
 FPS = 60
 #player = Player("PlayerCharacterTemp.png")
-map = pygame.image.load("BgForTest.png")
 #box = DestructibleObject("BoxCollider",(100,100))
 #collidableSprites = pygame.sprite.Group()
 #collidableSprites.add(box)
-level = Level("BgForTest.png")
+level = Level()
 
 #------------------
 fire = PyIgnition.ParticleEffect(screen, (0, 0), (800, 600))
@@ -44,7 +43,8 @@ while True:
     #keep these two lines of code after any screen.blit() bacause we want texts appear above everything#
     screen.blit(uicreate(player)[0], [20, 20])                                                          #
     screen.blit(uicreate(player)[1], [654, 20])
-    screen.blit(map, level.shiftLevel())
+    #screen.blit(map, level.shiftLevel())
+    level.draw(screen)
     fire.Update()
     fire.Redraw()
     player.draw(screen)

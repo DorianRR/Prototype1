@@ -4,8 +4,13 @@ from Player import *
 from DestructibleObject import *
 
 player = Player("PlayerCharacterTemp.png")
-#box = DestructibleObject("BoxCollider", (100, 100))
 
+<<<<<<< HEAD
+
+class Level:
+    def __init__(self):
+        box = DestructibleObject("BoxCollider", (100, 100))
+=======
 class Level:
     def __init__(self, map):
         """
@@ -13,6 +18,7 @@ class Level:
         the map start in the appropriate place, and then use the temp list
         to move the map when the player presses left shift.
         """
+>>>>>>> f4a34aceb4b8c1ab82f129688e1cff5b18a602a2
         self.count = 0
         self.temp = []
 
@@ -34,9 +40,9 @@ class Level:
         self.delayTimer = 0
         self.delay = 6
 
-        #collidableSprites = pygame.sprite.Group()
-        #collidableSprites.add(box)
-        map = pygame.image.load(map)
+        self.collidableSprites = pygame.sprite.Group()
+        self.collidableSprites.add(box)
+        self.map = pygame.image.load("BgForTest.png").convert()
 
 
     """
@@ -52,8 +58,21 @@ class Level:
         else:
             self.temp[0] -= self.cameraOffsetX
             self.temp[1] -= self.cameraOffsetY
+<<<<<<< HEAD
+
+        for item in self.collidableSprites:
+            item.rect.x -= self.cameraOffsetX
+            item.rect.y -= self.cameraOffsetY
         return self.temp
 
+    def shift(self)
+=======
+        return self.temp
+>>>>>>> f4a34aceb4b8c1ab82f129688e1cff5b18a602a2
+
+    def draw(self, screen):
+        screen.blit(self.map, self.shiftLevel())
+        self.collidableSprites.draw(screen)
 
     """
     Logic that makes the player kick off and move, reads in direction from the  player
@@ -67,13 +86,14 @@ class Level:
             self.lateralSpeed += 12
             self.temp_X = player.direction.x
             self.temp_Y = player.direction.y
+            self.cameraOffsetX = (self.lateralSpeed * self.temp_X)
+            self.cameraOffsetY = (self.lateralSpeed * self.temp_Y)
         if self.lateralSpeed < 1.5:
             self.lateralSpeed = 0
-        self.cameraOffsetX = (self.lateralSpeed * self.temp_X)
-        self.cameraOffsetY = (self.lateralSpeed * self.temp_Y)
 
         self.kickCounter -= 1
         self.lateralSpeed *= .95
         player.update()
+        self.collidableSprites.update()
 
 
