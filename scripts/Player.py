@@ -28,7 +28,7 @@ class Player:
         self.count = 0
         self.temp = []
 
-        self.delayTimer = 0
+        self.delayTimer = 5.5
         self.delay = 6
 
     def getPositionOffset(self):
@@ -95,6 +95,6 @@ class Player:
 
         else:
             self.rotationSpeed = 100
-            self.delay = 6
+            self.delay = 5.5
         self.kickCounter -= 1
         self.lateralSpeed *= .95

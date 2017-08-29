@@ -57,12 +57,13 @@ class Level:
         if keys[pygame.K_LSHIFT] and self.kickCounter <= 0:
             self.kickCounter = 30
             self.lateralSpeed += 12
-            self.temp_X = self.direction.x
-            self.temp_Y = self.direction.y
+            self.temp_X = player.direction.x
+            self.temp_Y = player.direction.y
         if self.lateralSpeed < 1.5:
             self.lateralSpeed = 0
         self.cameraOffsetX = (self.lateralSpeed * self.temp_X)
         self.cameraOffsetY = (self.lateralSpeed * self.temp_Y)
+        """
         if keys[pygame.K_SPACE] and self.fuelLevel > 0:
             if self.imageRotated < 7:
                 self.imageRotated += 1
@@ -71,7 +72,7 @@ class Level:
                 self.imageRotated = 0
                 self.direction.setDirection(self.rotationList[self.imageRotated])
             self.fuelLevel -= 10
-
+"""
         self.kickCounter -= 1
         self.lateralSpeed *= .95
         player.update()
