@@ -19,7 +19,7 @@ source.CreateParticleKeyframe(10, colour = (200, 200, 220), radius = 4.0)
 source.CreateParticleKeyframe(30, colour = (190, 190, 200), radius = 6.0)
 source.CreateParticleKeyframe(60, colour = (100, 100, 150), radius = 20.0)
 source.CreateParticleKeyframe(80, colour = (0, 0, 0), radius = 50.0)
-wall_north = fire.CreateBoundaryLine((100, 10), (200, 200, 200), bounce = 0.1)
+rect = fire.CreateRectangle((400, 20), (200, 100, 100), bounce = 0.1, width = 700, height = 10)
 
 
 #fire.SaveToFile("Fire.ppe")
@@ -32,10 +32,11 @@ while True:
              pygame.quit()
              sys.exit()
 
-    player.update()
     screen.fill((0, 0, 0))
     source.SetPos(player.location)
-    source.SetInitDirection(FPS) #still need to calculate from player's direction
+    source.SetInitDirection(player.imageRotated*2*3.14/8)
+     #still need to calculate from player's direction
+    player.update()
     print(player.location)
     #keep these two lines of code after any screen.blit() bacause we want texts appear above everything#
     screen.blit(uicreate(player)[0], [20, 20])                                                          #
