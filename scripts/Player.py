@@ -1,10 +1,10 @@
 import pygame, math
+from obstacles import *
 from Vector import *
 from spriteSheetToList import *
 
 class Player:
     def __init__(self, filename):
-
         self.lateralSpeed = 0
         self.rotationSpeed = 100
         self.location = (512-32, 384-32)
@@ -28,7 +28,6 @@ class Player:
         screen.blit(self.image[self.imageRotated], self.rect)
 
     def update(self):
-
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LSHIFT] and self.kickCounter <= 0:
             self.kickCounter = 30
