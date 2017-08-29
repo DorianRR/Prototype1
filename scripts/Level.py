@@ -8,28 +8,29 @@ player = Player("PlayerCharacterTemp.png")
 
 class Level:
     def __init__(self, map):
-
+        """
+        Count and temp are used in the shift level method, where count makes
+        the map start in the appropriate place, and then use the temp list
+        to move the map when the player presses left shift.
+        """
         self.count = 0
         self.temp = []
+
+
         self.lateralSpeed = 0
         self.direction = Vector(0, -1)
-
         self.temp_X = 0
         self.temp_Y = 0
 
-        sqrt2 = math.sqrt(2) / 2
-        self.rotationList = [(0, -1), (sqrt2, -sqrt2), (1, 0), (sqrt2, sqrt2), (0, 1), (-sqrt2, sqrt2), (-1, 0),
-                             (-sqrt2, -sqrt2)]
-        self.rotateCounter = 0
-        self.fuelLevel = 3000
-        self.imageRotated = 0
         self.kickCounter = 0
         self.MoneyDamage = 0
         self.cameraOffsetX = 0
         self.cameraOffsetY = 0
-        self.count = 0
-        self.temp = []
 
+
+        """
+        Timer information used to make the player spool up their rotation
+        """
         self.delayTimer = 0
         self.delay = 6
 
@@ -37,20 +38,28 @@ class Level:
         #collidableSprites.add(box)
         map = pygame.image.load(map)
 
+
+    """
+    Shift level is called in main and moves the screen with the player. Will also
+    be used to move all other colliding objectrs. Called each frame.
+    """
     def shiftLevel(self):
         if self.count == 0:
-            self.temp = [544, 352]
+            self.temp = [512, 380]
             self.temp[0] -= 512
             self.temp[1] -= 384
             self.count = 1
-            return self.temp
         else:
             self.temp[0] -= self.cameraOffsetX
             self.temp[1] -= self.cameraOffsetY
-            return self.temp
+        return self.temp
 
 
-
+    """
+    Logic that makes the player kick off and move, reads in direction from the  player
+    class. Camera offset is set in the update method and that information will be
+    used to move all of the colliding objects.
+    """
     def update(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LSHIFT] and self.kickCounter <= 0:
