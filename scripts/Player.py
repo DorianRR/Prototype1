@@ -81,7 +81,6 @@ class Player:
                     self.delay = 1
                 self.rotationSpeed *= .9
 
-            #pygame.time.set_timer(spin, self.rotationSpeed)
             """
             if self.imageRotated < 7:
                 self.imageRotated += 1
