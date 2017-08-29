@@ -47,5 +47,7 @@ while True:
     screen.blit(map, player.getPositionOffset())
     fire.Update()
     fire.Redraw()
+    player.draw(screen)
+    #collidableSprites.draw(screen)
     clock.tick(FPS)
     pygame.display.flip()
