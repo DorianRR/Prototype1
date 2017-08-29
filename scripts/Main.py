@@ -11,7 +11,9 @@ FPS = 60
 
 player = Player("PlayerCharacterTemp.png")
 map = pygame.image.load("BgForTest.png")
-box = DestructibleObject(BoxCollider,[100,100])
+box = DestructibleObject("BoxCollider",(100,100))
+collidableSprites = pygame.sprite.Group()
+collidableSprites.add(box)
 
 #------------------
 fire = PyIgnition.ParticleEffect(screen, (0, 0), (800, 600))
@@ -22,8 +24,8 @@ source = fire.CreateSource((300, 500), initspeed = 3.0, initdirection = 3.140, i
 source.CreateParticleKeyframe(10, colour = (200, 200, 220), radius = 4.0)
 source.CreateParticleKeyframe(30, colour = (190, 190, 200), radius = 6.0)
 source.CreateParticleKeyframe(60, colour = (100, 100, 150), radius = 20.0)
-source.CreateParticleKeyframe(80, colour = (0, 0, 0), radius = 50.0)
-wall_north = fire.CreateBoundaryLine((100, 10), (200, 200, 200), bounce = 0.1)
+#source.CreateParticleKeyframe(80, colour = (0, 0, 0), radius = 50.0)
+#wall_north = fire.CreateBoundaryLine((100, 10), (200, 200, 200), bounce = 0.1)
 
 
 #fire.SaveToFile("Fire.ppe")
@@ -44,6 +46,7 @@ while True:
     screen.blit(uicreate(player)[0], [20, 20])                                                          #
     screen.blit(uicreate(player)[1], [654, 20])
     screen.blit(map, player.getPositionOffset())
+    collidableSprites.draw(screen)
 
     #screen.blit(map, [0,0])
     player.draw(screen)
