@@ -24,6 +24,13 @@ class Player:
         self.fuelLevel = 3000
         self.MoneyDamage = 0
 
+    def getPositionOffset(self):
+        temp = list(self.rect.center)
+        print(temp)
+        temp[0] -= 512
+        temp[1] -= 384
+        return temp
+
     def draw(self, screen):
         screen.blit(self.image[self.imageRotated], self.rect)
 
@@ -42,7 +49,7 @@ class Player:
         self.rect.center = ((self.rect.centerx+(self.lateralSpeed*self.temp_X)), (self.rect.centery+(self.lateralSpeed*self.temp_Y)))
 
         if keys[pygame.K_SPACE] and self.fuelLevel > 0:
-            pygame.time.delay (int(self.rotationSpeed))
+            pygame.time.delay(int(self.rotationSpeed))
 
             #pygame.time.set_timer(spin, self.rotationSpeed)
             if self.imageRotated < 7:

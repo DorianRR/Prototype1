@@ -1,6 +1,7 @@
 import PyIgnition,pygame, math, sys
 from Player import *
 from SimpleUI import *
+
 pygame.init()
 screen = pygame.display.set_mode((1024, 768))
 pygame.display.set_caption("Destructo-Spin!")
@@ -8,6 +9,8 @@ clock = pygame.time.Clock()
 FPS = 60
 
 player = Player("PlayerCharacterTemp.png")
+map = pygame.image.load("BgForTest.png")
+
 
 #------------------
 fire = PyIgnition.ParticleEffect(screen, (0, 0), (800, 600))
@@ -36,7 +39,9 @@ while True:
     source.SetPos(player.location)
     #keep these two lines of code after any screen.blit() bacause we want texts appear above everything#
     screen.blit(uicreate(player)[0], [20, 20])                                                          #
-    screen.blit(uicreate(player)[1], [654, 20])                                                         #
+    screen.blit(uicreate(player)[1], [654, 20])
+    screen.blit(map, player.getPositionOffset())
+    #screen.blit(map, [0,0])
     player.draw(screen)
     fire.Update()
     fire.Redraw()
