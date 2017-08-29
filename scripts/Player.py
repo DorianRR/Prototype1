@@ -57,14 +57,11 @@ class Player:
             self.temp_Y = self.direction.y
         if self.lateralSpeed < 1.5:
             self.lateralSpeed = 0
-<<<<<<< HEAD
         self.cameraOffsetX = (self.lateralSpeed * self.temp_X)
         self.cameraOffsetY = (self.lateralSpeed * self.temp_Y)
         #self.rect.center = ((self.rect.centerx+(self.lateralSpeed*self.temp_X)), (self.rect.centery+(self.lateralSpeed*self.temp_Y)))
-=======
-        self.rect.center = ((self.rect.centerx+(self.lateralSpeed*self.temp_X)), (self.rect.centery+(self.lateralSpeed*self.temp_Y)))
+        #self.rect.center = ((self.rect.centerx+(self.lateralSpeed*self.temp_X)), (self.rect.centery+(self.lateralSpeed*self.temp_Y)))
         self.location = [self.rect.centerx,self.rect.centery]
->>>>>>> Particle-implementation
 
         if keys[pygame.K_SPACE] and self.fuelLevel > 0:
 
