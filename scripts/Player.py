@@ -27,8 +27,6 @@ class Player:
     def draw(self, screen):
         screen.blit(self.image[self.imageRotated], self.rect)
 
-
-
     def update(self):
 
         keys = pygame.key.get_pressed()
