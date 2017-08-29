@@ -1,5 +1,6 @@
 import PyIgnition,pygame, math, sys
 from Player import *
+from DestructibleObject import *
 from SimpleUI import *
 
 pygame.init()
@@ -10,7 +11,7 @@ FPS = 60
 
 player = Player("PlayerCharacterTemp.png")
 map = pygame.image.load("BgForTest.png")
-
+box = DestructibleObject(BoxCollider,[100,100])
 
 #------------------
 fire = PyIgnition.ParticleEffect(screen, (0, 0), (800, 600))
