@@ -23,6 +23,7 @@ class Player:
         self.rotateCounter = 0
         self.fuelLevel = 3000
         self.MoneyDamage = 0
+        self.cameraOffset
 
     def getPositionOffset(self):
         temp = list(self.rect.center)
@@ -46,6 +47,7 @@ class Player:
             self.temp_Y = self.direction.y
         if self.lateralSpeed < 1.5:
             self.lateralSpeed = 0
+        self.cameraOffset =[(self.lateralSpeed * self.temp_X), (self.lateralSpeed * self.temp_Y)]
         self.rect.center = ((self.rect.centerx+(self.lateralSpeed*self.temp_X)), (self.rect.centery+(self.lateralSpeed*self.temp_Y)))
 
         if keys[pygame.K_SPACE] and self.fuelLevel > 0:
