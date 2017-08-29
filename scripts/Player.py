@@ -23,17 +23,29 @@ class Player:
         self.rotateCounter = 0
         self.fuelLevel = 3000
         self.MoneyDamage = 0
-        self.cameraOffset
-
-    def getPositionOffset(self):
-        temp = list(self.rect.center)
-        print(temp)
-        temp[0] -= 512
-        temp[1] -= 384
-        return temp
+        self.cameraOffsetX = 0
+        self.cameraOffsetY = 0
+        self.count = 0
+        self.temp = []
 
         self.delayTimer = 0
         self.delay = 6
+
+    def getPositionOffset(self):
+        if self.count == 0:
+            self.temp = list(self.rect.center)
+            self.temp[0] -= 512
+            self.temp[1] -= 384
+            self.count = 1
+            return self.temp
+        else:
+            
+            self.temp[0] -= self.cameraOffsetX
+            self.temp[1] -= self.cameraOffsetY
+
+            return self.temp
+
+
 
     def draw(self, screen):
         screen.blit(self.image[self.imageRotated], self.rect)
@@ -48,8 +60,9 @@ class Player:
             self.temp_Y = self.direction.y
         if self.lateralSpeed < 1.5:
             self.lateralSpeed = 0
-        self.cameraOffset =[(self.lateralSpeed * self.temp_X), (self.lateralSpeed * self.temp_Y)]
-        self.rect.center = ((self.rect.centerx+(self.lateralSpeed*self.temp_X)), (self.rect.centery+(self.lateralSpeed*self.temp_Y)))
+        self.cameraOffsetX = (self.lateralSpeed * self.temp_X)
+        self.cameraOffsetY = (self.lateralSpeed * self.temp_Y)
+        #self.rect.center = ((self.rect.centerx+(self.lateralSpeed*self.temp_X)), (self.rect.centery+(self.lateralSpeed*self.temp_Y)))
 
         if keys[pygame.K_SPACE] and self.fuelLevel > 0:
 
