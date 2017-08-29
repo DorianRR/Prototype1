@@ -17,6 +17,12 @@ class Level:
         self.temp_X = 0
         self.temp_Y = 0
 
+        sqrt2 = math.sqrt(2) / 2
+        self.rotationList = [(0, -1), (sqrt2, -sqrt2), (1, 0), (sqrt2, sqrt2), (0, 1), (-sqrt2, sqrt2), (-1, 0),
+                             (-sqrt2, -sqrt2)]
+        self.rotateCounter = 0
+        self.fuelLevel = 3000
+        self.imageRotated = 0
         #self.rect.center = (512, 384)
         self.kickCounter = 0
         self.MoneyDamage = 0
@@ -45,6 +51,7 @@ class Level:
             return self.temp
 
 
+
     def update(self):
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LSHIFT] and self.kickCounter <= 0:
@@ -56,7 +63,14 @@ class Level:
             self.lateralSpeed = 0
         self.cameraOffsetX = (self.lateralSpeed * self.temp_X)
         self.cameraOffsetY = (self.lateralSpeed * self.temp_Y)
-       #self.rect.center = ((self.rect.centerx+(self.lateralSpeed*self.temp_X)), (self.rect.centery+(self.lateralSpeed*self.temp_Y)))
+        if keys[pygame.K_SPACE] and self.fuelLevel > 0:
+            if self.imageRotated < 7:
+                self.imageRotated += 1
+                self.direction.setDirection(self.rotationList[self.imageRotated])
+            else:
+                self.imageRotated = 0
+                self.direction.setDirection(self.rotationList[self.imageRotated])
+            self.fuelLevel -= 10
 
         self.kickCounter -= 1
         self.lateralSpeed *= .95

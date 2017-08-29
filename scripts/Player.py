@@ -50,6 +50,7 @@ class Player:
 
     def update(self):
         keys = pygame.key.get_pressed()
+        """
         if keys[pygame.K_LSHIFT] and self.kickCounter <= 0:
             self.kickCounter = 30
             self.lateralSpeed += 12
@@ -62,7 +63,7 @@ class Player:
         #self.rect.center = ((self.rect.centerx+(self.lateralSpeed*self.temp_X)), (self.rect.centery+(self.lateralSpeed*self.temp_Y)))
         #self.rect.center = ((self.rect.centerx+(self.lateralSpeed*self.temp_X)), (self.rect.centery+(self.lateralSpeed*self.temp_Y)))
         self.location = [self.rect.centerx,self.rect.centery]
-
+        """
         if keys[pygame.K_SPACE] and self.fuelLevel > 0:
 
             self.delayTimer += .5
@@ -81,6 +82,7 @@ class Player:
                 self.rotationSpeed *= .9
 
             #pygame.time.set_timer(spin, self.rotationSpeed)
+            """
             if self.imageRotated < 7:
                 self.imageRotated += 1
                 self.direction.setDirection(self.rotationList[self.imageRotated])
@@ -88,7 +90,9 @@ class Player:
                 self.imageRotated =0
                 self.direction.setDirection(self.rotationList[self.imageRotated])
             self.fuelLevel -= 10
+            """
             self.rotationSpeed *= .95
+
 
         else:
             self.rotationSpeed = 100
