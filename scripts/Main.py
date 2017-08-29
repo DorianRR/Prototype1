@@ -39,11 +39,11 @@ while True:
     screen.fill((0, 0, 0))
     source.SetPos(player.location)
     source.SetInitDirection(FPS) #still need to calculate from player's direction
-    print(player.location)
     #keep these two lines of code after any screen.blit() bacause we want texts appear above everything#
     screen.blit(uicreate(player)[0], [20, 20])                                                          #
     screen.blit(uicreate(player)[1], [654, 20])
     screen.blit(map, player.getPositionOffset())
+
     #screen.blit(map, [0,0])
     player.draw(screen)
     fire.Update()

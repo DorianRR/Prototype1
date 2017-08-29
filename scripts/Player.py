@@ -39,10 +39,8 @@ class Player:
             self.count = 1
             return self.temp
         else:
-            
             self.temp[0] -= self.cameraOffsetX
             self.temp[1] -= self.cameraOffsetY
-
             return self.temp
 
 
