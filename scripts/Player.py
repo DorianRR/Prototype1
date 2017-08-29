@@ -24,6 +24,9 @@ class Player:
         self.fuelLevel = 3000
         self.MoneyDamage = 0
 
+        self.delayTimer = 0
+        self.delay = 6
+
     def draw(self, screen):
         screen.blit(self.image[self.imageRotated], self.rect)
 
@@ -40,16 +43,22 @@ class Player:
         self.rect.center = ((self.rect.centerx+(self.lateralSpeed*self.temp_X)), (self.rect.centery+(self.lateralSpeed*self.temp_Y)))
 
         if keys[pygame.K_SPACE] and self.fuelLevel > 0:
-            pygame.time.delay (int(self.rotationSpeed))
-            if self.imageRotated < 7:
-                self.imageRotated += 1
-                self.direction.setDirection(self.rotationList[self.imageRotated])
-            else:
-                self.imageRotated =0
-                self.direction.setDirection(self.rotationList[self.imageRotated])
-            self.fuelLevel -= 10
-            self.rotationSpeed *= .9
+            self.delayTimer += .5
+            if self.delayTimer%self.delay == 0:
+                self.delayTimer = 0
+                if self.imageRotated < 7:
+                    self.imageRotated += 1
+                    self.direction.setDirection(self.rotationList[self.imageRotated])
+                else:
+                    self.imageRotated =0
+                    self.direction.setDirection(self.rotationList[self.imageRotated])
+                self.fuelLevel -= 10
+                self.delay -= 1
+                if self.delay <= 1:
+                    self.delay = 1
+                self.rotationSpeed *= .9
         else:
             self.rotationSpeed = 100
+            self.delay = 6
         self.kickCounter -= 1
         self.lateralSpeed *= .95
