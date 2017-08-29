@@ -1,10 +1,10 @@
 import pygame, math
+from obstacles import *
 from Vector import *
 from spriteSheetToList import *
 
 class Player:
     def __init__(self, filename):
-
         self.lateralSpeed = 0
         self.rotationSpeed = 100
         self.location = (512-32, 384-32)
@@ -49,7 +49,6 @@ class Player:
         screen.blit(self.image[self.imageRotated], self.rect)
 
     def update(self):
-
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LSHIFT] and self.kickCounter <= 0:
             self.kickCounter = 30
@@ -58,9 +57,14 @@ class Player:
             self.temp_Y = self.direction.y
         if self.lateralSpeed < 1.5:
             self.lateralSpeed = 0
+<<<<<<< HEAD
         self.cameraOffsetX = (self.lateralSpeed * self.temp_X)
         self.cameraOffsetY = (self.lateralSpeed * self.temp_Y)
         #self.rect.center = ((self.rect.centerx+(self.lateralSpeed*self.temp_X)), (self.rect.centery+(self.lateralSpeed*self.temp_Y)))
+=======
+        self.rect.center = ((self.rect.centerx+(self.lateralSpeed*self.temp_X)), (self.rect.centery+(self.lateralSpeed*self.temp_Y)))
+        self.location = [self.rect.centerx,self.rect.centery]
+>>>>>>> Particle-implementation
 
         if keys[pygame.K_SPACE] and self.fuelLevel > 0:
 

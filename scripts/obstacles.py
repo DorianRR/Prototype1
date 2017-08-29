@@ -33,7 +33,7 @@ def normalise(vec):
 	return [vec[0] / mag, vec[1] / mag]
 
 
-class Obstacle:
+class Obstacle():
 	def __init__(self, parenteffect, pos, colour, bounce):
 		self.parenteffect = parenteffect
 		self.pos = pos
