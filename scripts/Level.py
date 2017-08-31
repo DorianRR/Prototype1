@@ -39,8 +39,8 @@ class Level:
         player.update()
         self.collidableSprites.update()
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_SPACE] :
-            self.lateralSpeed += .3
+        if keys[pygame.K_SPACE]:
+            self.lateralSpeed += .5
         if self.lateralSpeed < .2:
             self.lateralSpeed = 0
         if pygame.sprite.spritecollide(player, self.collidableSprites, False):
