@@ -38,6 +38,7 @@ while True:
     source.SetPos(player.location)
     #source.SetInitDirection(FPS) #still need to calculate from player's direction
     source.SetInitDirection(player.imageRotated*2*math.pi/8)
+    player.update()
     level.update()
      #still need to calculate from player's direction
     #screen.blit(map, level.shiftLevel())
@@ -51,3 +52,23 @@ while True:
     screen.blit(uicreate(player)[1], [654, 20])
     clock.tick(FPS)
     pygame.display.flip()
+
+    #    for event in pygame.event.get():
+     #    if event.type == pygame.QUIT:
+     #        pygame.quit()
+     #        sys.exit()
+
+    #screen.fill((0, 0, 0))
+    #source.SetPos(player.location)
+    #source.SetInitDirection(player.imageRotated*2*3.14/8)
+    #player.update()
+     #still need to calculate from player's direction
+    #keep these two lines of code after any screen.blit() bacause we want texts appear above everything#
+    #screen.blit(uicreate(player)[0], [20, 20])                                                          #
+    #screen.blit(uicreate(player)[1], [654, 20])                                                         #
+    #player.draw(screen)
+    #fire.Update()
+    #fire.Redraw()
+    #clock.tick(FPS)
+    #pygame.display.flip()--
+
