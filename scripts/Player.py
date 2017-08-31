@@ -5,8 +5,7 @@ from spriteSheetToList import *
 
 class Player:
     def __init__(self, filename):
-        self.lateralSpeed = 0
-        self.rotationSpeed = 100
+
         self.location = (512-32, 384-32)
         self.direction = Vector(0, -1)
         self.image = pygame.image.load(filename)
@@ -49,33 +48,15 @@ class Player:
         screen.blit(self.image[self.imageRotated], self.rect)
 
     def update(self):
+        sqrt2 = math.sqrt(2) / 2
         keys = pygame.key.get_pressed()
         if self.fuelLevel > 0:
             mouse_v = pygame.math.Vector2(pygame.mouse.get_pos())
             mouse_v += (pygame.math.Vector2(-512,-384))
             mouse_v = pygame.math.Vector2.normalize(mouse_v)
             self.direction.setDirection(mouse_v)
-            """
-            self.delayTimer += .5
-            if self.delayTimer%self.delay == 0:
-                self.delayTimer = 0
-                if self.imageRotated < 7:
-                    self.imageRotated += 1
-                    self.direction.setDirection(self.rotationList[self.imageRotated])
-                else:
-                    self.imageRotated =0
-                    self.direction.setDirection(self.rotationList[self.imageRotated])
-                self.fuelLevel -= 10
-                self.delay -= 1
-                if self.delay <= 1:
-                    self.delay = 1
-                self.rotationSpeed *= .9
-            self.rotationSpeed *= .95
-            
-
-        else:
-            self.rotationSpeed = 100
-            self.delay = 5.5
-        self.kickCounter -= 1
-        self.lateralSpeed *= .95
-        """
+            count = 0
+            for angle in self.rotationList:
+                if (abs(mouse_v[0] - angle[0]) < 0.2) and (abs(mouse_v[1] - angle[1]) < .2):
+                    self.imageRotated = count
+                count += 1
