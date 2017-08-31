@@ -9,13 +9,15 @@ class DestructibleObject(pygame.sprite.Sprite):
         #self.destroyed = pygame.image.load("../images/" + image + "Destroyed.png").convert_alpha()
         
         self.rect = self.image.get_rect()
-        self.rect.topleft = position
+        self.rect.center = position
 
         self.mask = pygame.mask.from_surface(self.image)
         #self.destroyedMask = pygame.mask.from_surface(self.destroyed)
         self.switch  = False
         self.collided = False
 
+    def draw(self, screen):
+        screen.blit(self.image, self.rect)
     def update(self):
         if self.switch and not self.collided:
             self.collided = True

@@ -8,6 +8,8 @@ class Level:
     def __init__(self):
 
         box = DestructibleObject("BoxCollider", (100,100))
+        box2 = DestructibleObject("BoxCollider", (250,250))
+        box3 = DestructibleObject("BoxCollider", (350,350))
         self.lateralSpeed = 0
 
         self.temp_X = 0
@@ -19,17 +21,10 @@ class Level:
 
         self.collidableSprites = pygame.sprite.Group()
         self.collidableSprites.add(box)
-        self.map = pygame.image.load("BgForTest.png").convert()
+        self.collidableSprites.add(box2)
+        self.collidableSprites.add(box3)
+        self.map = pygame.image.load("../images/MapBlockout.png").convert()
         self.mapRect = self.map.get_rect()
-
-    def shiftLevel(self):
-
-        self.mapRect.x -= self.cameraOffsetX
-        self.mapRect.y -= self.cameraOffsetY
-        for item in self.collidableSprites:
-            item.rect.x -= self.cameraOffsetX
-            item.rect.y -= self.cameraOffsetY
-
 
     def draw(self, screen):
         screen.blit(self.map, self.mapRect)
@@ -47,10 +42,12 @@ class Level:
             player.direction.x = -player.direction.x
             player.direction.y = -player.direction.y
         self.cameraOffsetX = (self.lateralSpeed * player.direction.x)
-        self.cameraOffsetY = (self.lateralSpeed * player.direction.y)
-
+        self.cameraOffsetY =  (self.lateralSpeed * player.direction.y)
+        player.rect.x += self.cameraOffsetX
+        player.rect.y += self.cameraOffsetY
         self.lateralSpeed *= .95
-        self.shiftLevel()
+        
+        #self.shiftLevel()
         
 
 
