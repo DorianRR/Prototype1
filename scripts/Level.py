@@ -1,5 +1,4 @@
 import pygame, math
-from Vector import *
 from Player import *
 from DestructibleObject import *
 
@@ -41,18 +40,16 @@ class Level:
         self.collidableSprites.update()
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE] :
-            self.lateralSpeed += .51
-            self.temp_X = player.direction.x
-            self.temp_Y = player.direction.y
-        if self.lateralSpeed < .5:
+            self.lateralSpeed += .3
+        if self.lateralSpeed < .2:
             self.lateralSpeed = 0
         if pygame.sprite.spritecollide(player, self.collidableSprites, False):
-            self.temp_X = -self.temp_X
-            self.temp_Y = -self.temp_Y
-        self.cameraOffsetX = (self.lateralSpeed * self.temp_X)
-        self.cameraOffsetY = (self.lateralSpeed * self.temp_Y)
+            player.direction.x = -player.direction.x
+            player.direction.y = -player.direction.y
+        self.cameraOffsetX = (self.lateralSpeed * player.direction.x)
+        self.cameraOffsetY = (self.lateralSpeed * player.direction.y)
 
-        self.lateralSpeed *= .97
+        self.lateralSpeed *= .95
         self.shiftLevel()
         
 

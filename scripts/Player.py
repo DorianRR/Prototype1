@@ -1,6 +1,5 @@
 import pygame, math
 from obstacles import *
-from Vector import *
 from spriteSheetToList import *
 
 class Player:
