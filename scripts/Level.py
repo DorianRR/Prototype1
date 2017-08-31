@@ -14,7 +14,6 @@ class Level:
         self.temp_X = 0
         self.temp_Y = 0
 
-        self.kickCounter = 0
         self.MoneyDamage = 0
         self.cameraOffsetX = 0
         self.cameraOffsetY = 0
@@ -41,12 +40,11 @@ class Level:
         player.update()
         self.collidableSprites.update()
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LCTRL] and self.kickCounter <= 0:
-            self.kickCounter = 30
-            self.lateralSpeed += 12
+        if keys[pygame.K_SPACE] :
+            self.lateralSpeed += .51
             self.temp_X = player.direction.x
             self.temp_Y = player.direction.y
-        if self.lateralSpeed < 1.5:
+        if self.lateralSpeed < .5:
             self.lateralSpeed = 0
         if pygame.sprite.spritecollide(player, self.collidableSprites, False):
             self.temp_X = -self.temp_X
@@ -54,8 +52,7 @@ class Level:
         self.cameraOffsetX = (self.lateralSpeed * self.temp_X)
         self.cameraOffsetY = (self.lateralSpeed * self.temp_Y)
 
-        self.kickCounter -= 1
-        self.lateralSpeed *= .95
+        self.lateralSpeed *= .97
         self.shiftLevel()
         
 

@@ -7,7 +7,7 @@ class Player:
     def __init__(self, filename):
 
         self.location = (512-32, 384-32)
-        self.direction = Vector(0, -1)
+        self.direction = pygame.math.Vector2(0, -1)
         self.image = pygame.image.load(filename)
         self.image = spriteSheetToList(self.image, 8)
         self.rect = self.image[0].get_rect()
@@ -46,7 +46,7 @@ class Player:
             mouse_v = pygame.math.Vector2(pygame.mouse.get_pos())
             mouse_v += (pygame.math.Vector2(-512,-384))
             mouse_v = pygame.math.Vector2.normalize(mouse_v)
-            self.direction.setDirection(mouse_v)
+            self.direction = (mouse_v)
             count = 0
             for angle in self.rotationList:
                 if (abs(mouse_v[0] - angle[0]) < 0.2) and (abs(mouse_v[1] - angle[1]) < .2):
