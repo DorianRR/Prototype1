@@ -16,7 +16,7 @@ source = fire.CreateSource((300, 500), initspeed = 3.0, initdirection = 3.140, i
 source.CreateParticleKeyframe(10, colour = (200, 200, 220), radius = 4.0)
 source.CreateParticleKeyframe(30, colour = (190, 190, 200), radius = 6.0)
 source.CreateParticleKeyframe(60, colour = (100, 100, 150), radius = 20.0)
-source.CreateParticleKeyframe(80, colour = (0, 0, 0), radius = 50.0)
+#source.CreateParticleKeyframe(80, colour = (0, 0, 0), radius = 50.0)
 #wall_north = fire.CreateRectangle((450, 20), (200, 100, 100), bounce = 0.3, width = 1200, height = 10)
 #wall_south = fire.CreateRectangle((450, 750), (200, 100, 100), bounce = 0.3, width = 1200, height = 10)
 #computer = fire.CreateCircle((200,200),(200,200,200),bounce= 0.05,radius= 50)
