@@ -40,14 +40,14 @@ while True:
     source.SetInitDirection(player.imageRotated*2*math.pi/8)
     level.update()
      #still need to calculate from player's direction
-    #keep these two lines of code after any screen.blit() bacause we want texts appear above everything#
-    screen.blit(uicreate(player)[0], [20, 20])                                                          #
-    screen.blit(uicreate(player)[1], [654, 20])
     #screen.blit(map, level.shiftLevel())
     level.draw(screen)
     fire.Update()
     fire.Redraw()
     player.draw(screen)
     #collidableSprites.draw(screen)
+    #keep these two lines of code after any screen.blit() bacause we want texts appear above everything#
+    screen.blit(uicreate(player)[0], [20, 20])                                                          #
+    screen.blit(uicreate(player)[1], [654, 20])
     clock.tick(FPS)
     pygame.display.flip()
