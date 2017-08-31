@@ -22,19 +22,6 @@ class Player:
         self.delayTimer = 5.5
         self.delay = 6
 
-    def getPositionOffset(self):
-        if self.count == 0:
-            self.temp = list(self.rect.center)
-            self.temp[0] -= 512
-            self.temp[1] -= 384
-            self.count = 1
-            return self.temp
-        else:
-            self.temp[0] -= self.cameraOffsetX
-            self.temp[1] -= self.cameraOffsetY
-            return self.temp
-
-
 
     def draw(self, screen):
         screen.blit(self.image[self.imageRotated], self.rect)
@@ -46,6 +33,7 @@ class Player:
             mouse_v += (pygame.math.Vector2(-512,-384))
             mouse_v = pygame.math.Vector2.normalize(mouse_v)
             self.direction = (mouse_v)
+            #print(mouse_v)
             count = 0
             for angle in self.rotationList:
                 if (abs(mouse_v[0] - angle[0]) < 0.2) and (abs(mouse_v[1] - angle[1]) < .2):
