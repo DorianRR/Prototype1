@@ -52,6 +52,7 @@ class Player:
         keys = pygame.key.get_pressed()
         if self.fuelLevel > 0:
             mouse_v = pygame.math.Vector2(pygame.mouse.get_pos())
+            mouse_v += (pygame.math.Vector2(-512,-384))
             mouse_v = pygame.math.Vector2.normalize(mouse_v)
             self.direction.setDirection(mouse_v)
             """
