@@ -5,7 +5,7 @@ from SimpleUI import *
 from Level import *
 
 pygame.init()
-screen = pygame.display.set_mode((1024, 768))
+screen = pygame.display.set_mode((1920, 1080),pygame.FULLSCREEN)
 pygame.display.set_caption("Destructo-Spin!")
 clock = pygame.time.Clock()
 FPS = 60
