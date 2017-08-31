@@ -7,39 +7,22 @@ player = Player("PlayerCharacterTemp.png")
 
 class Level:
     def __init__(self):
-        """
-        Count and temp are used in the shift level method, where count makes
-        the map start in the appropriate place, and then use the temp list
-        to move the map when the player presses left shift.
-        """
+
         box = DestructibleObject("BoxCollider", (100,100))
-        self.count = 0
-        self.temp = []
         self.lateralSpeed = 0
-        self.direction = Vector(0, -1)
 
         self.temp_X = 0
         self.temp_Y = 0
 
-        sqrt2 = math.sqrt(2) / 2
-        self.rotationList = [(0, -1), (sqrt2, -sqrt2), (1, 0), (sqrt2, sqrt2), (0, 1), (-sqrt2, sqrt2), (-1, 0),
-                             (-sqrt2, -sqrt2)]
-        self.rotateCounter = 0
-        self.fuelLevel = 3000
-        self.imageRotated = 0
         self.kickCounter = 0
         self.MoneyDamage = 0
         self.cameraOffsetX = 0
         self.cameraOffsetY = 0
 
-        self.delayTimer = 0
-        self.delay = 6
-
         self.collidableSprites = pygame.sprite.Group()
         self.collidableSprites.add(box)
         self.map = pygame.image.load("BgForTest.png").convert()
         self.mapRect = self.map.get_rect()
-        self.mapRect.topleft = (0,0)
 
     def shiftLevel(self):
 
