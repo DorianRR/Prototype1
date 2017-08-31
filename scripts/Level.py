@@ -13,6 +13,10 @@ class Level:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> parent of ca24a82... update
 =======
 =======
 >>>>>>> parent of ca24a82... update
@@ -28,8 +32,12 @@ class Level:
         """
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 4c5817def192865c9fc2d80c2db237b0f19c7033
+=======
+>>>>>>> f4a34aceb4b8c1ab82f129688e1cff5b18a602a2
+>>>>>>> parent of ca24a82... update
 =======
 >>>>>>> f4a34aceb4b8c1ab82f129688e1cff5b18a602a2
 >>>>>>> parent of ca24a82... update
@@ -86,10 +94,14 @@ class Level:
         return self.temp
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     def shiftWorld(self):
         pass
 >>>>>>> 4c5817def192865c9fc2d80c2db237b0f19c7033
+=======
+>>>>>>> f4a34aceb4b8c1ab82f129688e1cff5b18a602a2
+>>>>>>> parent of ca24a82... update
 =======
 >>>>>>> f4a34aceb4b8c1ab82f129688e1cff5b18a602a2
 >>>>>>> parent of ca24a82... update
