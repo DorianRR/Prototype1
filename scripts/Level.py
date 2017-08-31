@@ -5,45 +5,14 @@ from DestructibleObject import *
 
 player = Player("PlayerCharacterTemp.png")
 
-<<<<<<< HEAD
-
 class Level:
     def __init__(self):
-        box = DestructibleObject("BoxCollider", (100, 100))
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-=======
->>>>>>> parent of ca24a82... update
-=======
-=======
->>>>>>> parent of ca24a82... update
-=======
-=======
->>>>>>> parent of ca24a82... update
-class Level:
-    def __init__(self, map):
         """
         Count and temp are used in the shift level method, where count makes
         the map start in the appropriate place, and then use the temp list
         to move the map when the player presses left shift.
         """
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 4c5817def192865c9fc2d80c2db237b0f19c7033
-=======
->>>>>>> f4a34aceb4b8c1ab82f129688e1cff5b18a602a2
->>>>>>> parent of ca24a82... update
-=======
->>>>>>> f4a34aceb4b8c1ab82f129688e1cff5b18a602a2
->>>>>>> parent of ca24a82... update
-=======
->>>>>>> f4a34aceb4b8c1ab82f129688e1cff5b18a602a2
->>>>>>> parent of ca24a82... update
+        box = DestructibleObject("BoxCollider", (100,100))
         self.count = 0
         self.temp = []
         self.lateralSpeed = 0
@@ -81,33 +50,11 @@ class Level:
         else:
             self.temp[0] -= self.cameraOffsetX
             self.temp[1] -= self.cameraOffsetY
-<<<<<<< HEAD
 
         for item in self.collidableSprites:
             item.rect.x -= self.cameraOffsetX
             item.rect.y -= self.cameraOffsetY
         return self.temp
-
-<<<<<<< HEAD
-    def shift(self)
-=======
-        return self.temp
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    def shiftWorld(self):
-        pass
->>>>>>> 4c5817def192865c9fc2d80c2db237b0f19c7033
-=======
->>>>>>> f4a34aceb4b8c1ab82f129688e1cff5b18a602a2
->>>>>>> parent of ca24a82... update
-=======
->>>>>>> f4a34aceb4b8c1ab82f129688e1cff5b18a602a2
->>>>>>> parent of ca24a82... update
-=======
->>>>>>> f4a34aceb4b8c1ab82f129688e1cff5b18a602a2
->>>>>>> parent of ca24a82... update
 
     def draw(self, screen):
         screen.blit(self.map, self.shiftLevel())
