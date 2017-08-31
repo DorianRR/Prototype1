@@ -40,42 +40,46 @@ class Level:
         self.collidableSprites = pygame.sprite.Group()
         self.collidableSprites.add(box)
         self.map = pygame.image.load("BgForTest.png").convert()
+        self.mapRect = self.map.get_rect()
+        self.mapRect.topleft = (0,0)
 
     def shiftLevel(self):
-        if self.count == 0:
-            self.temp = [544, 352]
-            self.temp[0] -= 512
-            self.temp[1] -= 384
-            self.count = 1
-        else:
-            self.temp[0] -= self.cameraOffsetX
-            self.temp[1] -= self.cameraOffsetY
-
+##        if self.count == 0:
+##            self.temp = [544, 352]
+##            self.temp[0] -= 512
+##            self.temp[1] -= 384
+##            self.count = 1
+##        else:
+        self.mapRect.x -= self.cameraOffsetX
+        self.mapRect.y -= self.cameraOffsetY
         for item in self.collidableSprites:
             item.rect.x -= self.cameraOffsetX
             item.rect.y -= self.cameraOffsetY
-        return self.temp
 
     def draw(self, screen):
-        screen.blit(self.map, self.shiftLevel())
+        screen.blit(self.map, self.mapRect)
         self.collidableSprites.draw(screen)
 
     def update(self):
+        player.update()
+        self.collidableSprites.update()
         keys = pygame.key.get_pressed()
         if keys[pygame.K_LCTRL] and self.kickCounter <= 0:
             self.kickCounter = 30
             self.lateralSpeed += 12
             self.temp_X = player.direction.x
             self.temp_Y = player.direction.y
-        if self.lateralSpeed < 1.5:
-            self.lateralSpeed = 0
-
+        #if self.lateralSpeed < 1.5:
+         #   self.lateralSpeed = 0
+        if pygame.sprite.spritecollide(player, self.collidableSprites, False):
+            self.temp_X = -self.temp_X
+            self.temp_Y = -self.temp_Y
         self.cameraOffsetX = (self.lateralSpeed * self.temp_X)
         self.cameraOffsetY = (self.lateralSpeed * self.temp_Y)
 
         self.kickCounter -= 1
         self.lateralSpeed *= .95
-        player.update()
-        self.collidableSprites.update()
+        self.shiftLevel()
+        
 
 
