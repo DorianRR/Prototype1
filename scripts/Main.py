@@ -17,7 +17,7 @@ level = Level()
 
 #------------------
 fire = PyIgnition.ParticleEffect(screen, (0, 0), (800, 600))
-#gravity = fire.CreateDire ctedGravity(strength = 0.00, direction = [player.direction.x,player.direction.y]) #here to change gravity direction should be the same as player facing direction
+#gravity = fire.CreateDirectedGravity(strength = 0.00, direction = [player.direction.x,player.direction.y]) #here to change gravity direction should be the same as player facing direction
 wind = fire.CreateDirectedGravity(strength = 0.00, direction = [1, 0])
 #here change the initial direction
 source = fire.CreateSource((300, 500), initspeed = 3.0, initdirection = 3.140, initspeedrandrange = 0.3, initdirectionrandrange = 0.1, particlesperframe = 10, particlelife = 100, drawtype = PyIgnition.DRAWTYPE_CIRCLE, colour = (255, 255, 255), radius = 3.0)
