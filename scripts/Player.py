@@ -50,8 +50,11 @@ class Player:
 
     def update(self):
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_SPACE] and self.fuelLevel > 0:
-
+        if self.fuelLevel > 0:
+            mouse_v = pygame.math.Vector2(pygame.mouse.get_pos())
+            mouse_v = pygame.math.Vector2.normalize(mouse_v)
+            self.direction.setDirection(mouse_v)
+            """
             self.delayTimer += .5
             if self.delayTimer%self.delay == 0:
                 self.delayTimer = 0
@@ -67,10 +70,11 @@ class Player:
                     self.delay = 1
                 self.rotationSpeed *= .9
             self.rotationSpeed *= .95
-
+            
 
         else:
             self.rotationSpeed = 100
             self.delay = 5.5
         self.kickCounter -= 1
         self.lateralSpeed *= .95
+        """

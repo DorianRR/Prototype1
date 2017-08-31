@@ -42,12 +42,13 @@ class Level:
         self.mapRect.topleft = (0,0)
 
     def shiftLevel(self):
-##
+
         self.mapRect.x -= self.cameraOffsetX
         self.mapRect.y -= self.cameraOffsetY
         for item in self.collidableSprites:
             item.rect.x -= self.cameraOffsetX
             item.rect.y -= self.cameraOffsetY
+
 
     def draw(self, screen):
         screen.blit(self.map, self.mapRect)
@@ -62,8 +63,8 @@ class Level:
             self.lateralSpeed += 12
             self.temp_X = player.direction.x
             self.temp_Y = player.direction.y
-        #if self.lateralSpeed < 1.5:
-         #   self.lateralSpeed = 0
+        if self.lateralSpeed < 1.5:
+            self.lateralSpeed = 0
         if pygame.sprite.spritecollide(player, self.collidableSprites, False):
             self.temp_X = -self.temp_X
             self.temp_Y = -self.temp_Y
