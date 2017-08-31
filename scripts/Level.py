@@ -31,8 +31,6 @@ class Level:
         self.MoneyDamage = 0
         self.cameraOffsetX = 0
         self.cameraOffsetY = 0
-        self.count = 0
-        self.temp = []
 
         self.delayTimer = 0
         self.delay = 6
@@ -44,12 +42,7 @@ class Level:
         self.mapRect.topleft = (0,0)
 
     def shiftLevel(self):
-##        if self.count == 0:
-##            self.temp = [544, 352]
-##            self.temp[0] -= 512
-##            self.temp[1] -= 384
-##            self.count = 1
-##        else:
+##
         self.mapRect.x -= self.cameraOffsetX
         self.mapRect.y -= self.cameraOffsetY
         for item in self.collidableSprites:
