@@ -5,12 +5,10 @@ from DestructibleObject import *
 
 player = Player("PlayerCharacterTemp.png")
 
-<<<<<<< HEAD
 
 class Level:
     def __init__(self):
         box = DestructibleObject("BoxCollider", (100, 100))
-=======
 class Level:
     def __init__(self, map):
         """
@@ -18,7 +16,6 @@ class Level:
         the map start in the appropriate place, and then use the temp list
         to move the map when the player presses left shift.
         """
->>>>>>> f4a34aceb4b8c1ab82f129688e1cff5b18a602a2
         self.count = 0
         self.temp = []
 
@@ -58,7 +55,6 @@ class Level:
         else:
             self.temp[0] -= self.cameraOffsetX
             self.temp[1] -= self.cameraOffsetY
-<<<<<<< HEAD
 
         for item in self.collidableSprites:
             item.rect.x -= self.cameraOffsetX
@@ -66,9 +62,7 @@ class Level:
         return self.temp
 
     def shift(self)
-=======
         return self.temp
->>>>>>> f4a34aceb4b8c1ab82f129688e1cff5b18a602a2
 
     def draw(self, screen):
         screen.blit(self.map, self.shiftLevel())
