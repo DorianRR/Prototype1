@@ -29,8 +29,9 @@ source.CreateParticleKeyframe(60, colour = (100, 100, 150), radius = 20.0)
 
 
 while True:
+    keys = pygame.key.get_pressed()
     for event in pygame.event.get():
-         if event.type == pygame.QUIT:
+         if event.type == pygame.QUIT or keys[pygame.K_ESCAPE]:
              pygame.quit()
              sys.exit()
 
@@ -46,6 +47,12 @@ while True:
     player.update()
     level.update()
      #still need to calculate from player's direction
+<<<<<<< HEAD
+=======
+    #keep these two lines of code after any screen.blit() bacause we want texts appear above everything#
+    #screen.blit(uicreate(player)[0], [20, 20])                                                          #
+    #screen.blit(uicreate(player)[1], [654, 20])
+>>>>>>> ed5466781d7717c4e0eafb8c69d5dd0ad7f9eb95
     #screen.blit(map, level.shiftLevel())
     level.draw(screen)
     key_1 = pygame.key.get_pressed()
@@ -63,6 +70,8 @@ while True:
     screen.blit(uicreate(player)[0], [20, 20])                                                          #
     screen.blit(uicreate(player)[1], [654, 20])
     clock.tick(FPS)
+    screen.blit(uicreate(level)[0], [20, 20])  #
+    screen.blit(uicreate(level)[1], [654, 20])
     pygame.display.flip()
 
     #    for event in pygame.event.get():
