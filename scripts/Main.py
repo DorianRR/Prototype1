@@ -51,4 +51,6 @@ while True:
     player.draw(screen)
     #collidableSprites.draw(screen)
     clock.tick(FPS)
+    screen.blit(uicreate(player)[0], [20, 20])  #
+    screen.blit(uicreate(player)[1], [654, 20])
     pygame.display.flip()
