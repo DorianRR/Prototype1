@@ -2,14 +2,14 @@ import pygame, math
 from Player import *
 from DestructibleObject import *
 
-player = Player("PlayerCharacterTemp.png")
+player = Player("../images/PlayerCharacterTemp.png")
 
 class Level:
     def __init__(self):
 
-        box = DestructibleObject("BoxCollider", (100,100))
-        box2 = DestructibleObject("BoxCollider", (250,250))
-        box3 = DestructibleObject("BoxCollider", (350,350))
+        box = DestructibleObject("../images/BoxCollider", (100,100))
+        box2 = DestructibleObject("../images/BoxCollider", (250,250))
+        box3 = DestructibleObject("../images/BoxCollider", (350,350))
         self.lateralSpeed = 0
 
         self.temp_X = 0
