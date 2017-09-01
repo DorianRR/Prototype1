@@ -53,7 +53,7 @@ class Level:
                 if self.lateralSpeed > .8:
                     collidedObject.collided = True
                     collidedObject.update()
-                    collidedObject.goeFlying(player.direction, self.lateralSpeed)
+                    collidedObject.goesFlying(player.direction.x, player.direction.y, self.lateralSpeed)
         self.cameraOffsetX = (self.lateralSpeed * player.direction.x)
         self.cameraOffsetY = (self.lateralSpeed * player.direction.y)
         player.rect.x += self.cameraOffsetX

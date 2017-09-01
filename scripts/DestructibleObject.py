@@ -15,13 +15,15 @@ class DestructibleObject(pygame.sprite.Sprite):
         self.destroyedMask = pygame.mask.from_surface(self.destroyed)
         #self.switch  = False
         self.collided = False
+        self.speed = 0
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
 
-    def goesFlying(self, direction, speed):
+    def goesFlying(self, directionX, directionY, speed):
+        self.speed = speed
+        self.direction = pygame.math.Vector2(directionX, directionY)
 
-        speed *= .95
 
     def update(self):
         #if self.switch and not self.collided:
@@ -29,7 +31,12 @@ class DestructibleObject(pygame.sprite.Sprite):
         if self.collided:
             self.image = self.destroyed
             self.mask = self.destroyedMask
-
+        if self.speed > 0:
+            self.rect.x -= self.direction.x * self.speed * 2
+            self.rect.y -= self.direction.y * self.speed * 2
+        if self.speed < .5:
+            self.speed = 0
+        self.speed *= .95
         
         
         
