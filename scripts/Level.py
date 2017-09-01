@@ -12,6 +12,9 @@ class Level:
         box3 = DestructibleObject("../images/BoxCollider", (350,350))
         self.lateralSpeed = 0
 
+        self.MoneyDamage = 0
+        self.fuelLevel = 3000
+
         self.temp_X = 0
         self.temp_Y = 0
 
@@ -36,7 +39,8 @@ class Level:
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
             self.lateralSpeed += .5
-        if self.lateralSpeed < .2:
+            self.fuelLevel -= 10
+        if self.lateralSpeed < .4:
             self.lateralSpeed = 0
         if pygame.sprite.spritecollide(player, self.collidableSprites, False):
             player.direction.x = -player.direction.x

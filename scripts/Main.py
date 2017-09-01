@@ -42,8 +42,8 @@ while True:
     level.update()
      #still need to calculate from player's direction
     #keep these two lines of code after any screen.blit() bacause we want texts appear above everything#
-    screen.blit(uicreate(player)[0], [20, 20])                                                          #
-    screen.blit(uicreate(player)[1], [654, 20])
+    #screen.blit(uicreate(player)[0], [20, 20])                                                          #
+    #screen.blit(uicreate(player)[1], [654, 20])
     #screen.blit(map, level.shiftLevel())
     level.draw(screen)
     fire.Update()
@@ -51,6 +51,6 @@ while True:
     player.draw(screen)
     #collidableSprites.draw(screen)
     clock.tick(FPS)
-    screen.blit(uicreate(player)[0], [20, 20])  #
-    screen.blit(uicreate(player)[1], [654, 20])
+    screen.blit(uicreate(level)[0], [20, 20])  #
+    screen.blit(uicreate(level)[1], [654, 20])
     pygame.display.flip()
