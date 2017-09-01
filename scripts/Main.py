@@ -29,8 +29,9 @@ source.CreateParticleKeyframe(60, colour = (100, 100, 150), radius = 20.0)
 
 
 while True:
+    keys = pygame.key.get_pressed()
     for event in pygame.event.get():
-         if event.type == pygame.QUIT:
+         if event.type == pygame.QUIT or keys[pygame.K_ESCAPE]:
              pygame.quit()
              sys.exit()
 
