@@ -39,7 +39,7 @@ while True:
 
 
     screen.fill((0, 0, 0))
-    source.SetPos(player.location)
+    source.SetPos(player.rect.center)
     #source.SetPos(((player.location[0] - level.mapRect.centerx)+512, (player.location[1] - level.mapRect.centery)+384))
     #source.SetInitDirection(FPS) #still need to calculate from player's direction
     source.SetInitDirection(player.imageRotated*2*math.pi/8)
