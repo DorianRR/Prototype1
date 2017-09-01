@@ -40,12 +40,11 @@ class Player:
         screen.blit(self.image[self.imageRotated], self.rect)
 
     def update(self):
-        sqrt2 = math.sqrt(2) / 2
         mouse_v = pygame.math.Vector2(pygame.mouse.get_pos())
         mouse_v += (pygame.math.Vector2(-(self.rect.centerx),-(self.rect.centery)))
-        if mouse_v != (0,0):
+        if mouse_v != (0, 0):
             mouse_v = pygame.math.Vector2.normalize(mouse_v)
-        self.direction = (mouse_v)
+        self.direction = mouse_v
         count = 0
         for angle in self.rotationList:
             if (abs(mouse_v[0] - angle[0]) < 0.2) and (abs(mouse_v[1] - angle[1]) < .2):
