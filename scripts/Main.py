@@ -51,10 +51,6 @@ while True:
     fire.Redraw()
     player.draw(screen)
     #keep these two lines of code after any screen.blit() bacause we want texts appear above everything#
-<<<<<<< HEAD
-
-=======
->>>>>>> 31ac7926318543de506afe770b3dbb164cec1d54
     clock.tick(FPS)
     screen.blit(uicreate(level)[0], [20, 20])  #
     screen.blit(uicreate(level)[1], [654, 20])
