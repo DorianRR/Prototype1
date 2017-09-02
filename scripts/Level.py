@@ -50,7 +50,7 @@ class Level:
             player.direction.x = -(player.direction.x)
             player.direction.y = -(player.direction.y)
             for collidedObject in collidedList:
-                if self.lateralSpeed > .8:
+                if self.lateralSpeed > 1:
                     collidedObject.collided = True
                     collidedObject.update()
                     collidedObject.goesFlying(player.direction.x, player.direction.y, self.lateralSpeed)
