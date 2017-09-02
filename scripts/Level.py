@@ -20,14 +20,15 @@ class Level:
         self.cameraOffsetY = 0
 
         self.collidableSprites = pygame.sprite.Group()
-        box = DestructibleObject("../images/BoxCollider", (100, 100))
-        box2 = DestructibleObject("../images/BoxCollider", (250, 250))
-        box3 = DestructibleObject("../images/BoxCollider", (350, 350))
+        box = DestructibleObject("../images/BoxCollider", (100, 100), 5, 1)
+        box2 = DestructibleObject("../images/BoxCollider2", (400, 400), 10, 3)
+        box3 = DestructibleObject("../images/BoxCollider3", (600, 600), 15, 5)
         self.collidableSprites.add(box)
         self.collidableSprites.add(box2)
         self.collidableSprites.add(box3)
 
         self.map = pygame.image.load("../images/MapBlockout.png").convert()
+        self.map = pygame.transform.scale(self.map, (1920,1080))
         self.mapRect = self.map.get_rect()
 
     def draw(self, screen):
@@ -51,6 +52,8 @@ class Level:
             player.direction.y = -(player.direction.y)
             for collidedObject in collidedList:
                 if self.lateralSpeed > 1:
+                    if not collidedObject.collided:
+                        self.MoneyDamage += collidedObject.value
                     collidedObject.collided = True
                     collidedObject.update()
                     collidedObject.goesFlying(player.direction.x, player.direction.y, self.lateralSpeed)

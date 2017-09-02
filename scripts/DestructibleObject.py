@@ -2,7 +2,7 @@ import pygame
 
 class DestructibleObject(pygame.sprite.Sprite):
 
-    def __init__(self, image, position):
+    def __init__(self, image, position, value, mass):
 
         pygame.sprite.Sprite.__init__(self) #When subclassing the Sprite, be sure to call the base initializer before adding the Sprite to Groups
         self.image =  pygame.image.load("../images/" + image + ".png").convert_alpha()
@@ -16,12 +16,14 @@ class DestructibleObject(pygame.sprite.Sprite):
         #self.switch  = False
         self.collided = False
         self.speed = 0
+        self.value = value
+        self.mass = mass
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
 
     def goesFlying(self, directionX, directionY, speed):
-        self.speed = speed
+        self.speed = speed / self.mass
         self.direction = pygame.math.Vector2(directionX, directionY)
 
 
@@ -34,9 +36,20 @@ class DestructibleObject(pygame.sprite.Sprite):
         if self.speed > 0:
             self.rect.x -= self.direction.x * self.speed * 2
             self.rect.y -= self.direction.y * self.speed * 2
+
         if self.speed < .5:
             self.speed = 0
+        
         self.speed *= .95
+
+        if self.rect.top < 0:
+            self.rect.top = 0
+        if self.rect.right > 1920:
+            self.rect.right = 1920
+        if self.rect.bottom > 1080:
+            self.rect.bottom = 1080
+        if self.rect.left < 0:
+            self.rect.left = 0
         
         
         
