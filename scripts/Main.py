@@ -64,8 +64,7 @@ while True:
     player.draw(screen)
     #collidableSprites.draw(screen)
     #keep these two lines of code after any screen.blit() bacause we want texts appear above everything#
-    screen.blit(uicreate(player)[0], [20, 20])                                                          #
-    screen.blit(uicreate(player)[1], [654, 20])
+
     clock.tick(FPS)
     screen.blit(uicreate(level)[0], [20, 20])  #
     screen.blit(uicreate(level)[1], [654, 20])
