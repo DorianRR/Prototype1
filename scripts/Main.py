@@ -26,14 +26,14 @@ source.CreateParticleKeyframe(60, colour = (100, 100, 150), radius = 20.0)
 while True:
     keys = pygame.key.get_pressed()
     for event in pygame.event.get():
-         if event.type == pygame.QUIT or keys[pygame.K_ESCAPE] or level.fuelLevel == 0:
+         if event.type == pygame.QUIT or keys[pygame.K_ESCAPE]:
              pygame.quit()
              sys.exit()
 
 
 
     screen.fill((0, 0, 0))
-    tempTuple = (player.rect.centerx +8,player.rect.centery+16)
+    tempTuple = (player.rect.centerx+16,player.rect.centery+16)
     source.SetPos(tempTuple)
     source.SetInitDirection(player.imageRotated*2*math.pi/8)
     player.update()
