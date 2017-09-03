@@ -2,15 +2,15 @@ import pygame, math
 from Player import *
 from DestructibleObject import *
 
-player = Player("PlayerCharacterTemp.png")
+player = Player("../images/PlayerCharacterTemp.png")
 
 class Level:
     def __init__(self):
 
-        box = DestructibleObject("BoxCollider", (100,100))
-        box2 = DestructibleObject("BoxCollider", (250,250))
-        box3 = DestructibleObject("BoxCollider", (350,350))
         self.lateralSpeed = 0
+
+        self.MoneyDamage = 0
+        self.fuelLevel = 3000
 
         self.temp_X = 0
         self.temp_Y = 0
@@ -20,10 +20,15 @@ class Level:
         self.cameraOffsetY = 0
 
         self.collidableSprites = pygame.sprite.Group()
+        box = DestructibleObject("../images/BoxCollider", (100, 100), 5, 1)
+        box2 = DestructibleObject("../images/BoxCollider2", (400, 400), 10, 3)
+        box3 = DestructibleObject("../images/BoxCollider3", (600, 600), 15, 5)
         self.collidableSprites.add(box)
         self.collidableSprites.add(box2)
         self.collidableSprites.add(box3)
+
         self.map = pygame.image.load("../images/MapBlockout.png").convert()
+        self.map = pygame.transform.scale(self.map, (1920,1080))
         self.mapRect = self.map.get_rect()
 
     def draw(self, screen):
@@ -31,18 +36,29 @@ class Level:
         self.collidableSprites.draw(screen)
 
     def update(self):
+
         player.update()
+
         self.collidableSprites.update()
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
             self.lateralSpeed += .5
-        if self.lateralSpeed < .2:
+            self.fuelLevel -= 10
+        if self.lateralSpeed < .4:
             self.lateralSpeed = 0
-        if pygame.sprite.spritecollide(player, self.collidableSprites, False):
-            player.direction.x = -player.direction.x
-            player.direction.y = -player.direction.y
+        collidedList = pygame.sprite.spritecollide(player, self.collidableSprites, False)
+        if collidedList:
+            player.direction.x = -(player.direction.x)
+            player.direction.y = -(player.direction.y)
+            for collidedObject in collidedList:
+                if self.lateralSpeed > 1:
+                    if not collidedObject.collided:
+                        self.MoneyDamage += collidedObject.value
+                    collidedObject.collided = True
+                    collidedObject.update()
+                    collidedObject.goesFlying(player.direction.x, player.direction.y, self.lateralSpeed)
         self.cameraOffsetX = (self.lateralSpeed * player.direction.x)
-        self.cameraOffsetY =  (self.lateralSpeed * player.direction.y)
+        self.cameraOffsetY = (self.lateralSpeed * player.direction.y)
         player.rect.x += self.cameraOffsetX
         player.rect.y += self.cameraOffsetY
         self.lateralSpeed *= .95
