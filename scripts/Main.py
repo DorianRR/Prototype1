@@ -16,7 +16,7 @@ fire = PyIgnition.ParticleEffect(screen, (0, 0), (800, 600))
 #gravity = fire.CreateDirectedGravity(strength = 0.00, direction = [player.direction.x,player.direction.y]) #here to change gravity direction should be the same as player facing direction
 #here change the initial direction
 source = fire.CreateSource((player.rect.center), initspeed = 3.0, initdirection = 3.140, initspeedrandrange = 0.3, initdirectionrandrange = 0.3, particlesperframe = 8, particlelife = 50, drawtype = PyIgnition.DRAWTYPE_IMAGE, colour = (255, 255, 255), radius = 3.0,imagepath = "../images/ParticleTexture_03.png")
-source1 = fire.CreateSource((player.rect.center), initspeed = 6.0, initdirection = 3.140, initspeedrandrange = 0.1, initdirectionrandrange = 0.7, particlesperframe = 1, particlelife = 50, drawtype = PyIgnition.DRAWTYPE_IMAGE, colour = (255, 255, 255), radius = 3.0,imagepath = "../images/ParticleTexture_03.png")
+source1 = fire.CreateSource((player.rect.center), initspeed = 6.0, initdirection = 3.140, initspeedrandrange = 0.1, initdirectionrandrange = 0.7, particlesperframe = 1, particlelife = 50, drawtype = PyIgnition.DRAWTYPE_IMAGE, colour = (255, 255, 255), radius = 3.0,imagepath = "../images/ParticleTexture_02.png")
 #source.CreateParticleKeyframe(10, colour = (200, 200, 220), radius = 4.0)
 #source.CreateParticleKeyframe(30, colour = (190, 190, 200), radius = 6.0)
 #source.CreateParticleKeyframe(60, colour = (100, 100, 150), radius = 20.0)
