@@ -10,3 +10,5 @@ def uicreate(Level):
                                                                 #draw text on a new Surface, creates a new Surface with the specified text rendered on it
     scoreSurface = scoreFont.render(u'Property Damage:'+ '$' + str(Level.MoneyDamage), True, [220, 220, 220], None)
     return [fuelSurface,scoreSurface]
+
+

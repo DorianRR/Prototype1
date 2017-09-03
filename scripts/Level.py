@@ -10,6 +10,7 @@ class Level:
         self.lateralSpeed = 0
 
         self.MoneyDamage = 0
+        self.Maxfuel = 3000
         self.fuelLevel = 3000
 
         self.temp_X = 0
@@ -34,6 +35,12 @@ class Level:
     def draw(self, screen):
         screen.blit(self.map, self.mapRect)
         self.collidableSprites.draw(screen)
+
+    def FuelBar(self,screen,color,posX,posY,value,maxvalue):
+        start = 0
+        pygame.draw.rect(screen,[10,10,10],[posX-2, posY-2, 502, 22],2) # Draw a rect outline
+        pygame.draw.rect(screen, color,[posX, posY, 500*value/maxvalue, 20]) # Draw a solid rect
+
 
     def update(self):
 
