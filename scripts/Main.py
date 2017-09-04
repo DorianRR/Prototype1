@@ -8,17 +8,17 @@ pygame.init()
 screen = pygame.display.set_mode((1920, 1080),pygame.FULLSCREEN)
 pygame.display.set_caption("Destructo-Spin!")
 clock = pygame.time.Clock()
-FPS = 60
+FPS = 60 
 level = Level()
 
 #------------------
 fire = PyIgnition.ParticleEffect(screen, (0, 0), (800, 600))
 #gravity = fire.CreateDirectedGravity(strength = 0.00, direction = [player.direction.x,player.direction.y]) #here to change gravity direction should be the same as player facing direction
 #here change the initial direction
-source = fire.CreateSource((player.rect.center), initspeed = 3.0, initdirection = 3.140, initspeedrandrange = 0.3, initdirectionrandrange = 0.3, particlesperframe = 3, particlelife = 50, drawtype = PyIgnition.DRAWTYPE_IMAGE, colour = (255, 255, 255), radius = 3.0,imagepath = "../images/ParticleTexture_03.png")
-source1 = fire.CreateSource((player.rect.center), initspeed = 4.0, initdirection = 3.140, initspeedrandrange = 0.1, initdirectionrandrange = 0.5, particlesperframe = 1, particlelife = 50, drawtype = PyIgnition.DRAWTYPE_IMAGE, colour = (255, 255, 255), radius = 3.0,imagepath = "../images/ParticleTexture_02.png")
-source2 = fire.CreateSource((player.rect.center), initspeed = 2.0, initdirection = 3.140, initspeedrandrange = 0.3, initdirectionrandrange = 0.3, particlesperframe = 3, particlelife = 50, drawtype = PyIgnition.DRAWTYPE_IMAGE, colour = (255, 255, 255), radius = 3.0,imagepath = "../images/ParticleTexture_07.png")
-source3 = fire.CreateSource((player.rect.center), initspeed = 3.0, initdirection = 3.140, initspeedrandrange = 0.3, initdirectionrandrange = 0.3, particlesperframe = 3, particlelife = 50, drawtype = PyIgnition.DRAWTYPE_IMAGE, colour = (255, 255, 255), radius = 3.0,imagepath = "../images/ParticleTexture_10.png")
+source = fire.CreateSource((player.rect.center), initspeed = 3.0, initdirection = 3.140, initspeedrandrange = 0.3, initdirectionrandrange = 0.3, particlesperframe = 3, particlelife = 30, drawtype = PyIgnition.DRAWTYPE_IMAGE, colour = (255, 255, 255), radius = 3.0,imagepath = "../images/ParticleTexture_03.png")
+source1 = fire.CreateSource((player.rect.center), initspeed = 4.0, initdirection = 3.140, initspeedrandrange = 0.1, initdirectionrandrange = 0.5, particlesperframe = 1, particlelife = 30, drawtype = PyIgnition.DRAWTYPE_IMAGE, colour = (255, 255, 255), radius = 3.0,imagepath = "../images/ParticleTexture_02.png")
+source2 = fire.CreateSource((player.rect.center), initspeed = 2.0, initdirection = 3.140, initspeedrandrange = 0.3, initdirectionrandrange = 0.3, particlesperframe = 3, particlelife = 30, drawtype = PyIgnition.DRAWTYPE_IMAGE, colour = (255, 255, 255), radius = 3.0,imagepath = "../images/ParticleTexture_07.png")
+source3 = fire.CreateSource((player.rect.center), initspeed = 3.0, initdirection = 3.140, initspeedrandrange = 0.3, initdirectionrandrange = 0.3, particlesperframe = 3, particlelife = 30, drawtype = PyIgnition.DRAWTYPE_IMAGE, colour = (255, 255, 255), radius = 3.0,imagepath = "../images/ParticleTexture_10.png")
 
 #source.CreateParticleKeyframe(10, colour = (200, 200, 220), radius = 4.0)
 #source.CreateParticleKeyframe(30, colour = (190, 190, 200), radius = 6.0)

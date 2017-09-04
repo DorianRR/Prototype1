@@ -17,6 +17,7 @@ class Player:
 
         self.fuelLevel = 3000
         self.MoneyDamage = 0
+        self.momentum = 0
 
 
         self.delayTimer = 5.5

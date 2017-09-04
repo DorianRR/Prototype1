@@ -27,7 +27,7 @@ class DestructibleObject(pygame.sprite.Sprite):
         self.direction = pygame.math.Vector2(directionX, directionY)
 
 
-    def update(self):
+    def update(self, walls):
         #if self.switch and not self.collided:
             #self.collided = True
         if self.collided:
@@ -35,13 +35,28 @@ class DestructibleObject(pygame.sprite.Sprite):
             self.mask = self.destroyedMask
         if self.speed > 0:
             self.rect.x -= self.direction.x * self.speed * 2
+            collidedWalls =  pygame.sprite.spritecollide(self, walls, False)
+            if collidedWalls:
+                if self.direction.x < 0:
+                    self.rect.right = collidedWalls[0].rect.left
+                elif self.direction.x > 0:
+                    self.rect.left = collidedWalls[0].rect.right
+                    
             self.rect.y -= self.direction.y * self.speed * 2
+            collidedWalls =  pygame.sprite.spritecollide(self, walls, False)
+            if collidedWalls:
+                if self.direction.y < 0:
+                    self.rect.bottom = collidedWalls[0].rect.top
+                elif self.direction.y > 0:
+                    self.rect.top = collidedWalls[0].rect.bottom
 
         if self.speed < .5:
             self.speed = 0
         
         self.speed *= .95
 
+        
+        
         if self.rect.top < 0:
             self.rect.top = 0
         if self.rect.right > 1920:

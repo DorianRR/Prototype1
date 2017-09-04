@@ -1,6 +1,7 @@
 import pygame, math
 from Player import *
 from DestructibleObject import *
+from Wall import *
 
 player = Player("../images/PlayerCharacterTemp.png")
 
@@ -19,7 +20,8 @@ class Level:
         self.MoneyDamage = 0
         self.cameraOffsetX = 0
         self.cameraOffsetY = 0
-
+        
+        ### COLLIDABLE OBJECTS ###
         self.collidableSprites = pygame.sprite.Group()
         box = DestructibleObject("../images/BoxCollider", (100, 100), 5, 1)
         box2 = DestructibleObject("../images/BoxCollider2", (400, 400), 10, 3)
@@ -27,9 +29,25 @@ class Level:
         self.collidableSprites.add(box)
         self.collidableSprites.add(box2)
         self.collidableSprites.add(box3)
+        ### COLLIDABLE OBJECTS ###
 
-        self.map = pygame.image.load("../images/MapBlockout.png").convert()
-        self.map = pygame.transform.scale(self.map, (1920,1080))
+        ### WALLS ###
+        self.walls = pygame.sprite.Group()
+        for x in range(189, 1390, 300):
+            wall = Wall((x, 229), (80,80))
+            self.walls.add(wall)
+            wall = Wall((x, 772), (80,80))
+            self.walls.add(wall)
+
+        wall = Wall((898, 413), (785, 255))
+        self.walls.add(wall)
+        wall = Wall((1593, 787), (145, 293))
+        self.walls.add(wall)
+        wall = Wall((1593, 0), (320, 294))
+        self.walls.add(wall)
+        ### WALLS ###
+
+        self.map = pygame.image.load("../images/background.png").convert()
         self.mapRect = self.map.get_rect()
 
     def draw(self, screen):
@@ -45,11 +63,12 @@ class Level:
 
         player.update()
 
-        self.collidableSprites.update()
+        self.collidableSprites.update(self.walls)
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
             self.lateralSpeed += .5
             self.fuelLevel -= 10
+            player.momentum = (self.lateralSpeed/7)
         if self.lateralSpeed < .4:
             self.lateralSpeed = 0
         collidedList = pygame.sprite.spritecollide(player, self.collidableSprites, False)
@@ -61,15 +80,29 @@ class Level:
                     if not collidedObject.collided:
                         self.MoneyDamage += collidedObject.value
                     collidedObject.collided = True
-                    collidedObject.update()
+                    collidedObject.update(self.walls)
                     collidedObject.goesFlying(player.direction.x, player.direction.y, self.lateralSpeed)
-        self.cameraOffsetX = (self.lateralSpeed * player.direction.x)
-        self.cameraOffsetY = (self.lateralSpeed * player.direction.y)
+        self.cameraOffsetX = (self.lateralSpeed * player.direction.x * player.momentum)
+        self.cameraOffsetY = (self.lateralSpeed * player.direction.y * player.momentum)
+        
         player.rect.x += self.cameraOffsetX
+
+        collidedWalls =  pygame.sprite.spritecollide(player, self.walls, False)
+        if collidedWalls:
+            if self.cameraOffsetX > 0:
+                player.rect.right = collidedWalls[0].rect.left
+            else:
+                player.rect.left = collidedWalls[0].rect.right
+        
         player.rect.y += self.cameraOffsetY
+        collidedWalls =  pygame.sprite.spritecollide(player, self.walls, False)
+        if collidedWalls:
+            if self.cameraOffsetY > 0:
+                player.rect.bottom = collidedWalls[0].rect.top
+            else:
+                player.rect.top = collidedWalls[0].rect.bottom
         self.lateralSpeed *= .95
         
-        #self.shiftLevel()
         
 
 
