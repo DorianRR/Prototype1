@@ -40,8 +40,8 @@ class Level:
         pygame.draw.rect(screen,[10,10,10],[posX-2, posY-2, 502, 22],5) # Draw a rect outline
         pygame.draw.rect(screen, color,[posX, posY, 500*value/maxvalue, 18]) # Draw a solid rect
         healthBar = pygame.image.load("../images/healthBar.png").convert()
-        healthBar = pygame.transform.scale(healthBar, (500, 50))
-        screen.blit(healthBar,(200,10))
+        healthBar = pygame.transform.scale(healthBar, (900, 50))
+        screen.blit(healthBar,(100,10))
 
 
     def update(self):
