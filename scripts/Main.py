@@ -8,7 +8,7 @@ pygame.init()
 screen = pygame.display.set_mode((1920, 1080),pygame.FULLSCREEN)
 pygame.display.set_caption("Destructo-Spin!")
 clock = pygame.time.Clock()
-FPS = 60
+FPS = 60 
 level = Level()
 
 #------------------
