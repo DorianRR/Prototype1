@@ -13,7 +13,7 @@ level = Level()
 
 #------------------
 fire = PyIgnition.ParticleEffect(screen, (0, 0), (800, 600))
-#gravity = fire.CreateDirectedGravity(strength = 0.00, direction = [player.direction.x,player.direction.y]) #here to change gravity direction should be the same as player facing direction
+#gravity = fire.CreateDirectedGravity(strength = 0.5, direction = [player.direction.x,player.direction.y]) #here to change gravity direction should be the same as player facing direction
 #here change the initial direction
 source = fire.CreateSource((player.rect.center), initspeed = 3.0, initdirection = 3.140, initspeedrandrange = 0.3, initdirectionrandrange = 0.3, particlesperframe = 8, particlelife = 50, drawtype = PyIgnition.DRAWTYPE_IMAGE, colour = (255, 255, 255), radius = 3.0,imagepath = "../images/ParticleTexture_03.png")
 source1 = fire.CreateSource((player.rect.center), initspeed = 6.0, initdirection = 3.140, initspeedrandrange = 0.1, initdirectionrandrange = 0.7, particlesperframe = 1, particlelife = 50, drawtype = PyIgnition.DRAWTYPE_IMAGE, colour = (255, 255, 255), radius = 3.0,imagepath = "../images/ParticleTexture_02.png")
@@ -39,7 +39,6 @@ while True:
     level.update()
 
     level.draw(screen)
-    level.FuelBar(screen,[25,150,160],150,20,level.fuelLevel,level.Maxfuel)
     key_1 = pygame.key.get_pressed()
     if not key_1[pygame.K_SPACE]:
         for particle in fire.particles:
@@ -57,4 +56,5 @@ while True:
     clock.tick(FPS)
     screen.blit(uicreate(level)[0], [20, 20])
     screen.blit(uicreate(level)[1], [654, 20])
+    level.FuelBar(screen, [25, 150, 160], 150, 20, level.fuelLevel, level.Maxfuel)
     pygame.display.flip()
