@@ -69,6 +69,7 @@ class Level:
         if keys[pygame.K_SPACE]:
             self.lateralSpeed += .5
             self.fuelLevel -= 10
+            player.momentum = (self.lateralSpeed/7)
         if self.lateralSpeed < .4:
             self.lateralSpeed = 0
         collidedList = pygame.sprite.spritecollide(player, self.collidableSprites, False)
@@ -82,8 +83,8 @@ class Level:
                     collidedObject.collided = True
                     collidedObject.update(self.walls)
                     collidedObject.goesFlying(player.direction.x, player.direction.y, self.lateralSpeed)
-        self.cameraOffsetX = (self.lateralSpeed * player.direction.x)
-        self.cameraOffsetY = (self.lateralSpeed * player.direction.y)
+        self.cameraOffsetX = (self.lateralSpeed * player.direction.x * player.momentum)
+        self.cameraOffsetY = (self.lateralSpeed * player.direction.y * player.momentum)
         
         player.rect.x += self.cameraOffsetX
 
