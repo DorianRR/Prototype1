@@ -67,6 +67,7 @@ class Level:
         self.collidableSprites.update(self.walls)
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
+
             self.lateralSpeed += .4
             self.fuelLevel -= 10
             player.momentum = (self.lateralSpeed/7)
@@ -103,7 +104,7 @@ class Level:
             else:
                 player.rect.top = collidedWalls[0].rect.bottom
         self.lateralSpeed *= .95
-        
+
         
 
 
