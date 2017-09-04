@@ -3,6 +3,7 @@ from Player import *
 from DestructibleObject import *
 from Wall import *
 
+pygame.init()
 player = Player("../images/PlayerCharacterTemp.png")
 
 class Level:
