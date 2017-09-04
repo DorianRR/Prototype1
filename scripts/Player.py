@@ -4,6 +4,8 @@ from spriteSheetToList import *
 
 class Player:
     def __init__(self, filename):
+
+        
         self.moving = False
         self.direction = pygame.math.Vector2(0, -1)
         self.image = pygame.image.load(filename)
@@ -11,9 +13,9 @@ class Player:
         self.rect = self.image[0].get_rect()
         sqrt2 = math.sqrt(2)/2
         self.rotationList = [(0,-1),(sqrt2,-sqrt2),(1,0),(sqrt2,sqrt2),(0,1),(-sqrt2,sqrt2),(-1,0),(-sqrt2,-sqrt2)]
-
+        self.mouse_v = pygame.math.Vector2(pygame.mouse.get_pos())
         self.imageRotated = 0
-        self.rect.center = (1920 / 2, 1080 / 2)
+        self.rect.center = (1920 / 4, 1080 / 2)
 
         self.fuelLevel = 3000
         self.MoneyDamage = 0
@@ -22,6 +24,7 @@ class Player:
 
         self.delayTimer = 5.5
         self.delay = 6
+        self.directionTimer = 0
 
     """
     def getPositionOffset(self):
@@ -42,14 +45,19 @@ class Player:
         screen.blit(self.image[self.imageRotated], self.rect)
 
     def update(self):
-        mouse_v = pygame.math.Vector2(pygame.mouse.get_pos())
-        mouse_v += (pygame.math.Vector2(-(self.rect.centerx),-(self.rect.centery)))
-        if mouse_v != (0, 0):
-            mouse_v = pygame.math.Vector2.normalize(mouse_v)
-        self.direction = mouse_v
+        self.directionTimer += 1
+        prev_mouse_v = self.mouse_v
+        self.mouse_v = pygame.math.Vector2(pygame.mouse.get_pos())
+        self.mouse_v += (pygame.math.Vector2(-(self.rect.centerx),-(self.rect.centery)))
+        self.mouse_v = (self.mouse_v + prev_mouse_v)
+        if self.mouse_v != (0, 0):
+            self.mouse_v = pygame.math.Vector2.normalize(self.mouse_v)
+        if self.directionTimer > 20:
+            self.direction = self.mouse_v
+            self.directionTimer = 0
         count = 0
         for angle in self.rotationList:
-            if (abs(mouse_v[0] - angle[0]) < 0.2) and (abs(mouse_v[1] - angle[1]) < .2):
+            if (abs(self.mouse_v[0] - angle[0]) < 0.2) and (abs(self.mouse_v[1] - angle[1]) < .2):
                 self.imageRotated = count
             count += 1
 
