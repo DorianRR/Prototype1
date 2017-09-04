@@ -4,6 +4,8 @@ from spriteSheetToList import *
 
 class Player:
     def __init__(self, filename):
+
+        
         self.moving = False
         self.direction = pygame.math.Vector2(0, -1)
         self.image = pygame.image.load(filename)
