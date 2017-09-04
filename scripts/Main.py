@@ -10,6 +10,7 @@ pygame.display.set_caption("Destructo-Spin!")
 clock = pygame.time.Clock()
 FPS = 60 
 level = Level()
+timeCount = 0
 
 #------------------
 fire = PyIgnition.ParticleEffect(screen, (0, 0), (800, 600))
@@ -40,15 +41,17 @@ while True:
 
     level.draw(screen)
     level.FuelBar(screen,[25,150,160],150,20,level.fuelLevel,level.Maxfuel)
-    key_1 = pygame.key.get_pressed()
-    if not key_1[pygame.K_SPACE]:
+    #key_1 = pygame.key.get_pressed()
+
+    if not keys[pygame.K_SPACE]:
+
         for particle in fire.particles:
-            count += 1
-            if count > 90:
+            if timeCount > 90:
                 particle.alive = False
-        else:
-            count = 0
-            pass
+        timeCount += 1
+
+
+
 
     fire.Update()
     fire.Redraw()

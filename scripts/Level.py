@@ -22,27 +22,40 @@ class Level:
         self.cameraOffsetX = 0
         self.cameraOffsetY = 0
         
-        ### COLLIDABLE OBJECTS ###
-        ###  (image, position, value($), mass, fallen(if it has a destroyed state) ###
-        self.collidableSprites = pygame.sprite.Group()
+        ### COLLIDABLE OBJECTS ##############################################################
+        ###  (image, position, value($), mass, fallen(if it has a destroyed state), flipX, flipY ###
+        self.collidableSprites = pygame.sprite.LayeredUpdates()
         
-        ### TABLES ###
+        ### TABLES ############
         for x in range(1234, 1537, 101):
-            table = DestructibleObject("Table01", (x, 168), 5, 9, False)
+            table = DestructibleObject("Table01", (x, 168), 5, 9, False, False, True)
             self.collidableSprites.add(table)
             table = DestructibleObject("Table01", (x, 25), 5, 9, False)
             self.collidableSprites.add(table)
-        ### TABLES ###
-
-        ### CHAIRS ###
-        for x in range(1264, 1566, 101):
-            chair = DestructibleObject("Chair03", (x, 127), 5, 3, True)
-            self.collidableSprites.add(chair)
-
+        for y in range(8, 120, 101):
+            table = DestructibleObject("Table02", (1040, y), 5, 9, False)
+            self.collidableSprites.add(table)
+            table = DestructibleObject("Table02", (890, y), 5, 9, False, True)
+            self.collidableSprites.add(table)
+        #######################
+        ### COMPUTERS #########
+        for x in range(1234, 1537, 101):
+            monitor = DestructibleObject("Monitor", (x, 25), 5, 2, True)
+            self.collidableSprites.add(monitor)
+            monitor = DestructibleObject("Monitor", (x, 168 + 30), 5, 2, True)
+            self.collidableSprites.add(monitor)
         
-        ### COLLIDABLE OBJECTS ###
+        ### CHAIRS ############
+        for x in range(1264, 1566, 101):
+            chair = DestructibleObject("Chair03", (x, 127), 5, 4, True)
+            self.collidableSprites.add(chair)
+            chair = DestructibleObject("Chair02", (x, 80), 5, 4, True, False, True)
+            self.collidableSprites.add(chair)
+        #######################
+        
+        ####################################################################################
 
-        ### WALLS ###
+        ### WALLS ##########################################################################
         self.walls = pygame.sprite.Group()
         for x in range(189, 1390, 300):
             wall = Wall((x, 229), (80,80))
@@ -56,7 +69,7 @@ class Level:
         self.walls.add(wall)
         wall = Wall((1593, 0), (320, 294))
         self.walls.add(wall)
-        ### WALLS ###
+        ###################################################################################
 
         self.map = pygame.image.load("../images/background.png").convert()
         self.mapRect = self.map.get_rect()
@@ -74,12 +87,14 @@ class Level:
 
         player.update()
 
-        self.collidableSprites.update(self.walls)
+        self.collidableSprites.update(self.walls, player)
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
-            self.lateralSpeed += .5
+
+            self.lateralSpeed += .4
             self.fuelLevel -= 10
         if self.lateralSpeed < .4:
+            player.momentum = (self.lateralSpeed/7)
             self.lateralSpeed = 0
         collidedList = pygame.sprite.spritecollide(player, self.collidableSprites, False)
         if collidedList:
@@ -90,7 +105,7 @@ class Level:
                     if not collidedObject.collided:
                         self.MoneyDamage += collidedObject.value
                     collidedObject.collided = True
-                    collidedObject.update(self.walls)
+                    collidedObject.update(self.walls, player)
                     collidedObject.goesFlying(player.direction.x, player.direction.y, self.lateralSpeed)
         self.cameraOffsetX = (self.lateralSpeed * player.direction.x)
         self.cameraOffsetY = (self.lateralSpeed * player.direction.y)
@@ -112,7 +127,7 @@ class Level:
             else:
                 player.rect.top = collidedWalls[0].rect.bottom
         self.lateralSpeed *= .95
-        
+
         
 
 
