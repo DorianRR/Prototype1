@@ -23,13 +23,23 @@ class Level:
         self.cameraOffsetY = 0
         
         ### COLLIDABLE OBJECTS ###
+        ###  (image, position, value($), mass, fallen(if it has a destroyed state) ###
         self.collidableSprites = pygame.sprite.Group()
-        box = DestructibleObject("../images/BoxCollider", (100, 100), 5, 1)
-        box2 = DestructibleObject("../images/BoxCollider2", (400, 400), 10, 3)
-        box3 = DestructibleObject("../images/BoxCollider3", (600, 600), 15, 5)
-        self.collidableSprites.add(box)
-        self.collidableSprites.add(box2)
-        self.collidableSprites.add(box3)
+        
+        ### TABLES ###
+        for x in range(1234, 1537, 101):
+            table = DestructibleObject("Table01", (x, 168), 5, 9, False)
+            self.collidableSprites.add(table)
+            table = DestructibleObject("Table01", (x, 25), 5, 9, False)
+            self.collidableSprites.add(table)
+        ### TABLES ###
+
+        ### CHAIRS ###
+        for x in range(1264, 1566, 101):
+            chair = DestructibleObject("Chair03", (x, 127), 5, 3, True)
+            self.collidableSprites.add(chair)
+
+        
         ### COLLIDABLE OBJECTS ###
 
         ### WALLS ###
@@ -69,7 +79,6 @@ class Level:
         if keys[pygame.K_SPACE]:
             self.lateralSpeed += .5
             self.fuelLevel -= 10
-            player.momentum = (self.lateralSpeed/7)
         if self.lateralSpeed < .4:
             self.lateralSpeed = 0
         collidedList = pygame.sprite.spritecollide(player, self.collidableSprites, False)
@@ -83,8 +92,8 @@ class Level:
                     collidedObject.collided = True
                     collidedObject.update(self.walls)
                     collidedObject.goesFlying(player.direction.x, player.direction.y, self.lateralSpeed)
-        self.cameraOffsetX = (self.lateralSpeed * player.direction.x * player.momentum)
-        self.cameraOffsetY = (self.lateralSpeed * player.direction.y * player.momentum)
+        self.cameraOffsetX = (self.lateralSpeed * player.direction.x)
+        self.cameraOffsetY = (self.lateralSpeed * player.direction.y)
         
         player.rect.x += self.cameraOffsetX
 

@@ -2,17 +2,20 @@ import pygame
 
 class DestructibleObject(pygame.sprite.Sprite):
 
-    def __init__(self, image, position, value, mass):
+    def __init__(self, image, position, value, mass, fallen):
 
         pygame.sprite.Sprite.__init__(self) #When subclassing the Sprite, be sure to call the base initializer before adding the Sprite to Groups
-        self.image =  pygame.image.load("../images/" + image + ".png").convert_alpha()
-        self.destroyed = pygame.image.load("../images/" + image + "Destroyed.png").convert_alpha()
+        self.image =  pygame.image.load("../ArtResource/" + image + ".png").convert_alpha()
+        self.fallen = fallen
+        if self.fallen:
+            self.destroyed = pygame.image.load("../ArtResource/" + image + "Fallen.png").convert_alpha()
+            self.destroyedMask = pygame.mask.from_surface(self.destroyed)
         
         self.rect = self.image.get_rect()
-        self.rect.center = position
+        self.rect.topleft = position
 
         self.mask = pygame.mask.from_surface(self.image)
-        self.destroyedMask = pygame.mask.from_surface(self.destroyed)
+        
         #self.switch  = False
         self.collided = False
         self.speed = 0
@@ -30,7 +33,7 @@ class DestructibleObject(pygame.sprite.Sprite):
     def update(self, walls):
         #if self.switch and not self.collided:
             #self.collided = True
-        if self.collided:
+        if self.collided and self.fallen:
             self.image = self.destroyed
             self.mask = self.destroyedMask
         if self.speed > 0:
