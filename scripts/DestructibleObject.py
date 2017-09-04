@@ -1,9 +1,9 @@
-import pygame
+import pygame, PyIgnition
 
 class DestructibleObject(pygame.sprite.Sprite):
 
-    def __init__(self, image, position, value, mass):
-
+    def __init__(self, image, position, value, mass,screen):
+        self.screen = screen
         pygame.sprite.Sprite.__init__(self) #When subclassing the Sprite, be sure to call the base initializer before adding the Sprite to Groups
         self.image =  pygame.image.load("../images/" + image + ".png").convert_alpha()
         self.destroyed = pygame.image.load("../images/" + image + "Destroyed.png").convert_alpha()
@@ -19,8 +19,15 @@ class DestructibleObject(pygame.sprite.Sprite):
         self.value = value
         self.mass = mass
 
+        self.SmashEffect = PyIgnition.ParticleEffect(screen, (0, 0), (800, 600))
+        self.source = self.SmashEffect.CreateSource((self.rect.center), initspeed=3.0, initdirection=3.140, initspeedrandrange=0.3,initdirectionrandrange=0.3, particlesperframe=8, particlelife=50,drawtype=PyIgnition.DRAWTYPE_IMAGE, colour=(255, 255, 255), radius=3.0,imagepath="../images/BoxCollider3Destroyed.png")
+        self.source.SetPos(self.rect.center)
+
     def draw(self, screen):
         screen.blit(self.image, self.rect)
+        if self.collided:
+            self.SmashEffect.Update()
+            self.SmashEffect.Redraw()
 
     def goesFlying(self, directionX, directionY, speed):
         self.speed = speed / self.mass

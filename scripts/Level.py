@@ -5,8 +5,8 @@ from DestructibleObject import *
 player = Player("../images/PlayerCharacterTemp.png")
 
 class Level:
-    def __init__(self):
-
+    def __init__(self,screen):
+        self.screen = screen
         self.lateralSpeed = 0
 
         self.MoneyDamage = 0
@@ -21,9 +21,9 @@ class Level:
         self.cameraOffsetY = 0
 
         self.collidableSprites = pygame.sprite.Group()
-        box = DestructibleObject("../images/BoxCollider", (100, 100), 5, 1)
-        box2 = DestructibleObject("../images/BoxCollider2", (400, 400), 10, 3)
-        box3 = DestructibleObject("../images/BoxCollider3", (600, 600), 15, 5)
+        box = DestructibleObject("../images/BoxCollider", (100, 100), 5, 1,screen)
+        box2 = DestructibleObject("../images/BoxCollider2", (400, 400), 10, 3,screen)
+        box3 = DestructibleObject("../images/BoxCollider3", (600, 600), 15, 5,screen)
         self.collidableSprites.add(box)
         self.collidableSprites.add(box2)
         self.collidableSprites.add(box3)

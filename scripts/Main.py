@@ -9,7 +9,7 @@ screen = pygame.display.set_mode((1920, 1080),pygame.FULLSCREEN)
 pygame.display.set_caption("Destructo-Spin!")
 clock = pygame.time.Clock()
 FPS = 60
-level = Level()
+level = Level(screen)
 
 #------------------
 fire = PyIgnition.ParticleEffect(screen, (0, 0), (800, 600))
