@@ -47,10 +47,10 @@ class Player:
         prev_mouse_v = self.mouse_v
         self.mouse_v = pygame.math.Vector2(pygame.mouse.get_pos())
         self.mouse_v += (pygame.math.Vector2(-(self.rect.centerx),-(self.rect.centery)))
-        self.mouse_v = self.mouse_v + prev_mouse_v
+        self.mouse_v = (self.mouse_v + prev_mouse_v)
         if self.mouse_v != (0, 0):
             self.mouse_v = pygame.math.Vector2.normalize(self.mouse_v)
-        if self.directionTimer > 30:
+        if self.directionTimer > 20:
             self.direction = self.mouse_v
             self.directionTimer = 0
         count = 0
