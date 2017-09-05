@@ -245,7 +245,7 @@ class Level:
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
 
-            self.lateralSpeed += .55
+            self.lateralSpeed += .5
             self.fuelLevel -= 3
         if self.lateralSpeed < .4:
             player.momentum = (self.lateralSpeed/7)
