@@ -12,8 +12,8 @@ class Level:
         self.lateralSpeed = 0
 
         self.MoneyDamage = 0
-        self.Maxfuel = 5000
-        self.fuelLevel = 5000
+        self.Maxfuel = 3000
+        self.fuelLevel = 3000
 
         self.temp_X = 0
         self.temp_Y = 0
@@ -88,9 +88,9 @@ class Level:
     def FuelBar(self,screen,color,posX,posY,value,maxvalue):
         healthBar = pygame.image.load("../images/FuelBar01.png").convert_alpha()
         healthBar = pygame.transform.scale(healthBar, (600, 50))
-        screen.blit(healthBar,(100,20))
-        pygame.draw.rect(screen,[10,10,10],[posX-25, posY+17, 425, 22],5) # Draw a rect outline
-        pygame.draw.rect(screen, color,[posX-22, posY+17, 420*value/maxvalue, 18]) # Draw a solid rect
+        screen.blit(healthBar,(posX,posY))
+        #pygame.draw.rect(screen,[10,10,10],[posX+20, posY+17, 425, 22],5) # Draw a rect outline
+        pygame.draw.rect(screen, color,[posX+28, posY+20, 420*value/maxvalue, 15]) # Draw a solid rect
 
 
     def update(self):
@@ -102,7 +102,7 @@ class Level:
         if keys[pygame.K_SPACE]:
 
             self.lateralSpeed += .55
-            self.fuelLevel -= 10
+            self.fuelLevel -= 3
         if self.lateralSpeed < .4:
             player.momentum = (self.lateralSpeed/7)
             self.lateralSpeed = 0
