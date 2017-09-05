@@ -28,36 +28,102 @@ class Level:
         
         ### TABLES ############
         for x in range(1234, 1537, 101):
-            table = DestructibleObject("Table01", (x, 168), 5, 9, False, False, True)
-            self.collidableSprites.add(table)
-            table = DestructibleObject("Table01", (x, 25), 5, 9, False)
-            self.collidableSprites.add(table)
+            for y in range(0, 851, 850):
+                table = DestructibleObject("Table01", (x, y + 168), 5, 9, False, False, True)
+                self.collidableSprites.add(table)
+                table = DestructibleObject("Table01", (x, y + 25), 5, 9, False)
+                self.collidableSprites.add(table)
         for y in range(8, 120, 101):
-            table = DestructibleObject("Table02", (1040, y), 5, 9, False)
-            self.collidableSprites.add(table)
-            table = DestructibleObject("Table02", (890, y), 5, 9, False, True)
-            self.collidableSprites.add(table)
+            for x in range(440, 1041, 300):
+                table = DestructibleObject("Table02", (x, y), 5, 9, False)
+                self.collidableSprites.add(table)
+                table = DestructibleObject("Table02", (x - 150, y), 5, 9, False, True)
+                self.collidableSprites.add(table)
+        for y in range(860, 962, 101):
+            for x in range(440, 1041, 300):
+                table = DestructibleObject("Table02", (x, y), 5, 9, False)
+                self.collidableSprites.add(table)
+                table = DestructibleObject("Table02", (x - 150, y), 5, 9, False, True)
+                self.collidableSprites.add(table)
         #######################
         ### COMPUTERS #########
         for x in range(1234, 1537, 101):
-            monitor = DestructibleObject("Monitor", (x, 25), 5, 2, True)
-            self.collidableSprites.add(monitor)
-            keyboard = DestructibleObject("Keyboard02", (x + 10, 45), 5, 1, False)
-            self.collidableSprites.add(keyboard)
-            keyboard = DestructibleObject("Keyboard02", (x + 10, 173), 5, 1, False)
-            self.collidableSprites.add(keyboard)
-            mouse = DestructibleObject("mouse01", (x + 50, 45), 5, 1, False)
-            self.collidableSprites.add(mouse)
-            monitor = DestructibleObject("Monitor", (x, 168 + 30), 5, 2, True)
-            self.collidableSprites.add(monitor)
-            
+            for y in range(0, 851, 850):
+                monitor = DestructibleObject("Monitor", (x, y + 25), 5, 2, True)
+                self.collidableSprites.add(monitor)
+                keyboard = DestructibleObject("Keyboard02", (x + 10, y + 45), 5, 1, False)
+                self.collidableSprites.add(keyboard)
+                keyboard = DestructibleObject("Keyboard02", (x + 10, y + 173), 5, 1, False)
+                self.collidableSprites.add(keyboard)
+                mouse = DestructibleObject("mouse01", (x + 50, y + 45), 5, 1, False)
+                self.collidableSprites.add(mouse)
+                mouse = DestructibleObject("mouse01", (x + 50, y + 183), 5, 1, False, True, True)
+                self.collidableSprites.add(mouse)
+                monitor = DestructibleObject("Monitor", (x, y + 198), 5, 2, True)
+                self.collidableSprites.add(monitor)
+        for y in range(8, 120, 101):
+            for x in range(440, 1041, 300):
+                monitor = DestructibleObject("MonitorR", (x + 30, y), 5, 2, False)
+                self.collidableSprites.add(monitor)
+                monitor = DestructibleObject("MonitorR", (x - 150, y), 5, 2, False)
+                self.collidableSprites.add(monitor)
+                keyboard = DestructibleObject("Keyboard02R", (x + 5, y+5), 5, 1, False, True)
+                self.collidableSprites.add(keyboard)
+                keyboard = DestructibleObject("Keyboard02R", (x + 5, y+5), 5, 1, False, True)
+                self.collidableSprites.add(keyboard)
+                keyboard = DestructibleObject("Keyboard02R", (x - 125, y+5), 5, 1, False)
+                self.collidableSprites.add(keyboard)
+                keyboard = DestructibleObject("Keyboard02R", (x - 125, y+5), 5, 1, False)
+                self.collidableSprites.add(keyboard)
+                mouse = DestructibleObject("mouse02R", (x - 140, y+50), 5, 1, False)
+                self.collidableSprites.add(mouse)
+                mouse = DestructibleObject("mouse02R", (x + 15, y+50), 5, 1, False, True, True)
+                self.collidableSprites.add(mouse)
+
+        for y in range(860, 962, 101):
+            for x in range(440, 1041, 300):
+                monitor = DestructibleObject("MonitorR", (x + 30, y), 5, 2, False)
+                self.collidableSprites.add(monitor)
+                monitor = DestructibleObject("MonitorR", (x - 150, y), 5, 2, False)
+                self.collidableSprites.add(monitor)
+                keyboard = DestructibleObject("Keyboard02R", (x + 5, y+5), 5, 1, False, True)
+                self.collidableSprites.add(keyboard)
+                keyboard = DestructibleObject("Keyboard02R", (x + 5, y+5), 5, 1, False, True)
+                self.collidableSprites.add(keyboard)
+                keyboard = DestructibleObject("Keyboard02R", (x - 125, y+5), 5, 1, False)
+                self.collidableSprites.add(keyboard)
+                keyboard = DestructibleObject("Keyboard02R", (x - 125, y+5), 5, 1, False)
+                self.collidableSprites.add(keyboard)
+                mouse = DestructibleObject("mouse02R", (x - 140, y+50), 5, 1, False)
+                self.collidableSprites.add(mouse)
+                mouse = DestructibleObject("mouse02R", (x + 15, y+50), 5, 1, False, True, True)
+                self.collidableSprites.add(mouse)
+        
+    
         
         ### CHAIRS ############
         for x in range(1264, 1566, 101):
-            chair = DestructibleObject("Chair03", (x, 127), 5, 4, True)
-            self.collidableSprites.add(chair)
-            chair = DestructibleObject("Chair02", (x, 80), 5, 4, True, False, True)
-            self.collidableSprites.add(chair)
+            for y in range(0, 851, 850):
+                chair = DestructibleObject("Chair03", (x, y + 127), 5, 4, True)
+                self.collidableSprites.add(chair)
+                chair = DestructibleObject("Chair02", (x, y + 80), 5, 4, True, False, True)
+                self.collidableSprites.add(chair)
+
+        for y in range(8, 120, 101):
+            for x in range(440, 1041, 300):
+                chair = DestructibleObject("Chair01R", (x - 40, y), 5, 4, True)
+                self.collidableSprites.add(chair)
+                chair = DestructibleObject("Chair01R", (x - 100, y), 5, 4, True, True)
+                self.collidableSprites.add(chair)
+
+        for y in range(860, 962, 101):
+            for x in range(440, 1041, 300):
+                chair = DestructibleObject("Chair01R", (x - 40, y), 5, 4, True)
+                self.collidableSprites.add(chair)
+                chair = DestructibleObject("Chair01R", (x - 100, y), 5, 4, True, True)
+                self.collidableSprites.add(chair)
+
+        
         #######################
         
         ####################################################################################
