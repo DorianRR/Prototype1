@@ -2,6 +2,7 @@ import pygame, math, random
 from Player import *
 from DestructibleObject import *
 from Wall import *
+from Fire import *
 
 pygame.init()
 player = Player("../images/PlayerCharacterTemp.png")
@@ -21,7 +22,9 @@ class Level:
         self.MoneyDamage = 0
         self.cameraOffsetX = 0
         self.cameraOffsetY = 0
-        
+
+        self.fireList = pygame.sprite.Group()
+
         ### COLLIDABLE OBJECTS ##############################################################
         ###  (image, position, value($), mass, fallen(if it has a destroyed state), flipX, flipY ###
         self.collidableSprites = pygame.sprite.LayeredUpdates()
@@ -220,19 +223,24 @@ class Level:
     def draw(self, screen):
         screen.blit(self.map, self.mapRect)
         self.collidableSprites.draw(screen)
+        #self.fireList.draw(screen)
 
     def FuelBar(self,screen,color,posX,posY,value,maxvalue):
-        healthBar = pygame.image.load("../images/FuelBar01.png").convert_alpha()
-        healthBar = pygame.transform.scale(healthBar, (600, 50))
-        screen.blit(healthBar,(posX,posY))
+        healthBarSqueeze1 = pygame.image.load("../images/FuelBarSqueeze01.png").convert_alpha()
+        healthBarSqueeze2 = pygame.image.load("../images/FuelBarSqueeze02.png").convert_alpha()
+        healthBarSqueeze3 = pygame.image.load("../images/FuelBarSqueeze03.png").convert_alpha()
+        healthBar1 = pygame.transform.scale(healthBarSqueeze1, (200, 600))
+        healthBar2 = pygame.transform.scale(healthBarSqueeze2, (200, 600))
+        healthBar3 = pygame.transform.scale(healthBarSqueeze3, (200, 600))
+        screen.blit(healthBar1,(posX+1700,posY+200))
         #pygame.draw.rect(screen,[10,10,10],[posX+20, posY+17, 425, 22],5) # Draw a rect outline
-        pygame.draw.rect(screen, color,[posX+28, posY+20, 420*value/maxvalue, 15]) # Draw a solid rect
+        pygame.draw.rect(screen, color,[posX+1803, posY+300, 50, 480*value/maxvalue]) # Draw a solid rect
 
 
     def update(self):
 
         player.update()
-
+        random.seed
         self.collidableSprites.update(self.walls, player)
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
@@ -250,6 +258,12 @@ class Level:
             for collidedObject in collidedList:
                 if self.lateralSpeed > 1:
                     if not collidedObject.collided:
+                        if collidedObject.mass <= 2:
+                            randomNum = random.randint(1,10)
+                            if randomNum < 4:
+                                game = DestructibleObject("Flame01_1", (collidedObject.rect.topleft), 0, .01, False, False)
+                                self.collidableSprites.add(game)
+
                         collidedObject.hitCount += 5
                         player.direction.x = -(player.direction.x) * 1.1
                         player.direction.y = -(player.direction.y) * 1.1

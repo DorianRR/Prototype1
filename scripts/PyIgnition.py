@@ -57,7 +57,8 @@ class ParticleEffect:
 			particle.velocity = [particle.velocity[0] + totalforce[0], particle.velocity[1] + totalforce[1]]
 			
 			particle.Update()
-			
+			particle.Update()
+
 			# Resolve collisions
 			for obstacle in self.obstacles:
 				if (not obstacle.OutOfRange(particle.pos)) and (obstacle.InsideObject(particle.pos, radius)):
