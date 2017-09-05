@@ -86,8 +86,11 @@ class Level:
         self.collidableSprites.draw(screen)
 
     def FuelBar(self,screen,color,posX,posY,value,maxvalue):
-        pygame.draw.rect(screen,[10,10,10],[posX-2, posY-2, 502, 22],5) # Draw a rect outline
-        pygame.draw.rect(screen, color,[posX, posY, 500*value/maxvalue, 18]) # Draw a solid rect
+        healthBar = pygame.image.load("../images/FuelBar01.png").convert_alpha()
+        healthBar = pygame.transform.scale(healthBar, (600, 50))
+        screen.blit(healthBar,(100,20))
+        pygame.draw.rect(screen,[10,10,10],[posX-25, posY+17, 425, 22],5) # Draw a rect outline
+        pygame.draw.rect(screen, color,[posX-22, posY+17, 420*value/maxvalue, 18]) # Draw a solid rect
 
 
     def update(self):
