@@ -67,16 +67,15 @@ while playing:
     if level.fuelLevel <= 0:
         playing = False
 while not playing:
-    endSurface = pygame.image.load("../images/background.png").convert_alpha()
-    checkSurface = pygame.image.load("../images/BoxCollider3Destroyed.png").convert_alpha()
-    screen.blit(endSurface,(0,0))
-    screen.blit(checkSurface, (0, 0))
+    checkSurface = pygame.image.load("../images/Check00.jpg").convert_alpha()
     keys = pygame.key.get_pressed()
     #player.update()
     #level.update()
 
     level.draw(screen)
     level.FuelBar(screen, [25, 150, 160], 50, 25, level.fuelLevel, level.Maxfuel)
+    screen.blit(checkSurface, (250, 200))
+    screen.blit(uicreate(level)[0], [275, 210])
     for event in pygame.event.get():
          if event.type == pygame.QUIT or keys[pygame.K_ESCAPE]:
              pygame.quit()
