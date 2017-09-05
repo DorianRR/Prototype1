@@ -177,7 +177,7 @@ class Level:
                         self.MoneyDamage += collidedObject.value
                         collidedObject.collided = True
                     if not collidedObject.collided:
-                        collidedObject.hitCount += 1
+                        collidedObject.hitCount += 5
                         player.direction.x = -(player.direction.x) * 1.1
                         player.direction.y = -(player.direction.y) * 1.1
                         collidedObject.update(self.walls, player)
