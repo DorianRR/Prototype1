@@ -12,8 +12,8 @@ class Level:
         self.lateralSpeed = 0
 
         self.MoneyDamage = 0
-        self.Maxfuel = 3000
-        self.fuelLevel = 3000
+        self.Maxfuel = 5000
+        self.fuelLevel = 5000
 
         self.temp_X = 0
         self.temp_Y = 0
@@ -28,27 +28,27 @@ class Level:
         
         ### TABLES ############
         for x in range(1234, 1537, 101):
-            table = DestructibleObject("Table01", (x, 168), 100, 9, False, False, True)
+            table = DestructibleObject("Table01", (x, 168), 5, 9, False, False, True)
             self.collidableSprites.add(table)
-            table = DestructibleObject("Table01", (x, 25), 100, 9, False)
+            table = DestructibleObject("Table01", (x, 25), 5, 9, False)
             self.collidableSprites.add(table)
         for y in range(8, 120, 101):
-            table = DestructibleObject("Table02", (1040, y), 100, 9, False)
+            table = DestructibleObject("Table02", (1040, y), 5, 9, False)
             self.collidableSprites.add(table)
-            table = DestructibleObject("Table02", (890, y), 5, 100, False, True)
+            table = DestructibleObject("Table02", (890, y), 5, 9, False, True)
             self.collidableSprites.add(table)
         #######################
         ### COMPUTERS #########
         for x in range(1234, 1537, 101):
-            monitor = DestructibleObject("Monitor", (x, 25), 250, 2, True)
+            monitor = DestructibleObject("Monitor", (x, 25), 5, 2, True)
             self.collidableSprites.add(monitor)
-            keyboard = DestructibleObject("Keyboard02", (x + 10, 45), 50, 1, False)
+            keyboard = DestructibleObject("Keyboard02", (x + 10, 45), 5, 1, False)
             self.collidableSprites.add(keyboard)
-            keyboard = DestructibleObject("Keyboard02", (x + 10, 173), 50, 1, False)
+            keyboard = DestructibleObject("Keyboard02", (x + 10, 173), 5, 1, False)
             self.collidableSprites.add(keyboard)
-            mouse = DestructibleObject("mouse01", (x + 50, 45), 5, 25, False)
+            mouse = DestructibleObject("mouse01", (x + 50, 45), 5, 1, False)
             self.collidableSprites.add(mouse)
-            monitor = DestructibleObject("Monitor", (x, 168 + 30), 5, 250, True)
+            monitor = DestructibleObject("Monitor", (x, 168 + 30), 5, 2, True)
             self.collidableSprites.add(monitor)
             
         
@@ -88,9 +88,9 @@ class Level:
     def FuelBar(self,screen,color,posX,posY,value,maxvalue):
         healthBar = pygame.image.load("../images/FuelBar01.png").convert_alpha()
         healthBar = pygame.transform.scale(healthBar, (600, 50))
-        screen.blit(healthBar,(posX,posY))
-        #pygame.draw.rect(screen,[10,10,10],[posX+20, posY+17, 425, 22],5) # Draw a rect outline
-        pygame.draw.rect(screen, color,[posX+28, posY+20, 420*value/maxvalue, 15]) # Draw a solid rect
+        screen.blit(healthBar,(100,20))
+        pygame.draw.rect(screen,[10,10,10],[posX-25, posY+17, 425, 22],5) # Draw a rect outline
+        pygame.draw.rect(screen, color,[posX-22, posY+17, 420*value/maxvalue, 18]) # Draw a solid rect
 
 
     def update(self):
@@ -102,7 +102,7 @@ class Level:
         if keys[pygame.K_SPACE]:
 
             self.lateralSpeed += .55
-            self.fuelLevel -= 3
+            self.fuelLevel -= 10
         if self.lateralSpeed < .4:
             player.momentum = (self.lateralSpeed/7)
             self.lateralSpeed = 0
