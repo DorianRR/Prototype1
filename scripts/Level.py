@@ -243,7 +243,14 @@ class Level:
             player.momentum = (self.lateralSpeed/7)
             self.lateralSpeed = 0
         collidedList = pygame.sprite.spritecollide(player, self.collidableSprites, False)
+<<<<<<< HEAD
         if collidedList:          
+=======
+        if collidedList:
+            player.spinning = True
+            if player.modDelay > 1:
+                player.modDelay -= 1
+>>>>>>> 5f21205f7288eb90247e6a15a7a91a4167faf4b0
             for collidedObject in collidedList:
                 if self.lateralSpeed > 1:
                     if not collidedObject.collided:
@@ -276,7 +283,15 @@ class Level:
             else:
                 player.rect.top = collidedWalls[0].rect.bottom
         self.lateralSpeed *= .95
+<<<<<<< HEAD
 
         
+=======
+        mouse = pygame.mouse.get_pressed()
+        if mouse[0] and self.lateralSpeed == 0:
+            player.direction = player.mouse_v
+            player.modDelay = 15
+            player.spinning = False
+>>>>>>> 5f21205f7288eb90247e6a15a7a91a4167faf4b0
 
 
