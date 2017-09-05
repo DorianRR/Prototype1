@@ -12,6 +12,7 @@ FPS = 60
 level = Level()
 timeCount = 0
 
+
 #------------------
 fire = PyIgnition.ParticleEffect(screen, (0, 0), (800, 600))
 #gravity = fire.CreateDirectedGravity(strength = 0.00, direction = [player.direction.x,player.direction.y]) #here to change gravity direction should be the same as player facing direction
