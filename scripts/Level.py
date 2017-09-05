@@ -199,11 +199,12 @@ class Level:
 
         collidedList = pygame.sprite.spritecollide(player, self.collidableSprites, False)
         if collidedList:
-            if player.modDelay > 1:
-                player.modDelay -= 1
+
             for collidedObject in collidedList:
                 if self.lateralSpeed > 1:
                     if not collidedObject.collided:
+                        if player.modDelay > 1:
+                            player.modDelay -= 1
                         collidedObject.hitCount += 5
                         collidedObjectNormalVector = (pygame.math.Vector2(860-collidedObject.rect.x, 540-collidedObject.rect.y))
                         collidedObjectNormalVector = pygame.math.Vector2(collidedObjectNormalVector)
