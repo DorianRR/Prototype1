@@ -2,6 +2,7 @@ import pygame, math, random
 from Player import *
 from DestructibleObject import *
 from Wall import *
+from Fire import *
 
 pygame.init()
 player = Player("../images/PlayerCharacterTemp.png")
@@ -21,7 +22,9 @@ class Level:
         self.MoneyDamage = 0
         self.cameraOffsetX = 0
         self.cameraOffsetY = 0
-        
+
+        self.fireList = pygame.sprite.Group()
+
         ### COLLIDABLE OBJECTS ##############################################################
         ###  (image, position, value($), mass, fallen(if it has a destroyed state), flipX, flipY ###
         self.collidableSprites = pygame.sprite.LayeredUpdates()
@@ -216,6 +219,7 @@ class Level:
     def draw(self, screen):
         screen.blit(self.map, self.mapRect)
         self.collidableSprites.draw(screen)
+        #self.fireList.draw(screen)
 
     def FuelBar(self,screen,color,posX,posY,value,maxvalue):
         healthBar = pygame.image.load("../images/FuelBar01.png").convert_alpha()
@@ -228,7 +232,7 @@ class Level:
     def update(self):
 
         player.update()
-
+        random.seed
         self.collidableSprites.update(self.walls, player)
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
@@ -247,6 +251,12 @@ class Level:
             for collidedObject in collidedList:
                 if self.lateralSpeed > 1:
                     if not collidedObject.collided:
+                        if collidedObject.mass <= 2:
+                            randomNum = random.randint(1,10)
+                            if randomNum < 4:
+                                game = DestructibleObject("Flame01_1", (collidedObject.rect.topleft), 0, .01, False, False)
+                                self.collidableSprites.add(game)
+
                         collidedObject.hitCount += 5
                         collidedObjectNormalVector = (pygame.math.Vector2(860-collidedObject.rect.x, 540-collidedObject.rect.y))
                         collidedObjectNormalVector = pygame.math.Vector2(collidedObjectNormalVector)

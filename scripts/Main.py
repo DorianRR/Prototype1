@@ -3,6 +3,7 @@ from Player import *
 from DestructibleObject import *
 from SimpleUI import *
 from Level import *
+from Fire import *
 
 pygame.init()
 screen = pygame.display.set_mode((1920, 1080),pygame.FULLSCREEN)
@@ -56,6 +57,8 @@ while True:
     fire.Update()
     fire.Redraw()
     player.draw(screen)
+    for i in level.fireList:
+        Fire.draw(i, screen)
     #keep these two lines of code after any screen.blit() bacause we want texts appear above everything#
     clock.tick(FPS)
     #screen.blit(uicreate(level)[0], [20, 20])
