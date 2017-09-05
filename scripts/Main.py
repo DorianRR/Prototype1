@@ -58,6 +58,6 @@ while True:
     player.draw(screen)
     #keep these two lines of code after any screen.blit() bacause we want texts appear above everything#
     clock.tick(FPS)
-    screen.blit(uicreate(level)[0], [20, 20])
-    screen.blit(uicreate(level)[1], [654, 20])
+    #screen.blit(uicreate(level)[0], [20, 20])
+    screen.blit(uicreate(level)[1], [1054, 20])
     pygame.display.flip()
