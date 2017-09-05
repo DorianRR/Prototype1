@@ -241,6 +241,7 @@ class Level:
 
         collidedList = pygame.sprite.spritecollide(player, self.collidableSprites, False)
         if collidedList:
+            player.spinning = True
             if player.modDelay > 1:
                 player.modDelay -= 1
             for collidedObject in collidedList:
@@ -290,5 +291,6 @@ class Level:
         if mouse[0] and self.lateralSpeed == 0:
             player.direction = player.mouse_v
             player.modDelay = 15
+            player.spinning = False
 
 

@@ -21,7 +21,7 @@ class Player:
         self.MoneyDamage = 0
         self.momentum = 0
 
-
+        self.spinning = False
         self.delayTimer = 0
         self.delay = 0
         self.directionTimer = 0
@@ -31,12 +31,14 @@ class Player:
 
     def draw(self, screen):
         self.delayTimer += 1
-        if self.delayTimer%self.modDelay == 0:
+        if self.delayTimer%self.modDelay == 0 and self.spinning:
             self.delay += 1
             self.imageRotated = self.delay
             if self.delay >= 7:
                 self.delay = 0
-        screen.blit(self.image[self.imageRotated], self.rect)
+            screen.blit(self.image[self.imageRotated], self.rect)
+        else:
+            screen.blit(self.image[self.imageRotated], self.rect)
 
     def update(self):
 
