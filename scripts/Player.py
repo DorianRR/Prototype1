@@ -20,13 +20,13 @@ class Player:
         self.fuelLevel = 3000
         self.MoneyDamage = 0
         self.momentum = 0
-        self.launch = True
 
 
         self.delayTimer = 0
         self.delay = 0
         self.directionTimer = 0
         self.modDelay = 15
+
 
 
     def draw(self, screen):
@@ -44,13 +44,9 @@ class Player:
         self.mouse_v = pygame.math.Vector2(pygame.mouse.get_pos())
         self.mouse_v += (pygame.math.Vector2(-(self.rect.centerx),-(self.rect.centery)))
         self.mouse_v = (self.mouse_v + prev_mouse_v)
-        mouse = pygame.mouse.get_pressed()
         if self.mouse_v != (0, 0):
             self.mouse_v = pygame.math.Vector2.normalize(self.mouse_v)
-        if self.launch and mouse[0]:
-            self.direction = self.mouse_v
-            self.directionTimer = 0
-            self.launch = False
+
 
 
         if self.rect.top < 0:

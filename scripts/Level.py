@@ -196,6 +196,7 @@ class Level:
         if self.lateralSpeed < .4:
             player.momentum = (self.lateralSpeed/7)
             self.lateralSpeed = 0
+
         collidedList = pygame.sprite.spritecollide(player, self.collidableSprites, False)
         if collidedList:
             if player.modDelay > 1:
@@ -210,14 +211,11 @@ class Level:
                         player.direction = pygame.math.Vector2.normalize(player.direction)
                         collidedObject.update(self.walls, player)
                         collidedObject.goesFlying(player.direction.x, player.direction.y, self.lateralSpeed)
-<<<<<<< HEAD
-
-=======
                     if collidedObject.hitCount >= collidedObject.mass and not collidedObject.collided:
                         self.MoneyDamage += collidedObject.value
                         collidedObject.collided = True
                 
->>>>>>> master
+
         self.cameraOffsetX = (self.lateralSpeed * player.direction.x)
         self.cameraOffsetY = (self.lateralSpeed * player.direction.y)
         
@@ -246,7 +244,9 @@ class Level:
                 player.direction.y = -(player  .direction.y)
 
         self.lateralSpeed *= .95
-
-        
+        mouse = pygame.mouse.get_pressed()
+        if mouse[0] and self.lateralSpeed == 0:
+            player.direction = player.mouse_v
+            player.modDelay = 15
 
 
