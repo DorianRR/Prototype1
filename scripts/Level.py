@@ -186,8 +186,6 @@ class Level:
                         collidedObjectNormalVector = pygame.math.Vector2(collidedObjectNormalVector)
                         player.direction = pygame.math.Vector2.reflect(player.direction, collidedObjectNormalVector)
                         player.direction = pygame.math.Vector2.normalize(player.direction)
-                        #player.direction.x = -(player.direction.x)
-                        #player.direction.y = -(player.direction.y)
                         collidedObject.update(self.walls, player)
                         collidedObject.goesFlying(player.direction.x, player.direction.y, self.lateralSpeed)
 
