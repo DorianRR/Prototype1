@@ -17,12 +17,12 @@ timeCount = 0
 fire = PyIgnition.ParticleEffect(screen, (0, 0), (800, 600))
 #gravity = fire.CreateDirectedGravity(strength = 0.00, direction = [player.direction.x,player.direction.y]) #here to change gravity direction should be the same as player facing direction
 #here change the initial direction
-source = fire.CreateSource((player.rect.center), initspeed = 3.0, initdirection = 3.140, initspeedrandrange = 0.3, initdirectionrandrange = 0.3, particlesperframe = 8, particlelife = 30, drawtype = PyIgnition.DRAWTYPE_IMAGE, colour = (255, 255, 255), radius = 3.0,imagepath = "../images/ParticleTexture_03.png")
-source1 = fire.CreateSource((player.rect.center), initspeed = 3.0, initdirection = 3.140, initspeedrandrange = 0.1, initdirectionrandrange = 0.7, particlesperframe = 1, particlelife = 30, drawtype = PyIgnition.DRAWTYPE_IMAGE, colour = (255, 255, 255), radius = 3.0,imagepath = "../images/ParticleTexture_07.png")
-source2 = fire.CreateSource((player.rect.center), initspeed = 8.0, initdirection = 3.140, initspeedrandrange = 0.1, initdirectionrandrange = 0.2, particlesperframe = 3, particlelife = 40, drawtype = PyIgnition.DRAWTYPE_IMAGE, colour = (255, 255, 255), radius = 3.0,imagepath = "../images/ParticleTexture_07.png")
+source = fire.CreateSource((player.rect.center), initspeed = 3.0, initdirection = 3.140, initspeedrandrange = 0.3, initdirectionrandrange = 0.3, particlesperframe = 8, particlelife = 30, drawtype = PyIgnition.DRAWTYPE_IMAGE, imagepath = "../images/ParticleTexture_03.png")
+source1 = fire.CreateSource((player.rect.center), initspeed = 3.0, initdirection = 3.140, initspeedrandrange = 0.1, initdirectionrandrange = 0.7, particlesperframe = 1, particlelife = 20, drawtype = PyIgnition.DRAWTYPE_IMAGE, imagepath = "../images/ParticleTexture_07.png")
+source2 = fire.CreateSource((player.rect.center), initspeed = 8.0, initdirection = 3.140, initspeedrandrange = 0.1, initdirectionrandrange = 0.2, particlesperframe = 3, particlelife = 30, drawtype = PyIgnition.DRAWTYPE_IMAGE, imagepath = "../images/ParticleTexture_07.png")
 #source.CreateParticleKeyframe(10, colour = (200, 200, 220), radius = 4.0)
-#source.CreateParticleKeyframe(30, colour = (190, 190, 200), radius = 6.0)
-#source.CreateParticleKeyframe(60, colour = (100, 100, 150), radius = 20.0)
+#source1.CreateParticleKeyframe(30, colour = (190, 190, 200), radius = 6.0)
+#source2.CreateParticleKeyframe(60, colour = (100, 100, 150), radius = 20.0)
 #------------------
 playing = True
 
@@ -66,7 +66,9 @@ while playing:
         playing = False
 while not playing:
     endSurface = pygame.image.load("../images/background.png").convert_alpha()
+    checkSurface = pygame.image.load("../images/BoxCollider3Destroyed.png").convert_alpha()
     screen.blit(endSurface,(0,0))
+    screen.blit(checkSurface, (0, 0))
     keys = pygame.key.get_pressed()
     #player.update()
     #level.update()
