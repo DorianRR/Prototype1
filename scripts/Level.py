@@ -245,7 +245,7 @@ class Level:
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
 
-            self.lateralSpeed += .5
+            self.lateralSpeed += .6
             self.fuelLevel -= 3
         if self.lateralSpeed < .4:
             player.momentum = (self.lateralSpeed/7)
@@ -265,8 +265,11 @@ class Level:
                                 self.fireList.add(game)
 
                         collidedObject.hitCount += 5
-                        player.direction.x = -(player.direction.x) * 1.1
-                        player.direction.y = -(player.direction.y) * 1.1
+                        collidedObjectNormalVector = (
+                        pygame.math.Vector2(860 - collidedObject.rect.x, 540 - collidedObject.rect.y))
+                        collidedObjectNormalVector = pygame.math.Vector2(collidedObjectNormalVector)
+                        player.direction = pygame.math.Vector2.reflect(player.direction, collidedObjectNormalVector)
+                        player.direction = pygame.math.Vector2.normalize(player.direction)
                         collidedObject.update(self.walls, player)
                         collidedObject.goesFlying(player.direction.x, player.direction.y, self.lateralSpeed)
                     if collidedObject.hitCount >= collidedObject.mass and not collidedObject.collided:
