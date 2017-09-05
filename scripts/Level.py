@@ -42,8 +42,15 @@ class Level:
         for x in range(1234, 1537, 101):
             monitor = DestructibleObject("Monitor", (x, 25), 5, 2, True)
             self.collidableSprites.add(monitor)
+            keyboard = DestructibleObject("Keyboard02", (x + 10, 45), 5, 1, False)
+            self.collidableSprites.add(keyboard)
+            keyboard = DestructibleObject("Keyboard02", (x + 10, 173), 5, 1, False)
+            self.collidableSprites.add(keyboard)
+            mouse = DestructibleObject("mouse01", (x + 50, 45), 5, 1, False)
+            self.collidableSprites.add(mouse)
             monitor = DestructibleObject("Monitor", (x, 168 + 30), 5, 2, True)
             self.collidableSprites.add(monitor)
+            
         
         ### CHAIRS ############
         for x in range(1264, 1566, 101):
@@ -97,16 +104,19 @@ class Level:
             player.momentum = (self.lateralSpeed/7)
             self.lateralSpeed = 0
         collidedList = pygame.sprite.spritecollide(player, self.collidableSprites, False)
-        if collidedList:
-            player.direction.x = -(player.direction.x)
-            player.direction.y = -(player.direction.y)
+        if collidedList:          
             for collidedObject in collidedList:
                 if self.lateralSpeed > 1:
-                    if not collidedObject.collided:
+                    if collidedObject.hitCount >= collidedObject.mass and not collidedObject.collided:
                         self.MoneyDamage += collidedObject.value
-                    collidedObject.collided = True
-                    collidedObject.update(self.walls, player)
-                    collidedObject.goesFlying(player.direction.x, player.direction.y, self.lateralSpeed)
+                        collidedObject.collided = True
+                    if not collidedObject.collided:
+                        collidedObject.hitCount += 1
+                        player.direction.x = -(player.direction.x) * 1.1
+                        player.direction.y = -(player.direction.y) * 1.1
+                        collidedObject.update(self.walls, player)
+                        collidedObject.goesFlying(player.direction.x, player.direction.y, self.lateralSpeed)
+                
         self.cameraOffsetX = (self.lateralSpeed * player.direction.x)
         self.cameraOffsetY = (self.lateralSpeed * player.direction.y)
         

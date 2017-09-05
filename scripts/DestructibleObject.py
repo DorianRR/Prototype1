@@ -29,6 +29,7 @@ class DestructibleObject(pygame.sprite.Sprite):
         self.speed = 0
         self.value = value
         self.mass = mass
+        self.hitCount = 0
 
     def draw(self, screen):
         screen.blit(self.image, self.rect)
@@ -39,18 +40,16 @@ class DestructibleObject(pygame.sprite.Sprite):
 
 
     def update(self, walls, player):
-        #if self.switch and not self.collided:
-            #self.collided = True
         if self.collided and self.fallen:
             self.image = self.destroyed
             self.mask = self.destroyedMask
         if self.speed > 0:
             self.rect.x -= self.direction.x * self.speed * 2
-            if player.rect.colliderect(self.rect):
-                if self.direction.x > 0:
-                    self.rect.right = player.rect.left
-                elif self.direction.x < 0:
-                    self.rect.left = player.rect.right
+##            if player.rect.colliderect(self.rect) and not self.collided:
+##                if self.direction.x > 0:
+##                    self.rect.right = player.rect.left
+##                elif self.direction.x < 0:
+##                    self.rect.left = player.rect.right
             collidedWalls =  pygame.sprite.spritecollide(self, walls, False)
             if collidedWalls:
                 if self.direction.x < 0:
@@ -60,11 +59,11 @@ class DestructibleObject(pygame.sprite.Sprite):
                 
             
             self.rect.y -= self.direction.y * self.speed * 2
-            if player.rect.colliderect(self.rect):
-                if self.direction.y > 0:
-                    self.rect.bottom = player.rect.top
-                elif self.direction.y < 0:
-                    self.rect.top = player.rect.bottom
+##            if player.rect.colliderect(self.rect) and not self.collided:
+##                if self.direction.y > 0:
+##                    self.rect.bottom = player.rect.top
+##                elif self.direction.y < 0:
+##                    self.rect.top = player.rect.bottom
             collidedWalls =  pygame.sprite.spritecollide(self, walls, False)
             if collidedWalls:
                 if self.direction.y < 0:
