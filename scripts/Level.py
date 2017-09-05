@@ -28,27 +28,27 @@ class Level:
         
         ### TABLES ############
         for x in range(1234, 1537, 101):
-            table = DestructibleObject("Table01", (x, 168), 5, 9, False, False, True)
+            table = DestructibleObject("Table01", (x, 168), 100, 9, False, False, True)
             self.collidableSprites.add(table)
-            table = DestructibleObject("Table01", (x, 25), 5, 9, False)
+            table = DestructibleObject("Table01", (x, 25), 100, 9, False)
             self.collidableSprites.add(table)
         for y in range(8, 120, 101):
-            table = DestructibleObject("Table02", (1040, y), 5, 9, False)
+            table = DestructibleObject("Table02", (1040, y), 100, 9, False)
             self.collidableSprites.add(table)
-            table = DestructibleObject("Table02", (890, y), 5, 9, False, True)
+            table = DestructibleObject("Table02", (890, y), 5, 100, False, True)
             self.collidableSprites.add(table)
         #######################
         ### COMPUTERS #########
         for x in range(1234, 1537, 101):
-            monitor = DestructibleObject("Monitor", (x, 25), 5, 2, True)
+            monitor = DestructibleObject("Monitor", (x, 25), 250, 2, True)
             self.collidableSprites.add(monitor)
-            keyboard = DestructibleObject("Keyboard02", (x + 10, 45), 5, 1, False)
+            keyboard = DestructibleObject("Keyboard02", (x + 10, 45), 50, 1, False)
             self.collidableSprites.add(keyboard)
-            keyboard = DestructibleObject("Keyboard02", (x + 10, 173), 5, 1, False)
+            keyboard = DestructibleObject("Keyboard02", (x + 10, 173), 50, 1, False)
             self.collidableSprites.add(keyboard)
-            mouse = DestructibleObject("mouse01", (x + 50, 45), 5, 1, False)
+            mouse = DestructibleObject("mouse01", (x + 50, 45), 5, 25, False)
             self.collidableSprites.add(mouse)
-            monitor = DestructibleObject("Monitor", (x, 168 + 30), 5, 2, True)
+            monitor = DestructibleObject("Monitor", (x, 168 + 30), 5, 250, True)
             self.collidableSprites.add(monitor)
             
         
