@@ -172,7 +172,9 @@ class Level:
             player.momentum = (self.lateralSpeed/7)
             self.lateralSpeed = 0
         collidedList = pygame.sprite.spritecollide(player, self.collidableSprites, False)
-        if collidedList:          
+        if collidedList:
+            if player.modDelay > 1:
+                player.modDelay -= 1
             for collidedObject in collidedList:
                 if self.lateralSpeed > 1:
                     if collidedObject.hitCount >= collidedObject.mass and not collidedObject.collided:
@@ -180,11 +182,15 @@ class Level:
                         collidedObject.collided = True
                     if not collidedObject.collided:
                         collidedObject.hitCount += 5
-                        player.direction.x = -(player.direction.x) * 1.1
-                        player.direction.y = -(player.direction.y) * 1.1
+                        collidedObjectNormalVector = (pygame.math.Vector2(860-collidedObject.rect.x, 540-collidedObject.rect.y))
+                        collidedObjectNormalVector = pygame.math.Vector2(collidedObjectNormalVector)
+                        player.direction = pygame.math.Vector2.reflect(player.direction, collidedObjectNormalVector)
+                        player.direction = pygame.math.Vector2.normalize(player.direction)
+                        #player.direction.x = -(player.direction.x)
+                        #player.direction.y = -(player.direction.y)
                         collidedObject.update(self.walls, player)
                         collidedObject.goesFlying(player.direction.x, player.direction.y, self.lateralSpeed)
-                
+
         self.cameraOffsetX = (self.lateralSpeed * player.direction.x)
         self.cameraOffsetY = (self.lateralSpeed * player.direction.y)
         
@@ -192,18 +198,26 @@ class Level:
 
         collidedWalls =  pygame.sprite.spritecollide(player, self.walls, False)
         if collidedWalls:
+
             if self.cameraOffsetX > 0:
                 player.rect.right = collidedWalls[0].rect.left
+                player.direction.x = -(player.direction.x)
+
             else:
                 player.rect.left = collidedWalls[0].rect.right
-        
+                player.direction.x = -(player.direction.x)
+
         player.rect.y += self.cameraOffsetY
         collidedWalls =  pygame.sprite.spritecollide(player, self.walls, False)
         if collidedWalls:
             if self.cameraOffsetY > 0:
                 player.rect.bottom = collidedWalls[0].rect.top
+                player.direction.y = -(player.direction.y)
+
             else:
                 player.rect.top = collidedWalls[0].rect.bottom
+                player.direction.y = -(player  .direction.y)
+
         self.lateralSpeed *= .95
 
         

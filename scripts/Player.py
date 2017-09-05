@@ -15,57 +15,53 @@ class Player:
         self.rotationList = [(0,-1),(sqrt2,-sqrt2),(1,0),(sqrt2,sqrt2),(0,1),(-sqrt2,sqrt2),(-1,0),(-sqrt2,-sqrt2)]
         self.mouse_v = pygame.math.Vector2(pygame.mouse.get_pos())
         self.imageRotated = 0
-        self.rect.center = (1920 / 4, 1080 / 2)
+        self.rect.center = (1920 / 12, 1080 / 2)
 
         self.fuelLevel = 3000
         self.MoneyDamage = 0
         self.momentum = 0
+        self.launch = True
 
 
-        self.delayTimer = 5.5
-        self.delay = 6
+        self.delayTimer = 0
+        self.delay = 0
         self.directionTimer = 0
-
-    """
-    def getPositionOffset(self):
-        if self.count == 0:
-            self.temp = list(self.rect.center)
-            self.temp[0] -= 1920 - self.rect.centerx
-            self.temp[1] -= 1080 - self.rect.centery
-            self.count = 1
-            return self.temp
-        else:
-            self.temp[0] -= self.cameraOffsetX
-            self.temp[1] -= self.cameraOffsetY
-            return self.temp
-    """
+        self.modDelay = 15
 
 
     def draw(self, screen):
+        self.delayTimer += 1
+        if self.delayTimer%self.modDelay == 0:
+            self.delay += 1
+            self.imageRotated = self.delay
+            if self.delay >= 7:
+                self.delay = 0
         screen.blit(self.image[self.imageRotated], self.rect)
 
     def update(self):
-        self.directionTimer += 1
+
         prev_mouse_v = self.mouse_v
         self.mouse_v = pygame.math.Vector2(pygame.mouse.get_pos())
         self.mouse_v += (pygame.math.Vector2(-(self.rect.centerx),-(self.rect.centery)))
         self.mouse_v = (self.mouse_v + prev_mouse_v)
+        mouse = pygame.mouse.get_pressed()
         if self.mouse_v != (0, 0):
             self.mouse_v = pygame.math.Vector2.normalize(self.mouse_v)
-        if self.directionTimer > 20:
+        if self.launch and mouse[0]:
             self.direction = self.mouse_v
             self.directionTimer = 0
-        count = 0
-        for angle in self.rotationList:
-            if (abs(self.mouse_v[0] - angle[0]) < 0.2) and (abs(self.mouse_v[1] - angle[1]) < .2):
-                self.imageRotated = count
-            count += 1
+            self.launch = False
+
 
         if self.rect.top < 0:
+            self.direction.y = -(self.direction.y)
             self.rect.top = 0
         if self.rect.right > 1920:
+            self.direction.x = -(self.direction.x)
             self.rect.right = 1920
         if self.rect.bottom > 1080:
+            self.direction.y = -(self.direction.y)
             self.rect.bottom = 1080
         if self.rect.left < 0:
+            self.direction.x = -(self.direction.x)
             self.rect.left = 0
