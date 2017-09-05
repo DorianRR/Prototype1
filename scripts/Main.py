@@ -44,7 +44,7 @@ while True:
     #key_1 = pygame.key.get_pressed()
 
     if not keys[pygame.K_SPACE]:
-
+        #fire.particles[:] = []
         for particle in fire.particles:
             if timeCount > 90:
                 particle.alive = False
