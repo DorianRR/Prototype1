@@ -261,8 +261,8 @@ class Level:
                         if collidedObject.mass <= 2:
                             randomNum = random.randint(1,10)
                             if randomNum < 4:
-                                game = DestructibleObject("Flame01_1", (collidedObject.rect.topleft), 0, .01, False, False)
-                                self.collidableSprites.add(game)
+                                game = Fire((collidedObject.rect.topleft), "Flame01_1")
+                                self.fireList.add(game)
 
                         collidedObject.hitCount += 5
                         player.direction.x = -(player.direction.x) * 1.1

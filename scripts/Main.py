@@ -57,8 +57,7 @@ while playing:
     fire.Update()
     fire.Redraw()
     player.draw(screen)
-    for i in level.fireList:
-        Fire.draw(i, screen)
+    level.fireList.draw(screen)
     #keep these two lines of code after any screen.blit() bacause we want texts appear above everything#
     clock.tick(FPS)
     screen.blit(uicreate(level)[0], [1594, 40])
