@@ -31,6 +31,7 @@ class Player:
 
     def draw(self, screen):
         self.delayTimer += 1
+
         if self.delayTimer%self.modDelay == 0 and self.spinning:
             self.delay += 1
             self.imageRotated = self.delay
@@ -48,8 +49,11 @@ class Player:
         self.mouse_v = (self.mouse_v + prev_mouse_v)
         if self.mouse_v != (0, 0):
             self.mouse_v = pygame.math.Vector2.normalize(self.mouse_v)
-
-
+        count = 0
+        for angle in self.rotationList:
+            if (abs(self.mouse_v[0] - angle[0]) < 0.2) and (abs(self.mouse_v[1] - angle[1]) < .2):
+                self.imageRotated = count
+            count += 1
 
         if self.rect.top < 0:
             self.direction.y = -(self.direction.y)
