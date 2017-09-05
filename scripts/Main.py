@@ -40,7 +40,7 @@ while True:
     level.update()
 
     level.draw(screen)
-    level.FuelBar(screen,[25,150,160],150,20,level.fuelLevel,level.Maxfuel)
+    level.FuelBar(screen,[25,150,160],50,100,level.fuelLevel,level.Maxfuel)
     #key_1 = pygame.key.get_pressed()
 
     if not keys[pygame.K_SPACE]:
