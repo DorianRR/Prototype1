@@ -321,7 +321,9 @@ class Level:
                 player.rect.top = collidedWalls[0].rect.bottom
         self.lateralSpeed *= .95
         mouse = pygame.mouse.get_pressed()
-        if mouse[0] and self.lateralSpeed < .5: #Rob, this is probably where the logic for a pointer indicator should go
+
+        # Rob, this is probably where the logic for a pointer indicator should go
+        if mouse[0] and self.lateralSpeed < .5:
             player.direction = player.mouse_v
             player.modDelay = 15
             player.spinning = False
