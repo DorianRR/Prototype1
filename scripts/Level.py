@@ -229,22 +229,18 @@ class Level:
         if collidedObject.mass <= 2:
             randomNum = random.randint(1, 10)
             if randomNum < 3:
-                game = Fire((collidedObject.rect.topleft), "Flame01_1")
+                game = Fire((collidedObject.rect.topleft), "Flame01")
                 self.fireList.add(game)
         elif collidedObject.mass <= 5 and collidedObject.mass > 2:
             randomNum = random.randint(1, 10)
             if randomNum < 2:
-                game = Fire((collidedObject.rect.topleft), "Flame02_1")
+                game = Fire((collidedObject.rect.topleft), "Flame02")
                 self.fireList.add(game)
         elif collidedObject.mass > 5:
             randomNum = random.randint(1, 10)
             if randomNum < 2:
-                game = Fire((collidedObject.rect.topleft), "Flame03_1")
+                game = Fire((collidedObject.rect.topleft), "Flame03")
                 self.fireList.add(game)
-
-    def animateFire(self):
-        for flames in self.fireList:
-            break
 
 
     def FuelBar(self,screen,color,posX,posY,value,maxvalue):
@@ -327,7 +323,7 @@ class Level:
             player.direction = player.mouse_v
             player.modDelay = 15
             player.spinning = False
-        for flames in self.fireList:
-            flames.animate()
+
+
 
 
