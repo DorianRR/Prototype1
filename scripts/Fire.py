@@ -9,3 +9,4 @@ class Fire(pygame.sprite.Sprite):
 
 
     def animate(self):
+        
