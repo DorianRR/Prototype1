@@ -238,8 +238,8 @@ class Level:
                 self.fireList.add(game)
         elif collidedObject.mass > 5:
             randomNum = random.randint(1, 10)
-            if randomNum < 1.5:
-                game = Fire((collidedObject.rect.topleft), "Flame02_1")
+            if randomNum < 2:
+                game = Fire((collidedObject.rect.topleft), "Flame03_1")
                 self.fireList.add(game)
 
     def animateFire(self):
@@ -266,7 +266,7 @@ class Level:
         self.collidableSprites.update(self.walls, player)
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
-            self.lateralSpeed += .6
+            self.lateralSpeed += .65
             self.fuelLevel -= 3
         if self.lateralSpeed < .5: #Because of how we move, this pevents us from sliding for a long time.
             self.lateralSpeed = 0
