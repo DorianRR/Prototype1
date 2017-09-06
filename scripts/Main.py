@@ -40,7 +40,7 @@ while playing:
     source.SetInitDirection((player.imageRotated-1.25*math.pi)*2*math.pi/8)
     source1.SetPos(tempTuple)
     source1.SetInitDirection((player.imageRotated - 1.25 * math.pi) * 2 * math.pi / 8)
-    source2.SetPos((1775,330))
+    source2.SetPos((1775,430))
     player.update()
     level.update()
 

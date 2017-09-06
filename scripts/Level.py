@@ -232,9 +232,9 @@ class Level:
         healthBar1 = pygame.transform.scale(healthBarSqueeze1, (200, 600))
         healthBar2 = pygame.transform.scale(healthBarSqueeze2, (200, 600))
         healthBar3 = pygame.transform.scale(healthBarSqueeze3, (200, 600))
-        screen.blit(healthBar1,(posX+1700,posY+200))
+        screen.blit(healthBar1,(posX+1700,posY+300))
         #pygame.draw.rect(screen,[10,10,10],[posX+20, posY+17, 425, 22],5) # Draw a rect outline
-        pygame.draw.rect(screen, color,[posX+1803, posY+300, 50, 480*value/maxvalue]) # Draw a solid rect
+        pygame.draw.rect(screen, color,[posX+1803, posY+400, 50, 480*value/maxvalue]) # Draw a solid rect
 
 
     def update(self):
