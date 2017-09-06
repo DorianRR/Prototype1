@@ -61,12 +61,14 @@ while playing:
     #fire.remove()
     #keep these two lines of code after any screen.blit() bacause we want texts appear above everything#
     clock.tick(FPS)
-    screen.blit(uicreate(level)[0], [1594, 40])
-    screen.blit(uicreate(level)[1], [1594, 20])
+    screen.blit(uicreate(level)[1], [1596, 50])
+    screen.blit(uicreate(level)[0], [1596, 20])
     level.FuelBar(screen,[200,220,250],50,25,level.fuelLevel,level.Maxfuel)
     pygame.display.flip()
     if level.fuelLevel <= 0:
         playing = False
+    #print(len(fire.particles))  #it stays 24 so might not be the problem of particles
+    #print("fire is"sys.getrefcount(fire))
 while not playing:
     checkSurface = pygame.image.load("../images/Check00.jpg").convert_alpha()
     keys = pygame.key.get_pressed()
@@ -76,7 +78,7 @@ while not playing:
     level.draw(screen)
     level.FuelBar(screen, [25, 150, 160], 50, 25, level.fuelLevel, level.Maxfuel)
     screen.blit(checkSurface, (250, 200))
-    screen.blit(uicreate(level)[0], [275, 210])
+    screen.blit(uicreate(level)[1], [275, 210])
     for event in pygame.event.get():
          if event.type == pygame.QUIT or keys[pygame.K_ESCAPE]:
              pygame.quit()
