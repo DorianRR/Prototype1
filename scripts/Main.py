@@ -27,6 +27,7 @@ source2 = fire.CreateSource((player.rect.center), initspeed = 8.0, initdirection
 #------------------
 playing = True
 
+
 while playing:
     keys = pygame.key.get_pressed()
     for event in pygame.event.get():
@@ -43,7 +44,8 @@ while playing:
     source2.SetPos((1775,430))
     player.update()
     level.update()
-
+    #numberSurface = uicreate(level)[1]
+    titleSurface = uicreate(level)[0]
     level.draw(screen)
     #key_1 = pygame.key.get_pressed()
 
@@ -68,6 +70,7 @@ while playing:
         playing = False
     #print(len(fire.particles))  #it stays 24 so might not be the problem of particles
     #print("fire is"sys.getrefcount(fire))
+    #PRINT
 while not playing:
     checkSurface = pygame.image.load("../images/Check00.jpg").convert_alpha()
     keys = pygame.key.get_pressed()

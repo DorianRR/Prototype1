@@ -14,7 +14,7 @@ class Level:
 
         self.MoneyDamage = 0
         self.Maxfuel = 3000
-        self.fuelLevel = 300
+        self.fuelLevel = 3000
 
         self.temp_X = 0
         self.temp_Y = 0
