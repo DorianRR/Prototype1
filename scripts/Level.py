@@ -238,8 +238,8 @@ class Level:
                 self.fireList.add(game)
         elif collidedObject.mass > 5:
             randomNum = random.randint(1, 10)
-            if randomNum < 1.5:
-                game = Fire((collidedObject.rect.topleft), "Flame02_1")
+            if randomNum < 2:
+                game = Fire((collidedObject.rect.topleft), "Flame03_1")
                 self.fireList.add(game)
 
     def animateFire(self):
