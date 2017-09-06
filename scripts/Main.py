@@ -45,7 +45,7 @@ while playing:
     player.update()
     level.update()
     #numberSurface = uicreate(level)[1]
-    titleSurface = uicreate(level)[0]
+    #titleSurface = uicreate(level)[0]
     level.draw(screen)
     #key_1 = pygame.key.get_pressed()
 
@@ -68,9 +68,8 @@ while playing:
     pygame.display.flip()
     if level.fuelLevel <= 0:
         playing = False
-    #print(len(fire.particles))  #it stays 24 so might not be the problem of particles
+    print(len(fire.particles))  #it stays 24 so might not be the problem of particles
     #print("fire is"sys.getrefcount(fire))
-    #PRINT
 while not playing:
     checkSurface = pygame.image.load("../images/Check00.jpg").convert_alpha()
     keys = pygame.key.get_pressed()
