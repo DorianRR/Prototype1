@@ -15,7 +15,7 @@ timeCount = 0
 
 
 #------------------
-fire = PyIgnition.ParticleEffect(screen, (0, 0), (800, 600))
+fire = PyIgnition.ParticleEffect(screen, (0, 0), (0, 0))
 #gravity = fire.CreateDirectedGravity(strength = 0.00, direction = [player.direction.x,player.direction.y]) #here to change gravity direction should be the same as player facing direction
 #here change the initial direction
 source = fire.CreateSource((player.rect.center), initspeed = 3.0, initdirection = 3.140, initspeedrandrange = 0.3, initdirectionrandrange = 0.3, particlesperframe = 8, particlelife = 30, drawtype = PyIgnition.DRAWTYPE_IMAGE, imagepath = "../images/ParticleTexture_03.png")
@@ -58,6 +58,7 @@ while playing:
     fire.Redraw()
     player.draw(screen)
     level.fireList.draw(screen)
+    #fire.remove()
     #keep these two lines of code after any screen.blit() bacause we want texts appear above everything#
     clock.tick(FPS)
     screen.blit(uicreate(level)[0], [1594, 40])

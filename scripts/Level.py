@@ -279,14 +279,15 @@ class Level:
                 player.modDelay -= 1
             for collidedObject in collidedList:
                 if self.lateralSpeed > 1:
+                    self.lateralSpeed *= .99
                     if not collidedObject.collided:
                         self.spawnFire(collidedObject)
                         collidedObject.hitCount += 5
-                        collidedObjectNormalVector = (
-                        pygame.math.Vector2(860 - collidedObject.rect.x, 540 - collidedObject.rect.y))
-                        collidedObjectNormalVector = pygame.math.Vector2(collidedObjectNormalVector)
-                        player.direction = pygame.math.Vector2.reflect(player.direction, collidedObjectNormalVector)
-                        player.direction = pygame.math.Vector2.normalize(player.direction)
+                        if self.lateralSpeed < 10:
+                            collidedObjectNormalVector = (pygame.math.Vector2(860 - collidedObject.rect.x, 540 - collidedObject.rect.y))
+                            collidedObjectNormalVector = pygame.math.Vector2(collidedObjectNormalVector)
+                            player.direction = pygame.math.Vector2.reflect(player.direction, collidedObjectNormalVector)
+                            player.direction = pygame.math.Vector2.normalize(player.direction)
                         collidedObject.update(self.walls, player)
                         collidedObject.goesFlying(player.direction.x, player.direction.y, self.lateralSpeed)
                     if collidedObject.hitCount >= collidedObject.mass and not collidedObject.collided:
