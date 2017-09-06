@@ -6,3 +6,6 @@ class Fire(pygame.sprite.Sprite):
         self.image = pygame.image.load("../ArtResource/" + image +".png").convert_alpha()
         self.rect = self.image.get_rect()
         self.rect.topleft = position
+
+
+    def animate(self):
