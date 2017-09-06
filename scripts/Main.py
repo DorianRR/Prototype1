@@ -56,6 +56,7 @@ while playing:
 
     fire.Update()
     fire.Redraw()
+
     player.draw(screen)
     level.fireList.draw(screen)
     #fire.remove()

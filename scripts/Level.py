@@ -327,5 +327,7 @@ class Level:
             player.direction = player.mouse_v
             player.modDelay = 15
             player.spinning = False
+        for flames in self.fireList:
+            flames.animate()
 
 
