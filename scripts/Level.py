@@ -272,26 +272,34 @@ class Level:
             self.lateralSpeed = 0
         collidedList = pygame.sprite.spritecollide(player, self.collidableSprites, False)
         if collidedList:
+
+            #The following three lines are what make the player spin faster and faster when we hit objects.
             player.spinning = True
             if player.modDelay > 1:
                 player.modDelay -= 1
+
             for collidedObject in collidedList:
                 if self.lateralSpeed > 1: #Determines what the speed needs to be to destroy stuff
                     self.lateralSpeed *= .99 #Running into stuff slows you down here
                     if not collidedObject.collided:
                         self.spawnFire(collidedObject) #Calls a flame spawning method
                         collidedObject.hitCount += 5 #Some objects take multiple hits, this is where they take "Damage"
+                        #The following four lines reflect the player on collisions when it's going under a certain speed
+
                         if self.lateralSpeed < 9:
                             collidedObjectNormalVector = (pygame.math.Vector2(860 - collidedObject.rect.x, 540 - collidedObject.rect.y))
                             collidedObjectNormalVector = pygame.math.Vector2(collidedObjectNormalVector)
                             player.direction = pygame.math.Vector2.reflect(player.direction, collidedObjectNormalVector)
                             player.direction = pygame.math.Vector2.normalize(player.direction)
+
                         collidedObject.update(self.walls, player)
+                        #The following line sends collided objects flying based on player speed and object mass
                         collidedObject.goesFlying(player.direction.x, player.direction.y, self.lateralSpeed)
+
                     if collidedObject.hitCount >= collidedObject.mass and not collidedObject.collided:
                         self.MoneyDamage += collidedObject.value
                         collidedObject.collided = True
-                
+        #The following two lines move the player
         self.cameraOffsetX = (self.lateralSpeed * player.direction.x)
         self.cameraOffsetY = (self.lateralSpeed * player.direction.y)
         
