@@ -283,7 +283,7 @@ class Level:
                     if not collidedObject.collided:
                         self.spawnFire(collidedObject)
                         collidedObject.hitCount += 5
-                        if self.lateralSpeed < 10:
+                        if self.lateralSpeed < 9:
                             collidedObjectNormalVector = (pygame.math.Vector2(860 - collidedObject.rect.x, 540 - collidedObject.rect.y))
                             collidedObjectNormalVector = pygame.math.Vector2(collidedObjectNormalVector)
                             player.direction = pygame.math.Vector2.reflect(player.direction, collidedObjectNormalVector)
@@ -315,7 +315,7 @@ class Level:
                 player.rect.top = collidedWalls[0].rect.bottom
         self.lateralSpeed *= .95
         mouse = pygame.mouse.get_pressed()
-        if mouse[0] and self.lateralSpeed == 0:
+        if mouse[0] and self.lateralSpeed < .5:
             player.direction = player.mouse_v
             player.modDelay = 15
             player.spinning = False
