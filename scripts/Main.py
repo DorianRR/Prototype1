@@ -56,12 +56,12 @@ while playing:
 
     fire.Update()
     fire.Redraw()
-
     player.draw(screen)
+
+    #The following three lines animate and draw the flames
     for flames in level.fireList:
         flames.animate()
         flames.draw(screen)
-    #level.fireList.draw(screen)
 
     #keep these two lines of code after any screen.blit() bacause we want texts appear above everything#
     clock.tick(FPS)
