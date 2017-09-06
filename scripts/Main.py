@@ -57,8 +57,12 @@ while playing:
     fire.Update()
     fire.Redraw()
     player.draw(screen)
-    level.fireList.draw(screen)
-    #fire.remove()
+
+    #The following three lines animate and draw the flames
+    for flames in level.fireList:
+        flames.animate()
+        flames.draw(screen)
+
     #keep these two lines of code after any screen.blit() bacause we want texts appear above everything#
     clock.tick(FPS)
     screen.blit(uicreate(level)[1], [1596, 50])
