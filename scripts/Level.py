@@ -14,7 +14,7 @@ class Level:
 
         self.MoneyDamage = 0
         self.Maxfuel = 3000
-        self.fuelLevel = 300
+        self.fuelLevel = 3000
 
         self.temp_X = 0
         self.temp_Y = 0
@@ -225,6 +225,28 @@ class Level:
         self.collidableSprites.draw(screen)
         #self.fireList.draw(screen)
 
+    def spawnFire(self, collidedObject):
+        if collidedObject.mass <= 2:
+            randomNum = random.randint(1, 10)
+            if randomNum < 3:
+                game = Fire((collidedObject.rect.topleft), "Flame01_1")
+                self.fireList.add(game)
+        elif collidedObject.mass <= 5 and collidedObject.mass > 2:
+            randomNum = random.randint(1, 10)
+            if randomNum < 2:
+                game = Fire((collidedObject.rect.topleft), "Flame02_1")
+                self.fireList.add(game)
+        elif collidedObject.mass > 5:
+            randomNum = random.randint(1, 10)
+            if randomNum < 1.5:
+                game = Fire((collidedObject.rect.topleft), "Flame02_1")
+                self.fireList.add(game)
+
+    def animateFire(self):
+        for flames in self.fireList:
+            break
+
+
     def FuelBar(self,screen,color,posX,posY,value,maxvalue):
         healthBarSqueeze1 = pygame.image.load("../images/FuelBarSqueeze01.png").convert_alpha()
         healthBarSqueeze2 = pygame.image.load("../images/FuelBarSqueeze02.png").convert_alpha()
@@ -258,12 +280,7 @@ class Level:
             for collidedObject in collidedList:
                 if self.lateralSpeed > 1:
                     if not collidedObject.collided:
-                        if collidedObject.mass <= 2:
-                            randomNum = random.randint(1,10)
-                            if randomNum < 4:
-                                game = Fire((collidedObject.rect.topleft), "Flame01_1")
-                                self.fireList.add(game)
-
+                        self.spawnFire(collidedObject)
                         collidedObject.hitCount += 5
                         collidedObjectNormalVector = (
                         pygame.math.Vector2(860 - collidedObject.rect.x, 540 - collidedObject.rect.y))
