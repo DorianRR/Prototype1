@@ -266,7 +266,7 @@ class Level:
         self.collidableSprites.update(self.walls, player)
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
-            self.lateralSpeed += .6
+            self.lateralSpeed += .65
             self.fuelLevel -= 3
         if self.lateralSpeed < .5: #Because of how we move, this pevents us from sliding for a long time.
             self.lateralSpeed = 0
