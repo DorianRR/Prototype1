@@ -266,11 +266,9 @@ class Level:
         self.collidableSprites.update(self.walls, player)
         keys = pygame.key.get_pressed()
         if keys[pygame.K_SPACE]:
-
             self.lateralSpeed += .6
             self.fuelLevel -= 3
-        if self.lateralSpeed < .4:
-            player.momentum = (self.lateralSpeed/7)
+        if self.lateralSpeed < .5: #Because of how we move, this pevents us from sliding for a long time.
             self.lateralSpeed = 0
         collidedList = pygame.sprite.spritecollide(player, self.collidableSprites, False)
         if collidedList:
@@ -278,11 +276,11 @@ class Level:
             if player.modDelay > 1:
                 player.modDelay -= 1
             for collidedObject in collidedList:
-                if self.lateralSpeed > 1:
-                    self.lateralSpeed *= .99
+                if self.lateralSpeed > 1: #Determines what the speed needs to be to destroy stuff
+                    self.lateralSpeed *= .99 #Running into stuff slows you down here
                     if not collidedObject.collided:
-                        self.spawnFire(collidedObject)
-                        collidedObject.hitCount += 5
+                        self.spawnFire(collidedObject) #Calls a flame spawning method
+                        collidedObject.hitCount += 5 #Some objects take multiple hits, this is where they take "Damage"
                         if self.lateralSpeed < 9:
                             collidedObjectNormalVector = (pygame.math.Vector2(860 - collidedObject.rect.x, 540 - collidedObject.rect.y))
                             collidedObjectNormalVector = pygame.math.Vector2(collidedObjectNormalVector)
@@ -315,7 +313,7 @@ class Level:
                 player.rect.top = collidedWalls[0].rect.bottom
         self.lateralSpeed *= .95
         mouse = pygame.mouse.get_pressed()
-        if mouse[0] and self.lateralSpeed < .5:
+        if mouse[0] and self.lateralSpeed < .5: #Rob, this is probably where the logic for a pointer indicator should go
             player.direction = player.mouse_v
             player.modDelay = 15
             player.spinning = False
