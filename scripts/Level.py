@@ -71,6 +71,10 @@ class Level:
                 self.collidableSprites.add(table)
                 table = DestructibleObject("Table02", (x - 150, y), 70, 9, True, True)
                 self.collidableSprites.add(table)
+        table = DestructibleObject("Table02", (1700, 440), 70, 9, True)
+        self.collidableSprites.add(table)
+        table = DestructibleObject("Table02", (1700, 540), 70, 9, True, True)
+        self.collidableSprites.add(table)
 
         #######################
         ### COMPUTER ADD ONS #########
@@ -82,9 +86,10 @@ class Level:
                 self.collidableSprites.add(keyboard)
                 keyboard = DestructibleObject("Keyboard02", (x + 10, y + 173), 100, 1, True)
                 self.collidableSprites.add(keyboard)
-                mouse = DestructibleObject("mouse01", (x + 50, y + 45), 60, 1, False)
+                num = random.randint(1,2)
+                mouse = DestructibleObject("mouse0" + str(num), (x + 50, y + 45), 60, 1, False)
                 self.collidableSprites.add(mouse)
-                mouse = DestructibleObject("mouse01", (x + 50, y + 183), 60, 1, False, True, True)
+                mouse = DestructibleObject("mouse0" + str(num), (x + 50, y + 183), 60, 1, False, True, True)
                 self.collidableSprites.add(mouse)
                 monitor = DestructibleObject("Monitor", (x, y + 198), 200, 2, True)
                 self.collidableSprites.add(monitor)
@@ -102,9 +107,10 @@ class Level:
                 self.collidableSprites.add(keyboard)
                 keyboard = DestructibleObject("Keyboard02R", (x - 125, y+5), 100, 1, True)
                 self.collidableSprites.add(keyboard)
-                mouse = DestructibleObject("mouse02R", (x - 140, y+50), 60, 1, False)
+                num = random.randint(1,2)
+                mouse = DestructibleObject("mouse0" + str(num) + "R", (x - 140, y+50), 60, 1, False)
                 self.collidableSprites.add(mouse)
-                mouse = DestructibleObject("mouse02R", (x + 15, y+50), 60, 1, False, True, True)
+                mouse = DestructibleObject("mouse0" + str(num) + "R", (x + 15, y+50), 60, 1, False, True, True)
                 self.collidableSprites.add(mouse)
 
         for y in range(860, 962, 101):
@@ -121,9 +127,10 @@ class Level:
                 self.collidableSprites.add(keyboard)
                 keyboard = DestructibleObject("Keyboard02R", (x - 125, y+5), 100, 1, True)
                 self.collidableSprites.add(keyboard)
-                mouse = DestructibleObject("mouse02R", (x - 140, y+50), 60, 1, False)
+                num = random.randint(1,2)
+                mouse = DestructibleObject("mouse0" + str(num) + "R", (x - 140, y+50), 60, 1, False)
                 self.collidableSprites.add(mouse)
-                mouse = DestructibleObject("mouse02R", (x + 15, y+50), 60, 1, False, True, True)
+                mouse = DestructibleObject("mouse0" + str(num) + "R", (x + 15, y+50), 60, 1, False, True, True)
                 self.collidableSprites.add(mouse)
         
     
@@ -132,29 +139,56 @@ class Level:
         for x in range(1264, 1566, 101):
             for y in range(0, 851, 850):
                 num = random.randint(1, 3)
-                chair = DestructibleObject("Chair0" + str(num), (x, y + 127), 100, 4, True)
+                isTall = ""
+                if random.randint(1,2) == 1:
+                    isTall = "Tall"
+                chair = DestructibleObject(isTall + "Chair0" + str(num), (x, y + 127), 100, 4, True)
                 self.collidableSprites.add(chair)
-                chair = DestructibleObject("Chair0" + str(num), (x, y + 80), 100, 4, True, False, True)
+                isTall = ""
+                if random.randint(1,2) == 1:
+                    isTall = "Tall"
+                chair = DestructibleObject(isTall + "Chair0" + str(num), (x, y + 80), 100, 4, True, False, True)
                 self.collidableSprites.add(chair)
 
         for y in range(8, 120, 101):
             for x in range(440, 1041, 300):
                 num = random.randint(1, 3)
-                chair = DestructibleObject("Chair0" + str(num) + "R", (x - 40, y), 100, 4, True)
+                isTall = ""
+                if random.randint(1,2) == 1:
+                    isTall = "Tall"
+                chair = DestructibleObject(isTall + "Chair0" + str(num) + "R", (x - 40, y + 25), 100, 4, True)
                 self.collidableSprites.add(chair)
-                chair = DestructibleObject("Chair0" + str(num) + "R", (x - 100, y), 100, 4, True, True)
+                isTall = ""
+                if random.randint(1,2) == 1:
+                    isTall = "Tall"
+                chair = DestructibleObject(isTall + "Chair0" + str(num) + "R", (x - 100, y + 25), 100, 4, True, True)
                 self.collidableSprites.add(chair)
 
         for y in range(860, 962, 101):
             for x in range(440, 1041, 300):
                 num = random.randint(1, 3)
-                chair = DestructibleObject("Chair0" + str(num) + "R", (x - 40, y), 5, 4, True)
+                isTall = ""
+                if random.randint(1,2) == 1:
+                    isTall = "Tall"
+                chair = DestructibleObject(isTall + "Chair0" + str(num) + "R", (x - 40, y + 25), 75, 4, True)
                 self.collidableSprites.add(chair)
-                chair = DestructibleObject("Chair0" + str(num) + "R", (x - 100, y), 5, 4, True, True)
+                isTall = ""
+                if random.randint(1,2) == 1:
+                    isTall = "Tall"
+                chair = DestructibleObject(isTall + "Chair0" + str(num) + "R", (x - 100, y + 25), 75, 4, True, True)
+                self.collidableSprites.add(chair)
+
+        for x in range(77, 210, 44):
+            for y in range(419, 628, 52):
+                num = random.randint(1, 3)
+                isTall = ""
+                if random.randint(1,2) == 1:
+                    isTall = "Tall"
+                chair = DestructibleObject(isTall + "Chair0" + str(num) + "R", (x, y), 75, 4, True, True)
                 self.collidableSprites.add(chair)
 
         #### TRASH ############
-        for x in range(206, 1107, 300):
+        for x in range(206, 1407, 300):
             for y in range(312, 727, 414):
                 trash = DestructibleObject("Trash", (x,y), 20, 4, True)
                 self.collidableSprites.add(trash)
@@ -171,6 +205,9 @@ class Level:
             tv  = DestructibleObject("TV", (x, 10), 500, 6, True)
             self.collidableSprites.add(tv)
             tv  = DestructibleObject("TV", (x, 1070), 500, 6, True, False, True)
+            self.collidableSprites.add(tv)
+        for y in range(426, 577, 150):
+            tv  = DestructibleObject("TVR", (10, y), 500, 6, True)
             self.collidableSprites.add(tv)
 
         #### BOOKS & PAPERS ####################
@@ -194,14 +231,73 @@ class Level:
                 bottle = DestructibleObject("Bottle0" + str(num), (x, y), 10, 1, True)
                 self.collidableSprites.add(bottle)
 
+        for x in range(1706, 1737, 15):
+            for y in range(442, 619, 35):
+                num = random.randint(1,3)
+                bottle = DestructibleObject("Bottle0" + str(num), (x, y), 10, 1, True)
+                self.collidableSprites.add(bottle)
+                watercup = DestructibleObject("WaterCup", (x, y + 15), 5, 1, True)
+                self.collidableSprites.add(watercup)
+
         #@### VIDEO GAME CASE #######
         for x in range(250, 676, 423): 
             for y in range(415, 700, 150):
                 game = DestructibleObject("GameCabinet01", (x,y), 300, 6, True, True)
                 self.collidableSprites.add(game)
+
+        for x in range(1595, 1811, 72):
+            for y in range(876, 1016, 70):
+                game = DestructibleObject("GameCabinet01", (x - 25,y + 25), 300, 6, True, True)
+                self.collidableSprites.add(game)
+
+        for x in range(68, 284, 72):
+            for y in range(40, 180, 70):
+                game = DestructibleObject("GameCabinet01", (x - 25,y + 25), 300, 6, True, True)
+                self.collidableSprites.add(game)
+
+        for x in range(68, 284, 72):
+            for y in range(880, 1020, 70):
+                game = DestructibleObject("GameCabinet01", (x - 25,y + 25), 300, 6, True, True)
+                self.collidableSprites.add(game)
+
+        #### HEADPHONES #####        
+        for x in range(304, 905, 300):
+            for y in range(81, 1036, 954):
+                num  = random.randint(1, 9)
+                headphones = DestructibleObject("Headphone0" + str(num), (x,y), 100, 1, False)
+                self.collidableSprites.add(headphones)
+        
+        #### WACOM TABLETS #########
+        for x in range(455, 1056, 300):
+            for y in range(934, 1035, 100):
+                wacom = DestructibleObject("WacomTablet", (x,y), 350, 2, True)
+                self.collidableSprites.add(wacom)
+                pen = DestructibleObject("WacomPen", (x - 10,y), 70, 1, True)
+                self.collidableSprites.add(pen)
+
+        ### MISC ###################
+        watercup = DestructibleObject("WaterCup", (1307, 1033), 5, 1, True)
+        self.collidableSprites.add(watercup)
+        watercup = DestructibleObject("WaterCup", (1408, 892), 5, 1, True)
+        self.collidableSprites.add(watercup)
+        num  = random.randint(1, 9)
+        headphones = DestructibleObject("Headphone0" + str(num), (1405,1033), 100, 1, False)
+        self.collidableSprites.add(headphones)
+        wacom = DestructibleObject("WacomTablet", (1508,1033), 350, 2, True)
+        self.collidableSprites.add(wacom)
+        pen = DestructibleObject("WacomPen", (1498,1033), 70, 1, True)
+        self.collidableSprites.add(pen)
+        for x in range(1307, 1508, 200):
+            wacom = DestructibleObject("WacomTablet", (x,179), 350, 2, True)
+            self.collidableSprites.add(wacom)
+            pen = DestructibleObject("WacomPen", (x - 10,179), 70, 1, True)
+            self.collidableSprites.add(pen)
+        watercup = DestructibleObject("WaterCup", (1408, 44), 5, 1, True)
+        self.collidableSprites.add(watercup)
+        watercup = DestructibleObject("WaterCup", (1408, 186), 5, 1, True)
+        self.collidableSprites.add(watercup)
         ####################################################################################
         
-
         ### WALLS ##########################################################################
         self.walls = pygame.sprite.Group()
         for x in range(189, 1390, 300):
@@ -212,9 +308,9 @@ class Level:
 
         wall = Wall((898, 413), (785, 255))
         self.walls.add(wall)
-        wall = Wall((1593, 787), (145, 293))
-        self.walls.add(wall)
         wall = Wall((1593, 0), (320, 294))
+        self.walls.add(wall)
+        wall = Wall((1790, 287), (120, 788))
         self.walls.add(wall)
         ###################################################################################
         self.map = pygame.image.load("../images/background.png").convert()
@@ -302,6 +398,7 @@ class Level:
                 player.rect.right = collidedWalls[0].rect.left
             else:
                 player.rect.left = collidedWalls[0].rect.right
+            player.direction.x = -(player.direction.x)
         
         player.rect.y += self.cameraOffsetY
         collidedWalls =  pygame.sprite.spritecollide(player, self.walls, False)
@@ -310,6 +407,7 @@ class Level:
                 player.rect.bottom = collidedWalls[0].rect.top
             else:
                 player.rect.top = collidedWalls[0].rect.bottom
+            player.direction.y = -(player.direction.y)
         self.lateralSpeed *= .95
         mouse = pygame.mouse.get_pressed()
 

@@ -73,7 +73,7 @@ while playing:
     pygame.display.flip()
     if level.fuelLevel <= 0:
         playing = False
-    print(len(fire.particles))  #it stays 24 so might not be the problem of particles
+    #print(len(fire.particles))  #it stays 24 so might not be the problem of particles
     #print("fire is"sys.getrefcount(fire))
 while not playing:
     checkSurface = pygame.image.load("../ArtResource/Check.jpg").convert_alpha()

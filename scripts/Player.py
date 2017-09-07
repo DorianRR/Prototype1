@@ -15,7 +15,7 @@ class Player:
         self.rotationList = [(0,-1),(sqrt2,-sqrt2),(1,0),(sqrt2,sqrt2),(0,1),(-sqrt2,sqrt2),(-1,0),(-sqrt2,-sqrt2)]
         self.mouse_v = pygame.math.Vector2(pygame.mouse.get_pos())
         self.imageRotated = 0
-        self.rect.center = (1920 / 12, 1080 / 2)
+        self.rect.center = (1920 / 4, 1080 / 2)
 
         self.fuelLevel = 3000
         self.MoneyDamage = 0
