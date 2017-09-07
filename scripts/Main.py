@@ -1,9 +1,10 @@
-import PyIgnition,pygame, math, sys
+import PyIgnition,pygame, math, sys, cx_Freeze
 from Player import *
 from DestructibleObject import *
 from SimpleUI import *
 from Level import *
 from Fire import *
+
 
 pygame.init()
 screen = pygame.display.set_mode((1920, 1080),pygame.FULLSCREEN)
