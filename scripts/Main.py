@@ -41,7 +41,7 @@ while playing:
     source.SetInitDirection((player.imageRotated-1.25*math.pi)*2*math.pi/8)
     source1.SetPos(tempTuple)
     source1.SetInitDirection((player.imageRotated - 1.25 * math.pi) * 2 * math.pi / 8)
-    source2.SetPos((1775,430))
+    source2.SetPos((1802,610))
     player.update()
     level.update()
     #numberSurface = uicreate(level)[1]
