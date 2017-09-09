@@ -1,4 +1,4 @@
-import PyIgnition,pygame, math, sys, cx_Freeze
+import PyIgnition,pygame, math, sys
 from Player import *
 from DestructibleObject import *
 from SimpleUI import *
